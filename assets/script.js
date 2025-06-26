@@ -152,6 +152,9 @@ class SimuladoApp {
             return;
         }
         
+        document.getElementById('intro-section').classList.add('hidden');
+        document.body.classList.add('exam-mode');
+        
         this.generateExamQuestions();
         this.timeLeft = this.examQuestions.length * 60;
         this.currentState = 'exam';
@@ -425,6 +428,8 @@ class SimuladoApp {
     }
 
     showResults() {
+        document.body.classList.remove('exam-mode');
+        
         const scoreElement = document.getElementById('final-score');
         scoreElement.textContent = `${this.results.percentage}%`;
         scoreElement.className = `score ${this.results.passed ? 'passed' : 'failed'}`;

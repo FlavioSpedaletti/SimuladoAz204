@@ -2,24 +2,6 @@
 
 Sistema de simulado para certificação Microsoft Azure Developer Associate (AZ-204).
 
-## Estrutura do Projeto
-
-```
-SimuladoAz204/
-├── .github/workflows/        # GitHub Actions
-│   └── deploy.yml           # Deploy automático para Azure
-├── assets/                   # Arquivos CSS e JavaScript separados
-│   ├── style.css            # Estilos da aplicação
-│   └── script.js            # Lógica JavaScript
-├── data/                    # Dados das questões
-│   └── data.json            # Base de questões do simulado
-├── index.html               # Página principal com cache busting automático
-├── app.py                   # Servidor Flask para produção
-├── requirements.txt         # Dependências Python
-├── DEPLOY.md                # Guia de deploy no Azure
-└── README.md                # Este arquivo
-```
-
 ## Como Usar
 
 ### Desenvolvimento Local (Simples)
@@ -56,3 +38,105 @@ Para testar exatamente como ficará no Azure:
    ```
 
 3. Acesse: `http://localhost:8000`
+
+## Como Adicionar Questões
+
+O simulado utiliza o arquivo `data/data.json` para armazenar todas as questões organizadas por módulos. Siga as instruções abaixo para adicionar novas questões:
+
+### Estrutura do Arquivo JSON
+
+```json
+{
+  "modulos": {
+    "modulo1": {
+      "nome": "☁️ Nome do Módulo",
+      "descricao": "Descrição do módulo",
+      "perguntas": {
+        "pergunta1": {
+          "descricao": "Texto da pergunta",
+          "alternativas": {
+            "alternativa1": {"descricao": "Opção A"},
+            "alternativa2": {"descricao": "Opção B"}, 
+            "alternativa3": {"descricao": "Opção C"},
+            "alternativa4": {"descricao": "Opção D"}
+          },
+          "correta": "alternativa3",
+          "explicacao": "Explicação detalhada da resposta correta"
+        }
+      }
+    }
+  }
+}
+```
+
+### Adicionando Questões a um Módulo Existente
+
+1. Abra o arquivo `data/data.json`
+2. Localize o módulo desejado (ex: `modulo1`, `modulo2`, etc.)
+3. Dentro da seção `"perguntas"`, adicione uma nova entrada:
+
+```json
+"perguntaN": {
+  "descricao": "Sua pergunta aqui",
+  "alternativas": {
+    "alternativa1": {"descricao": "Primeira opção"},
+    "alternativa2": {"descricao": "Segunda opção"},
+    "alternativa3": {"descricao": "Terceira opção"},
+    "alternativa4": {"descricao": "Quarta opção"}
+  },
+  "correta": "alternativa2",
+  "explicacao": "Explicação detalhada da resposta correta"
+}
+```
+
+**Importante**: Substitua `N` pelo próximo número sequencial de pergunta no módulo.
+
+### Criando um Novo Módulo
+
+1. Abra o arquivo `data/data.json`
+2. Dentro da seção `"modulos"`, adicione:
+
+```json
+"moduloN": {
+  "nome": "🔧 Nome do Novo Módulo",
+  "descricao": "Descrição do novo módulo",
+  "perguntas": {
+    "pergunta1": {
+      "descricao": "Primeira pergunta do módulo",
+      "alternativas": {
+        "alternativa1": {"descricao": "Opção A"},
+        "alternativa2": {"descricao": "Opção B"},
+        "alternativa3": {"descricao": "Opção C"},
+        "alternativa4": {"descricao": "Opção D"}
+      },
+      "correta": "alternativa1",
+      "explicacao": "Explicação da resposta"
+    }
+  }
+}
+```
+
+### Regras e Boas Práticas
+
+1. **IDs únicos**: Cada módulo deve ter um ID único (`modulo1`, `modulo2`, etc.)
+2. **Perguntas sequenciais**: Numere as perguntas sequencialmente dentro de cada módulo
+3. **Sempre 4 alternativas**: Cada pergunta deve ter exatamente 4 alternativas
+4. **Resposta correta**: O campo `"correta"` deve corresponder a uma das alternativas
+5. **Explicação obrigatória**: Sempre inclua uma explicação clara da resposta
+6. **Emoji nos módulos**: Use emojis para deixar os módulos mais visuais
+7. **JSON válido**: Verifique se o JSON continua válido após suas alterações
+
+### Testando as Alterações
+
+1. Salve o arquivo `data/data.json`
+2. Atualize o navegador ou reinicie o servidor local
+3. Navegue até o módulo modificado para testar as novas questões
+4. Verifique se as respostas corretas e explicações estão funcionando
+
+### Dicas para Questões de Qualidade
+
+- **Seja específico**: Evite perguntas ambíguas
+- **Use cenários reais**: Base as questões em situações práticas do Azure
+- **Explicações detalhadas**: Inclua o "porquê" da resposta na explicação
+- **Alternativas plausíveis**: Torne as opções incorretas believáveis
+- **Foque no AZ-204**: Mantenha o conteúdo relevante para a certificação
