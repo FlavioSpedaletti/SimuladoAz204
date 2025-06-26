@@ -152,6 +152,16 @@ class SimuladoApp {
             return;
         }
         
+        // Google Analytics: Rastrear início do simulado
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'simulado_iniciado', {
+                'event_category': 'Simulado',
+                'total_questoes': this.totalQuestions,
+                'modulos_selecionados': this.selectedModules.length,
+                'modulos': this.selectedModules.join(',')
+            });
+        }
+        
         document.getElementById('intro-section').classList.add('hidden');
         document.body.classList.add('exam-mode');
         
@@ -392,6 +402,18 @@ class SimuladoApp {
         
         this.currentState = 'results';
         this.calculateResults();
+        
+        // Google Analytics: Rastrear conclusão do simulado
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'simulado_finalizado', {
+                'event_category': 'Simulado',
+                'pontuacao': this.results.percentage,
+                'aprovado': this.results.passed,
+                'total_questoes': this.results.total,
+                'acertos': this.results.correct
+            });
+        }
+        
         this.showResults();
         this.showScreen('results-screen');
     }
