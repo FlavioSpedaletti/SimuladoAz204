@@ -6,7 +6,10 @@ class SimuladoApp {
         this.examQuestions = [];
         this.currentQuestionIndex = 0;
         this.userAnswers = [];
-        this.timeLeft = 3600;
+        this.skippedQuestions = [];
+        this.answeredCount = 0;
+        this.isReviewingSkipped = false;
+        this.timeLeft = 0;
         this.timerInterval = null;
         this.currentState = 'config';
         
@@ -54,6 +57,9 @@ class SimuladoApp {
         const container = document.getElementById('modules-container');
         const modules = this.data.modulos;
         
+        // Selecionar todos os módulos por padrão
+        this.selectedModules = Object.keys(modules);
+        
         let html = '<div class="module-selection">';
         
         Object.keys(modules).forEach(moduleKey => {
@@ -61,9 +67,9 @@ class SimuladoApp {
             const questionCount = Object.keys(module.perguntas).length;
             
             html += `
-                <div class="module-item" data-module="${moduleKey}">
+                <div class="module-item selected" data-module="${moduleKey}">
                     <label>
-                        <input type="checkbox" class="module-checkbox" value="${moduleKey}">
+                        <input type="checkbox" class="module-checkbox" value="${moduleKey}" checked>
                         <strong>${module.nome}</strong><br>
                         <small>${module.descricao}</small><br>
                         <small style="color: #718096;">${questionCount} questões disponíveis</small>
@@ -74,6 +80,9 @@ class SimuladoApp {
         
         html += '</div>';
         container.innerHTML = html;
+        
+        // Atualizar estado do botão de iniciar
+        this.updateStartButtonState();
     }
 
     setupEventListeners() {
@@ -96,10 +105,25 @@ class SimuladoApp {
 
         document.getElementById('start-btn').addEventListener('click', () => this.startExam());
         document.getElementById('next-btn').addEventListener('click', () => this.nextQuestion());
+        document.getElementById('skip-btn').addEventListener('click', () => this.skipQuestion());
 
         document.getElementById('question-quantity').addEventListener('input', (e) => {
-            this.totalQuestions = parseInt(e.target.value);
+            const value = parseInt(e.target.value);
+            if (value > 0) {
+                this.totalQuestions = value;
+                this.updateStartButtonState();
+            } else {
+                e.target.value = 1;
+                this.totalQuestions = 1;
+                this.updateStartButtonState();
+            }
         });
+    }
+
+    updateStartButtonState() {
+        const hasModules = this.selectedModules.length > 0;
+        const hasValidQuantity = this.totalQuestions > 0;
+        document.getElementById('start-btn').disabled = !hasModules || !hasValidQuantity;
     }
 
     handleModuleSelection(e) {
@@ -114,11 +138,22 @@ class SimuladoApp {
             moduleItem.classList.remove('selected');
         }
 
-        document.getElementById('start-btn').disabled = this.selectedModules.length === 0;
+        this.updateStartButtonState();
     }
 
     startExam() {
+        if (this.totalQuestions <= 0) {
+            alert('O número de questões deve ser maior que zero!');
+            return;
+        }
+        
+        if (this.selectedModules.length === 0) {
+            alert('Selecione pelo menos um módulo para continuar!');
+            return;
+        }
+        
         this.generateExamQuestions();
+        this.timeLeft = this.examQuestions.length * 60;
         this.currentState = 'exam';
         this.showScreen('exam-screen');
         this.startTimer();
@@ -154,6 +189,9 @@ class SimuladoApp {
 
         this.examQuestions = this.shuffleArray(this.examQuestions);
         this.userAnswers = new Array(this.examQuestions.length).fill(null);
+        this.skippedQuestions = [];
+        this.answeredCount = 0;
+        this.isReviewingSkipped = false;
     }
 
     shuffleArray(array) {
@@ -167,6 +205,10 @@ class SimuladoApp {
 
     renderCurrentQuestion() {
         if (this.currentQuestionIndex >= this.examQuestions.length) {
+            if (this.skippedQuestions.length > 0 && !this.isReviewingSkipped) {
+                this.startSkippedReview();
+                return;
+            }
             this.finishExam();
             return;
         }
@@ -176,6 +218,15 @@ class SimuladoApp {
 
         document.getElementById('question-number').textContent = 
             `Questão ${this.currentQuestionIndex + 1} de ${this.examQuestions.length}`;
+        
+        const skippedCounter = document.getElementById('skipped-counter');
+        if (this.skippedQuestions.length > 0) {
+            skippedCounter.textContent = `Puladas: ${this.skippedQuestions.length}`;
+            skippedCounter.classList.remove('hidden');
+        } else {
+            skippedCounter.classList.add('hidden');
+        }
+
         document.getElementById('module-name').textContent = currentQuestion.moduleName;
         document.getElementById('question-text').textContent = question.descricao;
 
@@ -198,22 +249,115 @@ class SimuladoApp {
         document.getElementById('alternatives-container').innerHTML = alternativesHtml;
         document.getElementById('next-btn').disabled = true;
 
-        const progress = ((this.currentQuestionIndex + 1) / this.examQuestions.length) * 100;
+        // Mostrar botão pular
+        document.getElementById('skip-btn').style.display = 'inline-block';
+
+        // Atualizar barra de progresso baseada em perguntas respondidas
+        const progress = (this.answeredCount / this.examQuestions.length) * 100;
         document.getElementById('progress-fill').style.width = `${progress}%`;
     }
 
     nextQuestion() {
+        if (this.isReviewingSkipped) {
+            this.nextSkippedQuestion();
+            return;
+        }
+
         const selectedAnswer = document.querySelector('input[name="alternative"]:checked');
         if (selectedAnswer) {
             this.userAnswers[this.currentQuestionIndex] = selectedAnswer.value;
+            this.answeredCount++;
         }
 
         this.currentQuestionIndex++;
-        
-        if (this.currentQuestionIndex >= this.examQuestions.length) {
+        this.renderCurrentQuestion();
+    }
+
+    skipQuestion() {
+        if (!this.isReviewingSkipped) {
+            this.skippedQuestions.push({
+                originalIndex: this.currentQuestionIndex,
+                question: this.examQuestions[this.currentQuestionIndex]
+            });
+        }
+
+        this.currentQuestionIndex++;
+        this.renderCurrentQuestion();
+    }
+
+    startSkippedReview() {
+        if (this.skippedQuestions.length === 0) {
             this.finishExam();
+            return;
+        }
+
+        this.isReviewingSkipped = true;
+        this.currentSkippedIndex = 0;
+        this.renderSkippedQuestion();
+    }
+
+    renderSkippedQuestion() {
+        if (this.currentSkippedIndex >= this.skippedQuestions.length) {
+            this.finishExam();
+            return;
+        }
+
+        const skippedItem = this.skippedQuestions[this.currentSkippedIndex];
+        const currentQuestion = skippedItem.question;
+        const question = currentQuestion.question;
+
+        document.getElementById('question-number').textContent = 
+            `Revisão - Questão ${this.currentSkippedIndex + 1} de ${this.skippedQuestions.length}`;
+        
+        const skippedCounter = document.getElementById('skipped-counter');
+        if (this.skippedQuestions.length > 0) {
+            skippedCounter.textContent = `Puladas: ${this.skippedQuestions.length}`;
+            skippedCounter.classList.remove('hidden');
         } else {
-            this.renderCurrentQuestion();
+            skippedCounter.classList.add('hidden');
+        }
+
+        document.getElementById('module-name').textContent = currentQuestion.moduleName;
+        document.getElementById('question-text').textContent = question.descricao;
+
+        const alternatives = Object.keys(question.alternativas).map(key => ({
+            key,
+            text: question.alternativas[key].descricao
+        }));
+        const shuffledAlternatives = this.shuffleArray(alternatives);
+
+        let alternativesHtml = '';
+        shuffledAlternatives.forEach(alt => {
+            alternativesHtml += `
+                <div class="alternative">
+                    <input type="radio" name="alternative" value="${alt.key}" id="alt-${alt.key}">
+                    <label for="alt-${alt.key}">${alt.text}</label>
+                </div>
+            `;
+        });
+
+        document.getElementById('alternatives-container').innerHTML = alternativesHtml;
+        document.getElementById('next-btn').disabled = true;
+
+        document.getElementById('skip-btn').style.display = 'none';
+
+        const progress = (this.answeredCount / this.examQuestions.length) * 100;
+        document.getElementById('progress-fill').style.width = `${progress}%`;
+    }
+
+    nextSkippedQuestion() {
+        const selectedAnswer = document.querySelector('input[name="alternative"]:checked');
+        if (selectedAnswer) {
+            const skippedItem = this.skippedQuestions[this.currentSkippedIndex];
+            this.userAnswers[skippedItem.originalIndex] = selectedAnswer.value;
+            this.answeredCount++;
+            
+            this.skippedQuestions.splice(this.currentSkippedIndex, 1);
+            
+            this.renderSkippedQuestion();
+        } else {
+            this.currentSkippedIndex++;
+            this.renderSkippedQuestion();
         }
     }
 
@@ -341,8 +485,11 @@ class SimuladoApp {
                         </div>
                     </div>
                     <div class="question-result-body">
-                        <p><strong>Sua resposta:</strong> ${userAnswerText}</p>
-                        <p><strong>Resposta correta:</strong> ${correctAnswerText}</p>
+                        ${isCorrect ? 
+                            `<p><strong>Resposta:</strong> ${correctAnswerText}</p>` :
+                            `<p><strong>Sua resposta:</strong> ${userAnswerText}</p>
+                             <p><strong>Resposta correta:</strong> ${correctAnswerText}</p>`
+                        }
                         <div class="explanation">
                             <strong>Explicação:</strong> ${question.explicacao}
                         </div>
@@ -362,6 +509,8 @@ class SimuladoApp {
     }
 }
 
+let app;
+
 document.addEventListener('DOMContentLoaded', () => {
-    new SimuladoApp();
+    app = new SimuladoApp();
 });

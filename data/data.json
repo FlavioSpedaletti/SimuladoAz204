@@ -1155,10 +1155,18 @@
                 "pergunta1": {
                     "descricao": "Quando usar Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Para processamento em segundo plano e sem escalar automaticamente",
-                        "alternativa2": "Para cenários orientados a eventos e sob demanda",
-                        "alternativa3": "Para armazenar dados permanentemente",
-                        "alternativa4": "Somente para requisições HTTP privadas"
+                        "alternativa1": {
+                            "descricao": "Para processamento em segundo plano e sem escalar automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Para cenários orientados a eventos e sob demanda"
+                        },
+                        "alternativa3": {
+                            "descricao": "Para armazenar dados permanentemente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Somente para requisições HTTP privadas"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Azure Functions são ideais para cargas de trabalho orientadas a eventos, executadas sob demanda e escaláveis automaticamente."
@@ -1166,10 +1174,18 @@
                 "pergunta2": {
                     "descricao": "Qual plano de Azure Functions permite tempo de execução ilimitado?",
                     "alternativas": {
-                        "alternativa1": "Consumo",
-                        "alternativa2": "App Service Plan",
-                        "alternativa3": "Premium Plan",
-                        "alternativa4": "Free Tier"
+                        "alternativa1": {
+                            "descricao": "Consumo"
+                        },
+                        "alternativa2": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa3": {
+                            "descricao": "Premium Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Free Tier"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "Somente o Premium Plan não tem limite de tempo de execução para as funções."
@@ -1177,10 +1193,18 @@
                 "pergunta3": {
                     "descricao": "Qual a função do trigger em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Gerenciar as variáveis de ambiente",
-                        "alternativa2": "Iniciar a execução de uma função quando um evento específico acontecer",
-                        "alternativa3": "Fornecer dados para a função",
-                        "alternativa4": "Armazenar o retorno da função"
+                        "alternativa1": {
+                            "descricao": "Gerenciar as variáveis de ambiente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Iniciar a execução de uma função quando um evento específico acontecer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Fornecer dados para a função"
+                        },
+                        "alternativa4": {
+                            "descricao": "Armazenar o retorno da função"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Triggers são usados para iniciar a execução da função quando um evento específico ocorre."
@@ -1188,10 +1212,18 @@
                 "pergunta4": {
                     "descricao": "Para acessar dados de um Blob durante a execução de uma função, utilize:",
                     "alternativas": {
-                        "alternativa1": "Input Binding",
-                        "alternativa2": "Output Binding",
-                        "alternativa3": "App Service Plan",
-                        "alternativa4": "Application Insights"
+                        "alternativa1": {
+                            "descricao": "Input Binding"
+                        },
+                        "alternativa2": {
+                            "descricao": "Output Binding"
+                        },
+                        "alternativa3": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Application Insights"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Input Bindings permitem acessar dados diretamente de serviços como Blob Storage."
@@ -1199,10 +1231,18 @@
                 "pergunta5": {
                     "descricao": "O que ocorre quando o limite de execuções gratuitas no plano de Consumo é atingido?",
                     "alternativas": {
-                        "alternativa1": "A função para de executar",
-                        "alternativa2": "A função passa a cobrar por execução adicional",
-                        "alternativa3": "A função passa para plano Premium automaticamente",
-                        "alternativa4": "A função entra em modo de manutenção"
+                        "alternativa1": {
+                            "descricao": "A função para de executar"
+                        },
+                        "alternativa2": {
+                            "descricao": "A função passa a cobrar por execução adicional"
+                        },
+                        "alternativa3": {
+                            "descricao": "A função passa para plano Premium automaticamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "A função entra em modo de manutenção"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Após alcançar o limite gratuito de 1 milhão de execuções, as próximas são cobradas."
@@ -1210,10 +1250,18 @@
                 "pergunta6": {
                     "descricao": "Qual vantagem o modelo serverless do Azure Functions oferece?",
                     "alternativas": {
-                        "alternativa1": "Gerenciamento manual de servidores",
-                        "alternativa2": "Escalabilidade automática e cobrança por execução",
-                        "alternativa3": "Execução contínua por tempo ilimitado",
-                        "alternativa4": "Somente integração com Event Grid"
+                        "alternativa1": {
+                            "descricao": "Gerenciamento manual de servidores"
+                        },
+                        "alternativa2": {
+                            "descricao": "Escalabilidade automática e cobrança por execução"
+                        },
+                        "alternativa3": {
+                            "descricao": "Execução contínua por tempo ilimitado"
+                        },
+                        "alternativa4": {
+                            "descricao": "Somente integração com Event Grid"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "A escalabilidade automática e a cobrança por execução são características do modelo serverless."
@@ -1221,10 +1269,18 @@
                 "pergunta7": {
                     "descricao": "Qual trigger utilizar para uma função responder a requisições REST?",
                     "alternativas": {
-                        "alternativa1": "Timer Trigger",
-                        "alternativa2": "Blob Trigger",
-                        "alternativa3": "HTTP Trigger",
-                        "alternativa4": "Queue Trigger"
+                        "alternativa1": {
+                            "descricao": "Timer Trigger"
+                        },
+                        "alternativa2": {
+                            "descricao": "Blob Trigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "HTTP Trigger"
+                        },
+                        "alternativa4": {
+                            "descricao": "Queue Trigger"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "Um HTTP Trigger recebe e processa requisições REST diretamente."
@@ -1232,10 +1288,18 @@
                 "pergunta8": {
                     "descricao": "Qual ferramenta pode ser utilizada para desenvolvimento local de Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Visual Studio Code",
-                        "alternativa2": "Postman",
-                        "alternativa3": "Application Insights",
-                        "alternativa4": "App Service Editor"
+                        "alternativa1": {
+                            "descricao": "Visual Studio Code"
+                        },
+                        "alternativa2": {
+                            "descricao": "Postman"
+                        },
+                        "alternativa3": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa4": {
+                            "descricao": "App Service Editor"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Visual Studio Code, combinado ao Azure Functions Core Tools, é ideal para desenvolvimento e depuração local."
@@ -1243,10 +1307,18 @@
                 "pergunta9": {
                     "descricao": "Qual propriedade no host.json define o comportamento de logging?",
                     "alternativas": {
-                        "alternativa1": "logging",
-                        "alternativa2": "bindings",
-                        "alternativa3": "triggers",
-                        "alternativa4": "appsettings"
+                        "alternativa1": {
+                            "descricao": "logging"
+                        },
+                        "alternativa2": {
+                            "descricao": "bindings"
+                        },
+                        "alternativa3": {
+                            "descricao": "triggers"
+                        },
+                        "alternativa4": {
+                            "descricao": "appsettings"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "A seção 'logging' no host.json define o nível e detalhes dos logs para a Function App."
@@ -1254,10 +1326,18 @@
                 "pergunta10": {
                     "descricao": "Qual método HTTP o Azure Functions aceita por padrão para HTTP Triggers?",
                     "alternativas": {
-                        "alternativa1": "Somente GET",
-                        "alternativa2": "GET e POST",
-                        "alternativa3": "DELETE e PATCH",
-                        "alternativa4": "Somente POST"
+                        "alternativa1": {
+                            "descricao": "Somente GET"
+                        },
+                        "alternativa2": {
+                            "descricao": "GET e POST"
+                        },
+                        "alternativa3": {
+                            "descricao": "DELETE e PATCH"
+                        },
+                        "alternativa4": {
+                            "descricao": "Somente POST"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Por padrão, funções HTTP Trigger aceitam GET e POST, mas isso pode ser configurado."
@@ -1265,10 +1345,18 @@
                 "pergunta11": {
                     "descricao": "O que significa escalabilidade elástica no Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Aumenta e reduz automaticamente o número de instâncias conforme a demanda",
-                        "alternativa2": "Limita o número de funções em uma única instância",
-                        "alternativa3": "Impede o aumento de instâncias",
-                        "alternativa4": "Exige intervenção manual para escalar"
+                        "alternativa1": {
+                            "descricao": "Aumenta e reduz automaticamente o número de instâncias conforme a demanda"
+                        },
+                        "alternativa2": {
+                            "descricao": "Limita o número de funções em uma única instância"
+                        },
+                        "alternativa3": {
+                            "descricao": "Impede o aumento de instâncias"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exige intervenção manual para escalar"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "A escalabilidade elástica aumenta ou reduz o número de instâncias automaticamente para suportar cargas variáveis."
@@ -1276,10 +1364,18 @@
                 "pergunta12": {
                     "descricao": "Em que cenário usar um Timer Trigger?",
                     "alternativas": {
-                        "alternativa1": "Para chamadas HTTP específicas",
-                        "alternativa2": "Para executar tarefas agendadas, como backups regulares",
-                        "alternativa3": "Para receber mensagens de uma fila",
-                        "alternativa4": "Para monitorar status de uma VM"
+                        "alternativa1": {
+                            "descricao": "Para chamadas HTTP específicas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Para executar tarefas agendadas, como backups regulares"
+                        },
+                        "alternativa3": {
+                            "descricao": "Para receber mensagens de uma fila"
+                        },
+                        "alternativa4": {
+                            "descricao": "Para monitorar status de uma VM"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Timer Triggers são usados para executar funções em horários agendados, como jobs e backups."
@@ -1287,10 +1383,18 @@
                 "pergunta13": {
                     "descricao": "Qual recurso habilita o debug de uma Azure Function localmente?",
                     "alternativas": {
-                        "alternativa1": "Application Insights",
-                        "alternativa2": "Postman",
-                        "alternativa3": "Azure Functions Core Tools",
-                        "alternativa4": "App Service Editor"
+                        "alternativa1": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa2": {
+                            "descricao": "Postman"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Functions Core Tools"
+                        },
+                        "alternativa4": {
+                            "descricao": "App Service Editor"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "Azure Functions Core Tools habilita debug e execução local para desenvolvimento e testes."
@@ -1298,10 +1402,18 @@
                 "pergunta14": {
                     "descricao": "Qual linguagem não é suportada por Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "C#",
-                        "alternativa2": "Java",
-                        "alternativa3": "JavaScript",
-                        "alternativa4": "Ruby"
+                        "alternativa1": {
+                            "descricao": "C#"
+                        },
+                        "alternativa2": {
+                            "descricao": "Java"
+                        },
+                        "alternativa3": {
+                            "descricao": "JavaScript"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ruby"
+                        }
                     },
                     "correta": "alternativa4",
                     "explicacao": "Atualmente, Azure Functions não suporta Ruby de maneira nativa."
@@ -1309,10 +1421,18 @@
                 "pergunta15": {
                     "descricao": "Para que serve o App Settings em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Exibir métricas no Application Insights",
-                        "alternativa2": "Armazenar variáveis e strings de conexão",
-                        "alternativa3": "Gerenciar deployment slots",
-                        "alternativa4": "Habilitar Always On"
+                        "alternativa1": {
+                            "descricao": "Exibir métricas no Application Insights"
+                        },
+                        "alternativa2": {
+                            "descricao": "Armazenar variáveis e strings de conexão"
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerenciar deployment slots"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar Always On"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "App Settings são usados para armazenar variáveis e strings de conexão para Azure Functions."
@@ -1320,10 +1440,18 @@
                 "pergunta16": {
                     "descricao": "Qual trigger executa uma função quando um blob é adicionado ou alterado no Blob Storage?",
                     "alternativas": {
-                        "alternativa1": "Queue Trigger",
-                        "alternativa2": "Blob Trigger",
-                        "alternativa3": "Timer Trigger",
-                        "alternativa4": "Service Bus Trigger"
+                        "alternativa1": {
+                            "descricao": "Queue Trigger"
+                        },
+                        "alternativa2": {
+                            "descricao": "Blob Trigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "Timer Trigger"
+                        },
+                        "alternativa4": {
+                            "descricao": "Service Bus Trigger"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Blob Trigger executa uma função quando um blob específico é adicionado ou modificado."
@@ -1331,10 +1459,18 @@
                 "pergunta17": {
                     "descricao": "Qual a função de um Output Binding?",
                     "alternativas": {
-                        "alternativa1": "Ler dados de uma fonte externa",
-                        "alternativa2": "Escrever dados para uma fonte externa",
-                        "alternativa3": "Gerenciar a autenticação para a função",
-                        "alternativa4": "Fornecer ambiente de desenvolvimento para Azure Functions"
+                        "alternativa1": {
+                            "descricao": "Ler dados de uma fonte externa"
+                        },
+                        "alternativa2": {
+                            "descricao": "Escrever dados para uma fonte externa"
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerenciar a autenticação para a função"
+                        },
+                        "alternativa4": {
+                            "descricao": "Fornecer ambiente de desenvolvimento para Azure Functions"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Output Bindings permitem enviar dados para serviços como Blob Storage, Service Bus, ou tabelas do Azure."
@@ -1342,10 +1478,18 @@
                 "pergunta18": {
                     "descricao": "Qual plano de Azure Functions permite integração com redes privadas (VNET)?",
                     "alternativas": {
-                        "alternativa1": "Premium Plan",
-                        "alternativa2": "Consumo",
-                        "alternativa3": "Free Tier",
-                        "alternativa4": "App Service Plan gratuito"
+                        "alternativa1": {
+                            "descricao": "Premium Plan"
+                        },
+                        "alternativa2": {
+                            "descricao": "Consumo"
+                        },
+                        "alternativa3": {
+                            "descricao": "Free Tier"
+                        },
+                        "alternativa4": {
+                            "descricao": "App Service Plan gratuito"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "A integração com VNET requer o Premium Plan ou App Service Plan dedicado."
@@ -1353,10 +1497,18 @@
                 "pergunta19": {
                     "descricao": "Em Azure Functions, o 'authLevel' define:",
                     "alternativas": {
-                        "alternativa1": "O nível de escalabilidade",
-                        "alternativa2": "A autenticação necessária para acessar a função",
-                        "alternativa3": "O tempo máximo de execução",
-                        "alternativa4": "A quantidade de instâncias simultâneas"
+                        "alternativa1": {
+                            "descricao": "O nível de escalabilidade"
+                        },
+                        "alternativa2": {
+                            "descricao": "A autenticação necessária para acessar a função"
+                        },
+                        "alternativa3": {
+                            "descricao": "O tempo máximo de execução"
+                        },
+                        "alternativa4": {
+                            "descricao": "A quantidade de instâncias simultâneas"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "'authLevel' determina o nível de autenticação requerido para acessar uma função (ex: anonymous, function, admin)."
@@ -1364,10 +1516,18 @@
                 "pergunta20": {
                     "descricao": "Para receber eventos do Event Grid, a função precisa ser registrada como:",
                     "alternativas": {
-                        "alternativa1": "Publicadora",
-                        "alternativa2": "Assinante",
-                        "alternativa3": "Input binding",
-                        "alternativa4": "Output binding"
+                        "alternativa1": {
+                            "descricao": "Publicadora"
+                        },
+                        "alternativa2": {
+                            "descricao": "Assinante"
+                        },
+                        "alternativa3": {
+                            "descricao": "Input binding"
+                        },
+                        "alternativa4": {
+                            "descricao": "Output binding"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "A função precisa estar registrada como subscriber para receber e processar eventos do Event Grid."
@@ -1375,10 +1535,18 @@
                 "pergunta21": {
                     "descricao": "Se uma função HTTP retorna status 202, o que isso indica?",
                     "alternativas": {
-                        "alternativa1": "A função não foi executada",
-                        "alternativa2": "A requisição foi aceita e será processada depois",
-                        "alternativa3": "Erro interno no servidor",
-                        "alternativa4": "Requisição não encontrada"
+                        "alternativa1": {
+                            "descricao": "A função não foi executada"
+                        },
+                        "alternativa2": {
+                            "descricao": "A requisição foi aceita e será processada depois"
+                        },
+                        "alternativa3": {
+                            "descricao": "Erro interno no servidor"
+                        },
+                        "alternativa4": {
+                            "descricao": "Requisição não encontrada"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Status 202 Accepted indica que a requisição foi recebida e será processada de maneira assíncrona."
@@ -1386,10 +1554,18 @@
                 "pergunta22": {
                     "descricao": "Qual configuração ajuda a evitar alta concorrência numa função acionada por Queue Trigger?",
                     "alternativas": {
-                        "alternativa1": "Usar batchSize e newBatchThreshold",
-                        "alternativa2": "Habilitar Always On",
-                        "alternativa3": "Aumentar o plan de App Service",
-                        "alternativa4": "Usar Premium Plan"
+                        "alternativa1": {
+                            "descricao": "Usar batchSize e newBatchThreshold"
+                        },
+                        "alternativa2": {
+                            "descricao": "Habilitar Always On"
+                        },
+                        "alternativa3": {
+                            "descricao": "Aumentar o plan de App Service"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar Premium Plan"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "batchSize e newBatchThreshold no host.json permitem controlar quantas mensagens são processadas simultaneamente."
@@ -1397,10 +1573,18 @@
                 "pergunta23": {
                     "descricao": "O que é 'cold start' em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Execução de uma função após muito tráfego",
-                        "alternativa2": "Momento de inatividade prolongada antes de uma nova execução",
-                        "alternativa3": "Reinício do host por atualizações de deployment",
-                        "alternativa4": "Problema de conexão com Application Insights"
+                        "alternativa1": {
+                            "descricao": "Execução de uma função após muito tráfego"
+                        },
+                        "alternativa2": {
+                            "descricao": "Momento de inatividade prolongada antes de uma nova execução"
+                        },
+                        "alternativa3": {
+                            "descricao": "Reinício do host por atualizações de deployment"
+                        },
+                        "alternativa4": {
+                            "descricao": "Problema de conexão com Application Insights"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Cold start refere-se ao atraso para inicialização quando uma função não foi chamada por um longo período."
@@ -1408,10 +1592,18 @@
                 "pergunta24": {
                     "descricao": "Qual trigger executa uma função com base em uma agenda definida por CRON?",
                     "alternativas": {
-                        "alternativa1": "Timer Trigger",
-                        "alternativa2": "Service Bus Trigger",
-                        "alternativa3": "Blob Trigger",
-                        "alternativa4": "Event Grid Trigger"
+                        "alternativa1": {
+                            "descricao": "Timer Trigger"
+                        },
+                        "alternativa2": {
+                            "descricao": "Service Bus Trigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "Blob Trigger"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Grid Trigger"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Timer Triggers permitem agendar a execução de funções com base em uma expressão CRON."
@@ -1419,10 +1611,18 @@
                 "pergunta25": {
                     "descricao": "A direção 'in' em uma binding indica:",
                     "alternativas": {
-                        "alternativa1": "Saída de dados para uma fonte externa",
-                        "alternativa2": "Entrada de dados para a função",
-                        "alternativa3": "Criação de um timer",
-                        "alternativa4": "Exclusão de dados do Blob Storage"
+                        "alternativa1": {
+                            "descricao": "Saída de dados para uma fonte externa"
+                        },
+                        "alternativa2": {
+                            "descricao": "Entrada de dados para a função"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criação de um timer"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusão de dados do Blob Storage"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "'in' indica que a binding recebe dados para a função consumir."
@@ -1430,10 +1630,18 @@
                 "pergunta26": {
                     "descricao": "Qual arquivo contém as configurações globais de uma Azure Functions App?",
                     "alternativas": {
-                        "alternativa1": "appsettings.json",
-                        "alternativa2": "function.json",
-                        "alternativa3": "host.json",
-                        "alternativa4": "settings.json"
+                        "alternativa1": {
+                            "descricao": "appsettings.json"
+                        },
+                        "alternativa2": {
+                            "descricao": "function.json"
+                        },
+                        "alternativa3": {
+                            "descricao": "host.json"
+                        },
+                        "alternativa4": {
+                            "descricao": "settings.json"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "O host.json contém as configurações para todas as funções dentro do app, como logging e timeouts."
@@ -1441,10 +1649,18 @@
                 "pergunta27": {
                     "descricao": "Qual plano de Azure Functions é indicado para cargas previsíveis e contínuas?",
                     "alternativas": {
-                        "alternativa1": "Dedicated Plan",
-                        "alternativa2": "Consumo",
-                        "alternativa3": "Premium Plan",
-                        "alternativa4": "Free Plan"
+                        "alternativa1": {
+                            "descricao": "Dedicated Plan"
+                        },
+                        "alternativa2": {
+                            "descricao": "Consumo"
+                        },
+                        "alternativa3": {
+                            "descricao": "Premium Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Free Plan"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Dedicated Plan é ideal para cargas previsíveis e de longa duração."
@@ -1452,10 +1668,18 @@
                 "pergunta28": {
                     "descricao": "A propriedade 'runOnStartup' em um Timer Trigger serve para?",
                     "alternativas": {
-                        "alternativa1": "Aumentar o número de instâncias automaticamente",
-                        "alternativa2": "Disparar a função assim que o host iniciar",
-                        "alternativa3": "Encerrar todas as funções ao finalizar o host",
-                        "alternativa4": "Cancelar a execução após uma exceção"
+                        "alternativa1": {
+                            "descricao": "Aumentar o número de instâncias automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Disparar a função assim que o host iniciar"
+                        },
+                        "alternativa3": {
+                            "descricao": "Encerrar todas as funções ao finalizar o host"
+                        },
+                        "alternativa4": {
+                            "descricao": "Cancelar a execução após uma exceção"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Se definida como true, a função executa imediatamente após o host subir, não aguardando a agenda definida."
@@ -1463,10 +1687,18 @@
                 "pergunta29": {
                     "descricao": "Qual linguagem pode ser editada e executada direto no portal do Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "C#",
-                        "alternativa2": "C# Script (.csx)",
-                        "alternativa3": "Java",
-                        "alternativa4": "PowerShell"
+                        "alternativa1": {
+                            "descricao": "C#"
+                        },
+                        "alternativa2": {
+                            "descricao": "C# Script (.csx)"
+                        },
+                        "alternativa3": {
+                            "descricao": "Java"
+                        },
+                        "alternativa4": {
+                            "descricao": "PowerShell"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "C# Script (.csx) pode ser desenvolvido e executado direto no portal Azure."
@@ -1474,10 +1706,18 @@
                 "pergunta30": {
                     "descricao": "O que é necessário para rodar Azure Functions com .NET 6 localmente?",
                     "alternativas": {
-                        "alternativa1": "Somente o Azure CLI",
-                        "alternativa2": "O .NET 6 SDK e o Azure Functions Core Tools",
-                        "alternativa3": "Somente Visual Studio",
-                        "alternativa4": "Uma assinatura Azure ativada"
+                        "alternativa1": {
+                            "descricao": "Somente o Azure CLI"
+                        },
+                        "alternativa2": {
+                            "descricao": "O .NET 6 SDK e o Azure Functions Core Tools"
+                        },
+                        "alternativa3": {
+                            "descricao": "Somente Visual Studio"
+                        },
+                        "alternativa4": {
+                            "descricao": "Uma assinatura Azure ativada"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "É preciso instalar o .NET 6 SDK e o Azure Functions Core Tools para rodar e depurar funções localmente."
@@ -1485,10 +1725,18 @@
                 "pergunta31": {
                     "descricao": "Qual a função do Application Insights em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Gerar backups dos dados processados",
-                        "alternativa2": "Analisar telemetria e realizar monitoramento de performance",
-                        "alternativa3": "Aumentar o número de instâncias",
-                        "alternativa4": "Gerenciar autenticação e autorização"
+                        "alternativa1": {
+                            "descricao": "Gerar backups dos dados processados"
+                        },
+                        "alternativa2": {
+                            "descricao": "Analisar telemetria e realizar monitoramento de performance"
+                        },
+                        "alternativa3": {
+                            "descricao": "Aumentar o número de instâncias"
+                        },
+                        "alternativa4": {
+                            "descricao": "Gerenciar autenticação e autorização"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Application Insights coleta e exibe telemetria para diagnosticar e monitorar as funções."
@@ -1496,10 +1744,18 @@
                 "pergunta32": {
                     "descricao": "Qual propriedade controla a concorrência em um Queue Trigger?",
                     "alternativas": {
-                        "alternativa1": "newBatchThreshold",
-                        "alternativa2": "maxBatchSize",
-                        "alternativa3": "batchSize",
-                        "alternativa4": "concurrencyLimit"
+                        "alternativa1": {
+                            "descricao": "newBatchThreshold"
+                        },
+                        "alternativa2": {
+                            "descricao": "maxBatchSize"
+                        },
+                        "alternativa3": {
+                            "descricao": "batchSize"
+                        },
+                        "alternativa4": {
+                            "descricao": "concurrencyLimit"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "batchSize define quantas mensagens são processadas por vez em um Queue Trigger."
@@ -1507,10 +1763,18 @@
                 "pergunta33": {
                     "descricao": "Se uma função com Retry habilitado falha todas as tentativas, o que acontecerá?",
                     "alternativas": {
-                        "alternativa1": "A falha é registrada e descartada ou enviada para DLQ, se configurado",
-                        "alternativa2": "A função entra em loop infinito",
-                        "alternativa3": "A função passa para o plano Premium automaticamente",
-                        "alternativa4": "A função para de escalar"
+                        "alternativa1": {
+                            "descricao": "A falha é registrada e descartada ou enviada para DLQ, se configurado"
+                        },
+                        "alternativa2": {
+                            "descricao": "A função entra em loop infinito"
+                        },
+                        "alternativa3": {
+                            "descricao": "A função passa para o plano Premium automaticamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "A função para de escalar"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Se todas as tentativas falham e não houver DLQ configurada, a mensagem é descartada após log de erro."
@@ -1518,10 +1782,18 @@
                 "pergunta34": {
                     "descricao": "Como controlar a execução simultânea de uma Azure Function?",
                     "alternativas": {
-                        "alternativa1": "Habilitando Always On",
-                        "alternativa2": "Ajustando maxConcurrentCalls nas configurações",
-                        "alternativa3": "Usando Premium Plan",
-                        "alternativa4": "Excluindo o arquivo host.json"
+                        "alternativa1": {
+                            "descricao": "Habilitando Always On"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ajustando maxConcurrentCalls nas configurações"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usando Premium Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Excluindo o arquivo host.json"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "maxConcurrentCalls no host.json determina quantas mensagens uma função processa simultaneamente."
@@ -1529,10 +1801,18 @@
                 "pergunta35": {
                     "descricao": "Qual componente do Azure Functions ajusta o número de instâncias automaticamente?",
                     "alternativas": {
-                        "alternativa1": "Application Insights",
-                        "alternativa2": "Runtime Scale Controller",
-                        "alternativa3": "App Service Plan",
-                        "alternativa4": "Deployment Slots"
+                        "alternativa1": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa2": {
+                            "descricao": "Runtime Scale Controller"
+                        },
+                        "alternativa3": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Deployment Slots"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "O Runtime Scale Controller aumenta ou reduz o número de instâncias automaticamente para suportar a carga atual."
@@ -1540,10 +1820,18 @@
                 "pergunta36": {
                     "descricao": "Qual o limite padrão de tempo de execução para funções no plano de Consumo?",
                     "alternativas": {
-                        "alternativa1": "1 minuto",
-                        "alternativa2": "5 minutos, extensível para 10 minutos",
-                        "alternativa3": "30 minutos",
-                        "alternativa4": "Ilimitado"
+                        "alternativa1": {
+                            "descricao": "1 minuto"
+                        },
+                        "alternativa2": {
+                            "descricao": "5 minutos, extensível para 10 minutos"
+                        },
+                        "alternativa3": {
+                            "descricao": "30 minutos"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ilimitado"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Por padrão, funções no plano de Consumo têm limite de 5 minutos, mas pode ser ampliado para 10 minutos."
@@ -1551,10 +1839,18 @@
                 "pergunta37": {
                     "descricao": "Para qual cenário são recomendadas as Durable Functions?",
                     "alternativas": {
-                        "alternativa1": "Funções simples e stateless",
-                        "alternativa2": "Execução de comandos SQL direto no Azure",
-                        "alternativa3": "Orquestrações complexas e stateful",
-                        "alternativa4": "Execução de comandos PowerShell simples"
+                        "alternativa1": {
+                            "descricao": "Funções simples e stateless"
+                        },
+                        "alternativa2": {
+                            "descricao": "Execução de comandos SQL direto no Azure"
+                        },
+                        "alternativa3": {
+                            "descricao": "Orquestrações complexas e stateful"
+                        },
+                        "alternativa4": {
+                            "descricao": "Execução de comandos PowerShell simples"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "Durable Functions são indicadas para cenários stateful com múltiplas etapas e orquestrações complexas."
@@ -1562,10 +1858,18 @@
                 "pergunta38": {
                     "descricao": "Qual recurso do Azure Functions permite versionamento e atualizações sem downtime?",
                     "alternativas": {
-                        "alternativa1": "Deployment Slots",
-                        "alternativa2": "Application Insights",
-                        "alternativa3": "App Service Plan",
-                        "alternativa4": "Function Keys"
+                        "alternativa1": {
+                            "descricao": "Deployment Slots"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa3": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "Function Keys"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Deployment Slots permitem realizar atualizações e testes em uma slot isolada antes do swap para a produção."
@@ -1573,10 +1877,18 @@
                 "pergunta39": {
                     "descricao": "Qual trigger receberá eventos diretamente do Event Grid?",
                     "alternativas": {
-                        "alternativa1": "Service Bus Trigger",
-                        "alternativa2": "Queue Trigger",
-                        "alternativa3": "Event Grid Trigger",
-                        "alternativa4": "Timer Trigger"
+                        "alternativa1": {
+                            "descricao": "Service Bus Trigger"
+                        },
+                        "alternativa2": {
+                            "descricao": "Queue Trigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "Event Grid Trigger"
+                        },
+                        "alternativa4": {
+                            "descricao": "Timer Trigger"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "Event Grid Trigger recebe e processa diretamente eventos provenientes do Event Grid."
@@ -1584,10 +1896,18 @@
                 "pergunta40": {
                     "descricao": "Se uma Azure Function falha sem Retry configurado, o que acontecerá?",
                     "alternativas": {
-                        "alternativa1": "Entrará em estado de espera até intervenção manual",
-                        "alternativa2": "A execução falha e é descartada",
-                        "alternativa3": "Passa para o plano Premium automaticamente",
-                        "alternativa4": "Reinicia o host.json"
+                        "alternativa1": {
+                            "descricao": "Entrará em estado de espera até intervenção manual"
+                        },
+                        "alternativa2": {
+                            "descricao": "A execução falha e é descartada"
+                        },
+                        "alternativa3": {
+                            "descricao": "Passa para o plano Premium automaticamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Reinicia o host.json"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Se não houver Retry configurado, a execução falha e a mensagem não processada não tenta novamente."
@@ -1595,10 +1915,18 @@
                 "pergunta41": {
                     "descricao": "Qual formato CRON executa uma função Azure Functions a cada 15 minutos?",
                     "alternativas": {
-                        "alternativa1": "0 0/15 * * * *",
-                        "alternativa2": "*/15 * * * *",
-                        "alternativa3": "0 */15 * * * *",
-                        "alternativa4": "15 0 * * *"
+                        "alternativa1": {
+                            "descricao": "0 0/15 * * * *"
+                        },
+                        "alternativa2": {
+                            "descricao": "*/15 * * * *"
+                        },
+                        "alternativa3": {
+                            "descricao": "0 */15 * * * *"
+                        },
+                        "alternativa4": {
+                            "descricao": "15 0 * * *"
+                        }
                     },
                     "correta": "alternativa3",
                     "explicacao": "A sintaxe '0 */15 * * * *' executa a função a cada 15 minutos."
@@ -1606,10 +1934,18 @@
                 "pergunta42": {
                     "descricao": "É possível associar múltiplos triggers a uma mesma função?",
                     "alternativas": {
-                        "alternativa1": "Sim, quantos quiser",
-                        "alternativa2": "Não, cada função só pode ter 1 trigger",
-                        "alternativa3": "Sim, mas apenas triggers do mesmo tipo",
-                        "alternativa4": "Somente para Event Grid e Service Bus"
+                        "alternativa1": {
+                            "descricao": "Sim, quantos quiser"
+                        },
+                        "alternativa2": {
+                            "descricao": "Não, cada função só pode ter 1 trigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "Sim, mas apenas triggers do mesmo tipo"
+                        },
+                        "alternativa4": {
+                            "descricao": "Somente para Event Grid e Service Bus"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Cada função pode ter apenas um trigger. Não é possível associar múltiplos triggers à mesma função."
@@ -1617,10 +1953,18 @@
                 "pergunta43": {
                     "descricao": "Qual alternativa descreve corretamente o impacto do Cold Start nas Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Impede a função de escalar automaticamente",
-                        "alternativa2": "Aumenta a latência para chamadas após um período de inatividade",
-                        "alternativa3": "Impede integração com o Event Grid",
-                        "alternativa4": "Gera logs duplicados no Application Insights"
+                        "alternativa1": {
+                            "descricao": "Impede a função de escalar automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Aumenta a latência para chamadas após um período de inatividade"
+                        },
+                        "alternativa3": {
+                            "descricao": "Impede integração com o Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Gera logs duplicados no Application Insights"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Cold Start aumenta a latência para chamadas depois de um período de inatividade."
@@ -1628,10 +1972,18 @@
                 "pergunta44": {
                     "descricao": "Qual plano não oferece Always On para Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Consumo",
-                        "alternativa2": "Premium",
-                        "alternativa3": "App Service Plan",
-                        "alternativa4": "App Service (dedicado)"
+                        "alternativa1": {
+                            "descricao": "Consumo"
+                        },
+                        "alternativa2": {
+                            "descricao": "Premium"
+                        },
+                        "alternativa3": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa4": {
+                            "descricao": "App Service (dedicado)"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Always On não está disponível no plano de Consumo."
@@ -1639,10 +1991,18 @@
                 "pergunta45": {
                     "descricao": "Qual expressão CRON executa uma função às 9h todos os dias?",
                     "alternativas": {
-                        "alternativa1": "0 9 * * *",
-                        "alternativa2": "0 0 9 * * *",
-                        "alternativa3": "9 0 * * *",
-                        "alternativa4": "9 0 9 * * *"
+                        "alternativa1": {
+                            "descricao": "0 9 * * *"
+                        },
+                        "alternativa2": {
+                            "descricao": "0 0 9 * * *"
+                        },
+                        "alternativa3": {
+                            "descricao": "9 0 * * *"
+                        },
+                        "alternativa4": {
+                            "descricao": "9 0 9 * * *"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "A sintaxe '0 0 9 * * *' executa a função às 9h todos os dias."
@@ -1650,10 +2010,18 @@
                 "pergunta46": {
                     "descricao": "Qual alternativa descreve corretamente uma Service Bus Trigger para Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "É disparada quando uma mensagem nova chega a uma fila ou assinatura",
-                        "alternativa2": "É acionada por alteração em uma tabela SQL",
-                        "alternativa3": "É ativada por atualizações em uma Blob",
-                        "alternativa4": "É executada todas as manhãs às 9h"
+                        "alternativa1": {
+                            "descricao": "É disparada quando uma mensagem nova chega a uma fila ou assinatura"
+                        },
+                        "alternativa2": {
+                            "descricao": "É acionada por alteração em uma tabela SQL"
+                        },
+                        "alternativa3": {
+                            "descricao": "É ativada por atualizações em uma Blob"
+                        },
+                        "alternativa4": {
+                            "descricao": "É executada todas as manhãs às 9h"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Service Bus Trigger executa a função quando uma mensagem nova chega a uma fila ou assinatura."
@@ -1661,10 +2029,18 @@
                 "pergunta47": {
                     "descricao": "Qual alternativa descreve corretamente o benefício de usar Always On para Azure Functions no App Service Plan?",
                     "alternativas": {
-                        "alternativa1": "Impede cold starts",
-                        "alternativa2": "Aumenta o custo automaticamente",
-                        "alternativa3": "Exige autenticação para todas as chamadas",
-                        "alternativa4": "Desabilita escalar para múltiplas instâncias"
+                        "alternativa1": {
+                            "descricao": "Impede cold starts"
+                        },
+                        "alternativa2": {
+                            "descricao": "Aumenta o custo automaticamente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exige autenticação para todas as chamadas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Desabilita escalar para múltiplas instâncias"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Always On impede cold starts para funções em App Service Plan."
@@ -1672,10 +2048,18 @@
                 "pergunta48": {
                     "descricao": "Qual alternativa descreve corretamente o Event Grid Output Binding em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Lê dados de uma assinatura do Event Grid",
-                        "alternativa2": "Envia eventos para tópicos do Event Grid",
-                        "alternativa3": "Exige autenticação para todas as funções",
-                        "alternativa4": "Impede integração com Service Bus"
+                        "alternativa1": {
+                            "descricao": "Lê dados de uma assinatura do Event Grid"
+                        },
+                        "alternativa2": {
+                            "descricao": "Envia eventos para tópicos do Event Grid"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exige autenticação para todas as funções"
+                        },
+                        "alternativa4": {
+                            "descricao": "Impede integração com Service Bus"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "O Event Grid Output Binding envia dados para tópicos do Event Grid."
@@ -1683,10 +2067,18 @@
                 "pergunta49": {
                     "descricao": "Qual alternativa descreve corretamente o impacto de não usar Deployment Slots em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Aumenta a disponibilidade automaticamente",
-                        "alternativa2": "Impede testes antes de enviar para produção",
-                        "alternativa3": "Habilita Always On por padrão",
-                        "alternativa4": "Impede o escalonamento para múltiplas instâncias"
+                        "alternativa1": {
+                            "descricao": "Aumenta a disponibilidade automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Impede testes antes de enviar para produção"
+                        },
+                        "alternativa3": {
+                            "descricao": "Habilita Always On por padrão"
+                        },
+                        "alternativa4": {
+                            "descricao": "Impede o escalonamento para múltiplas instâncias"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Sem Deployment Slots não é possível realizar testes isolados antes de realizar o deployment para produção."
@@ -1694,10 +2086,18 @@
                 "pergunta50": {
                     "descricao": "Qual alternativa descreve corretamente uma Durable Orchestration Trigger?",
                     "alternativas": {
-                        "alternativa1": "Usada para orquestrar e coordenar múltiplas funções com estado",
-                        "alternativa2": "Usada para receber chamadas REST diretamente",
-                        "alternativa3": "Utilizada para processar mudanças no Blob Storage",
-                        "alternativa4": "Exclusiva para integração com Event Grid"
+                        "alternativa1": {
+                            "descricao": "Usada para orquestrar e coordenar múltiplas funções com estado"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usada para receber chamadas REST diretamente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Utilizada para processar mudanças no Blob Storage"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusiva para integração com Event Grid"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Durable Orchestration Trigger coordena múltiplas funções e guarda seu estado durante longos fluxos de trabalho."
@@ -1705,10 +2105,18 @@
                 "pergunta51": {
                     "descricao": "Qual alternativa descreve corretamente o benefício do Azure Functions Premium Plan para evitar cold starts?",
                     "alternativas": {
-                        "alternativa1": "Oferece Always On e instâncias pré-aquecidas",
-                        "alternativa2": "Impede integração com Service Bus",
-                        "alternativa3": "Aumenta custo por execução",
-                        "alternativa4": "Exige alteração no arquivo host.json"
+                        "alternativa1": {
+                            "descricao": "Oferece Always On e instâncias pré-aquecidas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Impede integração com Service Bus"
+                        },
+                        "alternativa3": {
+                            "descricao": "Aumenta custo por execução"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exige alteração no arquivo host.json"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "O Premium Plan oferece Always On e instâncias pré-aquecidas para reduzir ou eliminar cold starts."
@@ -1716,10 +2124,18 @@
                 "pergunta52": {
                     "descricao": "Qual alternativa descreve corretamente o Service Bus Output Binding?",
                     "alternativas": {
-                        "alternativa1": "Usado para receber mensagens do Service Bus",
-                        "alternativa2": "Usado para enviar mensagens para uma fila ou tópicos do Service Bus",
-                        "alternativa3": "Usado para realizar autenticação no Service Bus",
-                        "alternativa4": "Exclusivo para o Premium Plan"
+                        "alternativa1": {
+                            "descricao": "Usado para receber mensagens do Service Bus"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usado para enviar mensagens para uma fila ou tópicos do Service Bus"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usado para realizar autenticação no Service Bus"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusivo para o Premium Plan"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Service Bus Output Binding envia mensagens para uma fila ou tópicos do Service Bus."
@@ -1727,10 +2143,18 @@
                 "pergunta53": {
                     "descricao": "Qual alternativa descreve corretamente o impacto de não habilitar Retries em Azure Functions com Service Bus Trigger?",
                     "alternativas": {
-                        "alternativa1": "Mensagens não processadas são perdidas",
-                        "alternativa2": "Mensagens não processadas entram automaticamente em DLQ após tentativas padrão",
-                        "alternativa3": "A função não tenta processar novamente a mensagem",
-                        "alternativa4": "Mensagens entram em DLQ mesmo sem tentativas"
+                        "alternativa1": {
+                            "descricao": "Mensagens não processadas são perdidas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Mensagens não processadas entram automaticamente em DLQ após tentativas padrão"
+                        },
+                        "alternativa3": {
+                            "descricao": "A função não tenta processar novamente a mensagem"
+                        },
+                        "alternativa4": {
+                            "descricao": "Mensagens entram em DLQ mesmo sem tentativas"
+                        }
                     },
                     "correta": "alternativa2",
                     "explicacao": "Se não habilitar Retries, Service Bus tenta reprocessar a mensagem algumas vezes antes de movê-la para DLQ."
@@ -1738,10 +2162,18 @@
                 "pergunta54": {
                     "descricao": "Qual alternativa descreve corretamente a vantagem de Azure Functions com Event Grid Trigger para integração?",
                     "alternativas": {
-                        "alternativa1": "Receber e processar eventos em tempo real",
-                        "alternativa2": "Utilização para chamadas REST privadas",
-                        "alternativa3": "Exclusivo para Blob Triggers",
-                        "alternativa4": "Usado para enviar comandos para Event Grid"
+                        "alternativa1": {
+                            "descricao": "Receber e processar eventos em tempo real"
+                        },
+                        "alternativa2": {
+                            "descricao": "Utilização para chamadas REST privadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exclusivo para Blob Triggers"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usado para enviar comandos para Event Grid"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Event Grid Trigger permite receber e processar eventos em tempo real."
@@ -1749,10 +2181,18 @@
                 "pergunta55": {
                     "descricao": "Qual alternativa descreve corretamente uma prática para aumentar a resiliência em Azure Functions com Service Bus Trigger?",
                     "alternativas": {
-                        "alternativa1": "Utilização de Retries e DLQ para mensagens não processadas",
-                        "alternativa2": "Usar Always On para todas as funções",
-                        "alternativa3": "Exclusivamente aumentar o número de instâncias",
-                        "alternativa4": "Remover a autenticação para melhorar a performance"
+                        "alternativa1": {
+                            "descricao": "Utilização de Retries e DLQ para mensagens não processadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar Always On para todas as funções"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exclusivamente aumentar o número de instâncias"
+                        },
+                        "alternativa4": {
+                            "descricao": "Remover a autenticação para melhorar a performance"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Utilização de Retries e DLQ ajuda a aumentar a resiliência e garantir que mensagens não processadas sejam tratadas corretamente."
@@ -1760,10 +2200,18 @@
                 "pergunta56": {
                     "descricao": "Qual alternativa descreve corretamente a vantagem do Blob Output Binding em Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Facilita gravação de dados diretamente no Blob Storage",
-                        "alternativa2": "Exige autenticação no Service Bus",
-                        "alternativa3": "Impede integração com Event Grid",
-                        "alternativa4": "Exclusivo para plano Premium"
+                        "alternativa1": {
+                            "descricao": "Facilita gravação de dados diretamente no Blob Storage"
+                        },
+                        "alternativa2": {
+                            "descricao": "Exige autenticação no Service Bus"
+                        },
+                        "alternativa3": {
+                            "descricao": "Impede integração com Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusivo para plano Premium"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Blob Output Binding simplifica o processo de gravação de dados diretamente no Azure Blob Storage."
@@ -1771,10 +2219,18 @@
                 "pergunta57": {
                     "descricao": "Qual alternativa descreve corretamente a vantagem de Durable Functions para processos longos?",
                     "alternativas": {
-                        "alternativa1": "Mantém o estado automaticamente e orquestra múltiplas etapas",
-                        "alternativa2": "Exige ativação manual após cada etapa",
-                        "alternativa3": "Somente para integração com Blob Storage",
-                        "alternativa4": "Não suporta integração com Service Bus"
+                        "alternativa1": {
+                            "descricao": "Mantém o estado automaticamente e orquestra múltiplas etapas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Exige ativação manual após cada etapa"
+                        },
+                        "alternativa3": {
+                            "descricao": "Somente para integração com Blob Storage"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não suporta integração com Service Bus"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Durable Functions permitem manutenção de estado e orquestração de múltiplas etapas em processos longos."
@@ -1782,10 +2238,18 @@
                 "pergunta58": {
                     "descricao": "Qual alternativa descreve corretamente uma vantagem do plano Premium para Azure Functions?",
                     "alternativas": {
-                        "alternativa1": "Suporta Always On e integração com redes privadas",
-                        "alternativa2": "Exclusivo para funções HTTP",
-                        "alternativa3": "Exige autenticação para todas as chamadas",
-                        "alternativa4": "Impede escalar para múltiplas instâncias"
+                        "alternativa1": {
+                            "descricao": "Suporta Always On e integração com redes privadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Exclusivo para funções HTTP"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exige autenticação para todas as chamadas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Impede escalar para múltiplas instâncias"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "O Premium Plan oferece Always On e integração com redes privadas (VNET)."
@@ -1793,10 +2257,18 @@
                 "pergunta59": {
                     "descricao": "Qual alternativa descreve corretamente o benefício do Azure Functions Deployment Slots para atualizações sem downtime?",
                     "alternativas": {
-                        "alternativa1": "Separa ambiente de testes para validar atualizações antes de realizar o swap para produção",
-                        "alternativa2": "Impede escalar para múltiplas instâncias",
-                        "alternativa3": "Exige alteração manual no arquivo host.json",
-                        "alternativa4": "Exclusivo para plano de Consumo"
+                        "alternativa1": {
+                            "descricao": "Separa ambiente de testes para validar atualizações antes de realizar o swap para produção"
+                        },
+                        "alternativa2": {
+                            "descricao": "Impede escalar para múltiplas instâncias"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exige alteração manual no arquivo host.json"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusivo para plano de Consumo"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Deployment Slots permitem realizar atualizações e testá-las antes de realizar o swap para produção, evitando downtime."
@@ -1804,10 +2276,18 @@
                 "pergunta60": {
                     "descricao": "Qual alternativa descreve corretamente o impacto de não habilitar Always On para uma função crítica no plano de Consumo?",
                     "alternativas": {
-                        "alternativa1": "A função poderá sofrer delays de cold starts após inatividade",
-                        "alternativa2": "Impede escalar para múltiplas instâncias",
-                        "alternativa3": "Exige autenticação para todas as chamadas",
-                        "alternativa4": "Impede integração com Service Bus"
+                        "alternativa1": {
+                            "descricao": "A função poderá sofrer delays de cold starts após inatividade"
+                        },
+                        "alternativa2": {
+                            "descricao": "Impede escalar para múltiplas instâncias"
+                        },
+                        "alternativa3": {
+                            "descricao": "Exige autenticação para todas as chamadas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Impede integração com Service Bus"
+                        }
                     },
                     "correta": "alternativa1",
                     "explicacao": "Sem Always On, funções no plano de Consumo poderão sofrer cold starts depois de um período de inatividade."

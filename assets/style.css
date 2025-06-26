@@ -103,6 +103,14 @@ input[type="number"] {
     cursor: not-allowed;
 }
 
+.btn-secondary {
+    background: #718096;
+}
+
+.btn-secondary:hover {
+    background: #4a5568;
+}
+
 .timer {
     position: fixed;
     top: 20px;
@@ -132,6 +140,15 @@ input[type="number"] {
     padding: 5px 12px;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.skipped-counter {
+    background: #f56565;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .question-text {
