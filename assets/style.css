@@ -708,4 +708,69 @@ input[type="number"]:focus {
         align-items: flex-start;
         gap: 12px;
     }
+}
+
+/* Classes para elementos que estavam com estilo inline */
+.intro-section {
+    background: #f8f9fa;
+    border-left: 4px solid #0078d4;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.intro-text-primary {
+    margin: 0 0 10px 0;
+    color: #2d3748;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.intro-text-secondary {
+    margin: 0;
+    color: #718096;
+    font-size: 13px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-500), var(--primary-600));
+    border-radius: var(--border-radius-sm);
+    transition: width 0.3s ease;
+    position: relative;
+    width: 0%;
+}
+
+.module-name {
+    color: #718096;
+    font-weight: bold;
+}
+
+.results-section-title {
+    margin: 30px 0 20px 0;
+}
+
+.results-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.site-footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    color: #718096;
+    font-size: 14px;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.footer-link {
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: 500;
 } 

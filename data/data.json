@@ -2,7 +2,7 @@
     "modulos": {
         "modulo1": {
             "nome": "☁️ App Services",
-            "descricao": "descrição app services",
+            "descricao": "Hospedagem e gerenciamento de aplicações web.",
             "perguntas": {
                 "pergunta1": {
                     "descricao": "Qual App Service Plan permite executar WebJobs contínuos?",
@@ -1150,7 +1150,7 @@
         },
         "modulo2": {
             "nome": "⚡ Functions",
-            "descricao": "descrição functions",
+            "descricao": "Execução de código serverless e orientado a eventos.",
             "perguntas": {
                 "pergunta1": {
                     "descricao": "Quando usar Azure Functions?",
@@ -2296,7 +2296,7 @@
         },
         "modulo3": {
             "nome": "🗄️ Blob Storage",
-            "descricao": "descrição blob storage",
+            "descricao": "Armazenamento de objetos escalável, seguro e econômico para arquivos e dados não estruturados.",
             "perguntas": {
                 "pergunta1": {
                     "descricao": "Qual tier para armazenagem por 7 anos e acesso raro?",
@@ -3442,7 +3442,7 @@
         },
         "modulo4": {
             "nome": "🪐 Cosmos DB",
-            "descricao": "descricao cosmos db",
+            "descricao": "Banco de dados NoSQL global, distribuído e altamente escalável para aplicações modernas.",
             "perguntas": {
                 "pergunta1": {
                     "descricao": "Qual dos seguintes fatores determina o tamanho máximo de uma partição lógica no Azure Cosmos DB?",

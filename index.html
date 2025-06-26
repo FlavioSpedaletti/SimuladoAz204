@@ -71,12 +71,12 @@
         <h1>Simulado AZ-204</h1>
 
         <!-- Descrição Inicial -->
-        <div id="intro-section" class="intro-section" style="background: #f8f9fa; border-left: 4px solid #0078d4; padding: 15px; margin: 20px 0; border-radius: 4px;">
-            <p style="margin: 0 0 10px 0; color: #2d3748; font-size: 14px; line-height: 1.5;">
-                <strong>Prepare-se para a certificação Microsoft AZ-204 Azure Developer Associate</strong> com nosso simulador gratuito. 
+        <div id="intro-section" class="intro-section">
+            <p class="intro-text-primary">
+                <strong>Prepare-se para a certificação Microsoft AZ-204 Azure Developer Associate</strong> com esse simulador gratuito.<br>
                 Pratique com questões organizadas por módulos, receba feedback detalhado e monitore seu progresso.
             </p>
-            <p style="margin: 0; color: #718096; font-size: 13px;">
+            <p class="intro-text-secondary">
                 Configure abaixo os módulos que deseja estudar e a quantidade de questões para começar sua preparação.
             </p>
         </div>
@@ -102,14 +102,14 @@
         <!-- Tela do Simulado -->
         <div id="exam-screen" class="card hidden">
             <div class="progress-bar">
-                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                <div id="progress-fill" class="progress-fill"></div>
             </div>
 
             <div class="question-container">
                 <div class="question-header">
                     <div id="question-number" class="question-number">Questão 1 de 60</div>
                     <div id="skipped-counter" class="skipped-counter hidden">Puladas: 0</div>
-                    <div id="module-name" style="color: #718096; font-weight: bold;"></div>
+                    <div id="module-name" class="module-name"></div>
                 </div>
 
                 <div id="question-text" class="question-text"></div>
@@ -137,24 +137,24 @@
             </div>
 
             <div id="detailed-results">
-                <h3 style="margin: 30px 0 20px 0;">Gabarito Detalhado</h3>
+                <h3 class="results-section-title">Gabarito Detalhado</h3>
                 <div id="questions-review"></div>
             </div>
 
-            <div style="text-align: center; margin-top: 30px;">
+            <div class="results-actions">
                 <button onclick="location.reload()" class="btn">Novo Simulado</button>
             </div>
         </div>
     </div>
 
     <!-- Rodapé -->
-    <footer style="margin-top: 40px; padding: 20px 0; text-align: center; border-top: 1px solid #e2e8f0; color: #718096; font-size: 14px;">
-        <p style="margin: 0;">
+    <footer class="site-footer">
+        <p class="footer-text">
             Desenvolvido por <strong style="color: #4a5568;">Flavio Spedaletti</strong> | 
             <a href="https://github.com/FlavioSpedaletti/SimuladoAz204" 
                target="_blank" 
                rel="noopener noreferrer"
-               style="color: #0078d4; text-decoration: none; font-weight: 500;">
+               class="footer-link">
                 🔗 Repositório GitHub
             </a>
         </p>
