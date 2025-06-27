@@ -7,6 +7,10 @@ app = Flask(__name__, static_folder='assets', template_folder='.')
 def index():
     return render_template('index.html')
 
+@app.route('/validador')
+def validador():
+    return render_template('validador.html')
+
 @app.route('/assets/<path:filename>')
 def assets(filename):
     return send_from_directory('assets', filename)

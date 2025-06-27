@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Estrutura - Simulado AZ-204</title>
+    <link rel="icon" type="image/x-icon" href="assets/ico/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e9ecef;
+        }
+
+        .status-card.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+            color: #155724;
+        }
+
+        .status-card.error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+            color: #721c24;
+        }
+
+        .status-card.warning {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+            color: #856404;
+        }
+
+        .status-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .validation-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .validation-item:last-child {
+            border-bottom: none;
+        }
+
+        .icon {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .success-icon { color: #28a745; }
+        .error-icon { color: #dc3545; }
+        .warning-icon { color: #ffc107; }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error-details {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .criteria-section {
+            margin-bottom: 25px;
+        }
+
+        .criteria-section h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .criteria-item {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .criteria-icon {
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .criteria-text {
+            flex: 1;
+        }
+
+        .criteria-title {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .criteria-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Validador de Estrutura</h1>
+            <p>Ferramenta para validar a estrutura do arquivo data.json</p>
+        </div>
+        
+        <div class="content">
+            <div class="controls">
+                <button class="btn" onclick="validarArquivo()">🔄 Validar data.json</button>
+                <button class="btn" onclick="limparResultados()">🗑️ Limpar Resultados</button>
+                <button class="btn" onclick="abrirModalCriterios()">📋 Critérios de Validação</button>
+            </div>
+
+            <div id="results" class="results"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Critérios de Validação -->
+    <div id="modalCriterios" class="modal-overlay" onclick="fecharModalCriterios()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>🔍 Critérios de Validação</h2>
+                <button class="modal-close" onclick="fecharModalCriterios()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="criteria-section">
+                    <h3>📋 Validação do Arquivo</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon success-icon">✅</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">JSON Válido</span>
+                            <div class="criteria-desc">Verifica se o arquivo é um JSON bem formado</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Erro de Carregamento</span>
+                            <div class="criteria-desc">Detecta problemas ao carregar o arquivo (404, permissões, etc.)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>🏗️ Validação da Estrutura Raiz</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Propriedade "modulos" ausente</span>
+                            <div class="criteria-desc">Verifica se existe o objeto `modulos` na raiz</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Tipo incorreto</span>
+                            <div class="criteria-desc">Confirma que `modulos` é um objeto (não string, array, etc.)</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon success-icon">✅</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Estrutura raiz correta</span>
+                            <div class="criteria-desc">Confirma que a estrutura básica está válida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>📚 Validação de Módulos</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon warning-icon">⚠️</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Nenhum módulo encontrado</span>
+                            <div class="criteria-desc">Aviso quando o objeto `modulos` está vazio</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon success-icon">✅</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Contagem de módulos</span>
+                            <div class="criteria-desc">Informa quantos módulos foram encontrados</div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; margin-bottom: 10px; color: #666; font-size: 1rem;">Para cada módulo individual:</h4>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "nome" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se o módulo tem o campo `nome` preenchido</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "descricao" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se o módulo tem o campo `descricao` preenchido</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "perguntas" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se o módulo tem o objeto `perguntas`</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>❓ Validação de Perguntas</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon warning-icon">⚠️</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Nenhuma pergunta encontrada</span>
+                            <div class="criteria-desc">Aviso quando um módulo não tem perguntas</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon">📊</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Contagem total</span>
+                            <div class="criteria-desc">Soma todas as perguntas de todos os módulos</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 20px; margin-bottom: 10px; color: #666; font-size: 1rem;">Para cada pergunta individual:</h4>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "descricao" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se a pergunta tem descrição preenchida</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "alternativas" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se tem o objeto alternativas</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "correta" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se indica qual alternativa é correta</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Campo "explicacao" ausente/vazio</span>
+                            <div class="criteria-desc">Verifica se tem explicação da resposta preenchida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>🔤 Validação de Alternativas</h3>
+                    <h4 style="margin-bottom: 10px; color: #666; font-size: 1rem;">Alternativas obrigatórias:</h4>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Alternativas ausentes</span>
+                            <div class="criteria-desc">Verifica se existem alternativa1, alternativa2, alternativa3 e alternativa4</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Descrição da alternativa vazia</span>
+                            <div class="criteria-desc">Verifica se cada alternativa tem descrição preenchida</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon warning-icon">⚠️</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Alternativas extras encontradas</span>
+                            <div class="criteria-desc">Aviso quando há alternativas além das 4 padrão</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Resposta correta inválida</span>
+                            <div class="criteria-desc">Verifica se o campo "correta" referencia alternativa1, alternativa2, alternativa3 ou alternativa4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>🎯 Tipos de Resultado</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon success-icon">✅</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Sucessos (Verde)</span>
+                            <div class="criteria-desc">Confirmam que uma verificação passou corretamente</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon error-icon">❌</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Erros (Vermelho)</span>
+                            <div class="criteria-desc">Problemas críticos que impedem o funcionamento - devem ser corrigidos</div>
+                        </div>
+                    </div>
+                    <div class="criteria-item">
+                        <span class="criteria-icon warning-icon">⚠️</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Avisos (Amarelo)</span>
+                            <div class="criteria-desc">Problemas menores que merecem atenção, mas não impedem o funcionamento</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3>📊 Estatísticas Coletadas</h3>
+                    <div class="criteria-item">
+                        <span class="criteria-icon">📈</span>
+                        <div class="criteria-text">
+                            <span class="criteria-title">Métricas do arquivo</span>
+                            <div class="criteria-desc">Total de módulos, perguntas, alternativas, erros e avisos encontrados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let dadosCarregados = null;
+        let estatisticas = {
+            modulos: 0,
+            perguntas: 0,
+            alternativas: 0,
+            erros: 0,
+            avisos: 0
+        };
+
+        async function validarArquivo() {
+            mostrarCarregando();
+            resetarEstatisticas();
+
+            try {
+                const response = await fetch('data/data.json');
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar arquivo: ${response.status}`);
+                }
+
+                const texto = await response.text();
+                dadosCarregados = JSON.parse(texto);
+                
+                executarValidacoes();
+            } catch (error) {
+                mostrarErroCarregamento(error);
+            }
+        }
+
+        function mostrarCarregando() {
+            document.getElementById('results').innerHTML = `
+                <div class="loading">
+                    <h3>🔄 Carregando e validando arquivo...</h3>
+                    <p>Aguarde enquanto verificamos a estrutura do data.json</p>
+                </div>
+            `;
+        }
+
+        function mostrarErroCarregamento(error) {
+            document.getElementById('results').innerHTML = `
+                <div class="status-card error">
+                    <h3><span class="icon error-icon">❌</span>Erro ao Carregar Arquivo</h3>
+                    <p>Não foi possível carregar ou processar o arquivo data.json</p>
+                    <div class="error-details">${error.message}</div>
+                </div>
+            `;
+        }
+
+        function resetarEstatisticas() {
+            estatisticas = {
+                modulos: 0,
+                perguntas: 0,
+                alternativas: 0,
+                erros: 0,
+                avisos: 0
+            };
+        }
+
+        function executarValidacoes() {
+            const resultados = [];
+
+            validarEstruturaRaiz(resultados);
+            validarModulos(resultados);
+            
+            mostrarResultados(resultados);
+        }
+
+        function validarEstruturaRaiz(resultados) {
+            if (!dadosCarregados.modulos) {
+                adicionarErro(resultados, 'Estrutura Raiz', 'Propriedade "modulos" não encontrada na raiz do arquivo');
+                return;
+            }
+
+            if (typeof dadosCarregados.modulos !== 'object') {
+                adicionarErro(resultados, 'Estrutura Raiz', 'Propriedade "modulos" deve ser um objeto');
+                return;
+            }
+
+            adicionarSucesso(resultados, 'Estrutura Raiz', 'Estrutura raiz do arquivo está correta');
+        }
+
+        function validarModulos(resultados) {
+            const modulos = dadosCarregados.modulos;
+            const chavesModulos = Object.keys(modulos);
+
+            if (chavesModulos.length === 0) {
+                adicionarAviso(resultados, 'Módulos', 'Nenhum módulo encontrado');
+                return;
+            }
+
+            estatisticas.modulos = chavesModulos.length;
+
+            chavesModulos.forEach(chaveModulo => {
+                validarModulo(chaveModulo, modulos[chaveModulo], resultados);
+            });
+
+            adicionarSucesso(resultados, 'Módulos', `${chavesModulos.length} módulo(s) encontrado(s)`);
+        }
+
+        function validarModulo(chaveModulo, modulo, resultados) {
+            const camposObrigatorios = ['nome', 'descricao', 'perguntas'];
+            
+            camposObrigatorios.forEach(campo => {
+                if (!modulo[campo]) {
+                    adicionarErro(resultados, `Módulo ${chaveModulo}`, `Campo obrigatório "${campo}" não encontrado`);
+                } else if (typeof modulo[campo] === 'string' && modulo[campo].trim() === '') {
+                    adicionarErro(resultados, `Módulo ${chaveModulo}`, `Campo "${campo}" está vazio`);
+                }
+            });
+
+            if (modulo.perguntas && typeof modulo.perguntas === 'object') {
+                validarPerguntas(chaveModulo, modulo.perguntas, resultados);
+            }
+        }
+
+        function validarPerguntas(chaveModulo, perguntas, resultados) {
+            const chavesPerguntas = Object.keys(perguntas);
+
+            if (chavesPerguntas.length === 0) {
+                adicionarAviso(resultados, `Módulo ${chaveModulo}`, 'Nenhuma pergunta encontrada');
+                return;
+            }
+
+            estatisticas.perguntas += chavesPerguntas.length;
+
+            chavesPerguntas.forEach(chavePergunta => {
+                validarPergunta(chaveModulo, chavePergunta, perguntas[chavePergunta], resultados);
+            });
+        }
+
+        function validarPergunta(chaveModulo, chavePergunta, pergunta, resultados) {
+            const camposObrigatorios = ['descricao', 'alternativas', 'correta', 'explicacao'];
+            
+            camposObrigatorios.forEach(campo => {
+                if (!pergunta[campo]) {
+                    adicionarErro(resultados, `${chaveModulo} > ${chavePergunta}`, `Campo obrigatório "${campo}" não encontrado`);
+                } else if (typeof pergunta[campo] === 'string' && pergunta[campo].trim() === '') {
+                    adicionarErro(resultados, `${chaveModulo} > ${chavePergunta}`, `Campo "${campo}" está vazio`);
+                }
+            });
+
+            if (pergunta.alternativas) {
+                validarAlternativas(chaveModulo, chavePergunta, pergunta.alternativas, pergunta.correta, resultados);
+            }
+        }
+
+        function validarAlternativas(chaveModulo, chavePergunta, alternativas, respostaCorreta, resultados) {
+            const alternativasEsperadas = ['alternativa1', 'alternativa2', 'alternativa3', 'alternativa4'];
+            const alternativasEncontradas = Object.keys(alternativas);
+
+            alternativasEsperadas.forEach(alt => {
+                if (!alternativas[alt]) {
+                    adicionarErro(resultados, `${chaveModulo} > ${chavePergunta}`, `Alternativa "${alt}" não encontrada`);
+                } else if (!alternativas[alt].descricao || alternativas[alt].descricao.trim() === '') {
+                    adicionarErro(resultados, `${chaveModulo} > ${chavePergunta}`, `Descrição da "${alt}" está vazia`);
+                }
+            });
+
+            const alternativasExtras = alternativasEncontradas.filter(alt => !alternativasEsperadas.includes(alt));
+            if (alternativasExtras.length > 0) {
+                adicionarAviso(resultados, `${chaveModulo} > ${chavePergunta}`, `Alternativas extras encontradas: ${alternativasExtras.join(', ')}`);
+            }
+
+            if (respostaCorreta && !alternativasEsperadas.includes(respostaCorreta)) {
+                adicionarErro(resultados, `${chaveModulo} > ${chavePergunta}`, `Resposta correta "${respostaCorreta}" não é uma alternativa válida`);
+            }
+
+            estatisticas.alternativas += alternativasEncontradas.length;
+        }
+
+        function adicionarSucesso(resultados, categoria, mensagem) {
+            resultados.push({ tipo: 'success', categoria, mensagem });
+        }
+
+        function adicionarErro(resultados, categoria, mensagem) {
+            resultados.push({ tipo: 'error', categoria, mensagem });
+            estatisticas.erros++;
+        }
+
+        function adicionarAviso(resultados, categoria, mensagem) {
+            resultados.push({ tipo: 'warning', categoria, mensagem });
+            estatisticas.avisos++;
+        }
+
+        function mostrarResultados(resultados) {
+            const container = document.getElementById('results');
+            
+            let html = gerarEstatisticas();
+            html += gerarResumoValidacao(resultados);
+            html += gerarDetalhesValidacao(resultados);
+
+            container.innerHTML = html;
+        }
+
+        function gerarEstatisticas() {
+            return `
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">${estatisticas.modulos}</div>
+                        <div class="stat-label">Módulos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${estatisticas.perguntas}</div>
+                        <div class="stat-label">Perguntas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${estatisticas.alternativas}</div>
+                        <div class="stat-label">Alternativas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${estatisticas.erros}</div>
+                        <div class="stat-label">Erros</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${estatisticas.avisos}</div>
+                        <div class="stat-label">Avisos</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function gerarResumoValidacao(resultados) {
+            const sucessos = resultados.filter(r => r.tipo === 'success').length;
+            const erros = resultados.filter(r => r.tipo === 'error').length;
+            const avisos = resultados.filter(r => r.tipo === 'warning').length;
+
+            let classe = 'success';
+            let icone = '✅';
+            let titulo = 'Validação Concluída com Sucesso';
+            let mensagem = 'Todas as verificações passaram. O arquivo está com a estrutura correta.';
+
+            if (erros > 0) {
+                classe = 'error';
+                icone = '❌';
+                titulo = 'Erros Encontrados na Validação';
+                mensagem = `Foram encontrados ${erros} erro(s) que precisam ser corrigidos.`;
+            } else if (avisos > 0) {
+                classe = 'warning';
+                icone = '⚠️';
+                titulo = 'Validação com Avisos';
+                mensagem = `Estrutura está correta, mas há ${avisos} aviso(s) para revisar.`;
+            }
+
+            return `
+                <div class="status-card ${classe}">
+                    <h3><span class="icon">${icone}</span>${titulo}</h3>
+                    <p>${mensagem}</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">
+                        <strong>Total:</strong> ${sucessos} sucesso(s), ${erros} erro(s), ${avisos} aviso(s)
+                    </p>
+                </div>
+            `;
+        }
+
+        function gerarDetalhesValidacao(resultados) {
+            const porTipo = {
+                success: resultados.filter(r => r.tipo === 'success'),
+                error: resultados.filter(r => r.tipo === 'error'),
+                warning: resultados.filter(r => r.tipo === 'warning')
+            };
+
+            let html = '';
+
+            if (porTipo.error.length > 0) {
+                html += gerarSecaoResultados('Erros Encontrados', porTipo.error, 'error', '❌');
+            }
+
+            if (porTipo.warning.length > 0) {
+                html += gerarSecaoResultados('Avisos', porTipo.warning, 'warning', '⚠️');
+            }
+
+            if (porTipo.success.length > 0) {
+                html += gerarSecaoResultados('Verificações Bem-Sucedidas', porTipo.success, 'success', '✅');
+            }
+
+            return html;
+        }
+
+        function gerarSecaoResultados(titulo, items, classe, icone) {
+            const itemsHtml = items.map(item => `
+                <div class="validation-item">
+                    <span class="icon ${classe}-icon">${icone}</span>
+                    <strong>${item.categoria}:</strong> ${item.mensagem}
+                </div>
+            `).join('');
+
+            return `
+                <div class="status-card ${classe}">
+                    <h3>${titulo} (${items.length})</h3>
+                    ${itemsHtml}
+                </div>
+            `;
+        }
+
+        function limparResultados() {
+            document.getElementById('results').innerHTML = '';
+            dadosCarregados = null;
+            resetarEstatisticas();
+        }
+
+        function abrirModalCriterios() {
+            const modal = document.getElementById('modalCriterios');
+            modal.style.display = 'flex';
+        }
+
+        function fecharModalCriterios() {
+            const modal = document.getElementById('modalCriterios');
+            modal.style.display = 'none';
+        }
+
+        window.addEventListener('load', function() {
+            console.log('Validador de Estrutura carregado. Clique em "Validar data.json" para começar.');
+        });
+    </script>
+</body>
+</html> 

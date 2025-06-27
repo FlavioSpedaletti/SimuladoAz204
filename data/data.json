@@ -2299,1141 +2299,1141 @@
                 "pergunta1": {
                     "descricao": "Qual tier para armazenagem por 7 anos e acesso raro?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Hot"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Cool"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Archive"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Premium"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "Archive é ideal para dados armazenados por longos períodos e acessos raros."
                 },
                 "pergunta2": {
                     "descricao": "Qual blob para discos VHD de VMs?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Block blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Page blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Append blob"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "File blob"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Page blob é utilizado para representar discos de VM, com acesso randômico."
                 },
                 "pergunta3": {
                     "descricao": "Qual tier para dados acessados com baixa frequência?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Hot"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Cool"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Archive"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Premium"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Cool tier é indicado para dados acessados com baixa frequência e custo menor de armazenamento."
                 },
                 "pergunta4": {
                     "descricao": "O que ocorre ao acessar blob no tier Archive?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Acesso direto e imediato"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Reidratação necessária para Hot ou Cool antes de acessar"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Movimento automático para Hot no primeiro acesso"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Acesso direto mas com alta latência"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Blobs em Archive requerem reidratação para Hot ou Cool antes de serem acessados."
                 },
                 "pergunta5": {
                     "descricao": "Qual método de autenticação não é suportado para Azure Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Shared Key"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "SAS (Shared Access Signature)"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "OAuth2 via Azure AD"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Username e senha"
                         }
                     },
-                    "correta": "alternativaD",
+                    "correta": "alternativa4",
                     "explicacao": "Azure Blob Storage não usa username e senha para autenticação direta."
                 },
                 "pergunta6": {
                     "descricao": "Qual tier para arquivo acessado frequentemente?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Hot"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Cool"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Archive"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Premium"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Hot tier é indicado para dados acessados frequentemente, com menor custo de acesso."
                 },
                 "pergunta7": {
                     "descricao": "Qual blob ideal para logs (anexos no final)?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Block blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Append blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Page blob"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "File blob"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Append blob é otimizado para operações de adição no final, ideal para armazenar logs."
                 },
                 "pergunta8": {
                     "descricao": "É possível definir tier no nível do blob?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Sim"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Não, só no nível de conta"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Somente no nível de container"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Somente no Azure AD"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Sim, o access tier pode ser definido para cada blob individualmente."
                 },
                 "pergunta9": {
                     "descricao": "Qual a estrutura de um Page Blob?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Organizado em páginas de 512 bytes para acesso randômico"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Armazena dados em blocos não atualizáveis"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Usado para armazenagem de backups de longo prazo"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Somente para armazenagem de texto simples"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Page blob organiza dados em páginas de 512 bytes para permitir atualizações e acessos randômicos."
                 },
                 "pergunta10": {
                     "descricao": "Qual o objetivo de uma SAS (Shared Access Signature)?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Fornecer URL temporária com permissões específicas"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Gerenciar identidade de usuários para Blob Storage"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Replicar dados para redundância global"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Converter blobs entre tiers automaticamente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "A SAS fornece uma URL temporária com permissões específicas e expiração definida."
                 },
                 "pergunta11": {
                     "descricao": "Qual tier cobra mais caro por leitura e menor custo de armazenamento?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Hot"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Cool"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Archive"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Premium"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "Archive tem menor custo de armazenamento e maior custo para leitura e recuperação."
                 },
                 "pergunta12": {
                     "descricao": "Qual método usar para permitir acesso por 1h para ler um blob específico?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "RBAC direto"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "User Delegation SAS com expiração definida"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Access Policy no container"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Aumentar o access tier para Hot"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "User Delegation SAS com expiração definida e escopos de permissão granular é ideal para acesso temporário."
                 },
                 "pergunta13": {
                     "descricao": "Qual impacto de mover um blob de Archive para Hot?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Acesso direto e imediato"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exige reidratação e pode levar horas"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exclui o blob e recria no Hot"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Mantém no Archive mas acessa direto"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "A mudança para Hot requer reidratação, o que pode levar horas para ser concluída."
                 },
                 "pergunta14": {
                     "descricao": "Onde RBAC pode ser aplicado no Azure Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Somente no nível de conta"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Conta, container e blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Somente para blobs individuais"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Somente no Azure AD"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "RBAC pode ser aplicado no nível de conta, container e blob para controle de acesso."
                 },
                 "pergunta15": {
                     "descricao": "O que representa um container no Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Um disco virtual para uma VM"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Um agrupamento de blobs armazenados sob uma mesma conta"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Um arquivo individual armazenado no Azure Blob Storage"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Um método de autenticação para Blob Storage"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Um container organiza e agrupa blobs sob uma mesma conta de armazenamento."
                 },
                 "pergunta16": {
                     "descricao": "Qual comando gera uma SAS para um container específico?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "az storage container generate-sas"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "az storage blob create-sas"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "az storage account list-sas"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "az storage blob generate-sas"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Use `az storage container generate-sas` para gerar uma assinatura para um container específico."
                 },
                 "pergunta17": {
                     "descricao": "Qual o benefício de habilitar acesso público anônimo em um container?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Permite acesso direto a blobs e ao conteúdo do container sem autenticação"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exige autenticação Azure AD para todas as operações no container"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Limita o acesso aos blobs para usuários cadastrados no Azure AD"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Impede completamente o acesso público ao container"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "A habilitação de acesso público anônimo permite que blobs e listagem do container sejam acessados sem autenticação."
                 },
                 "pergunta18": {
                     "descricao": "Qual tier usar para baixa latência e alto throughput?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Premium"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Hot"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Cool"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Archive"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Premium tier oferece baixa latência e alto throughput para cargas de trabalho intensivas."
                 },
                 "pergunta19": {
                     "descricao": "Qual o tamanho máximo de um block blob no Azure Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "5 TiB"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "10 TiB"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "190,7 TiB"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "1 PiB"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "Block blobs suportam até 190,7 TiB de armazenamento para dados não estruturados."
                 },
                 "pergunta20": {
                     "descricao": "Qual operação não pode ser feita em um append blob?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Anexar dados no final do blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Ler dados existentes no blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Remover dados no final do blob"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exibir o conteúdo atual do blob"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "Append blobs não permitem alteração ou remoção de dados existentes, apenas adição no final."
                 },
                 "pergunta21": {
                     "descricao": "Qual tier para arquivo acessado mensalmente e armazenado por anos?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Hot"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Cool"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Archive"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Premium"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Se acessado mensalmente, Hot tier pode ser usado para otimização de acessos regulares e rápidos."
                 },
                 "pergunta22": {
                     "descricao": "Qual a vantagem de usar Blob Storage com redundância ZRS?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Protege dados contra falhas em uma zona de disponibilidade específica"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Garante replicação global para todas as regiões Azure automaticamente"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Força armazenagem em Archive para menor custo possível"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exige autenticação de Azure AD para acessar blobs"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "ZRS (Zone Redundant Storage) garante disponibilidade e resiliência contra perdas em uma única zona de disponibilidade."
                 },
                 "pergunta23": {
                     "descricao": "Qual alternativa descreve corretamente a User Delegation Key para SAS?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Gerada pela conta de armazenamento para representar todas as operações para todos os blobs"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Gerada para representar uma identidade Azure AD para escopos e permissões específicas em uma SAS"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exige uma chave de administrador para acessar todos os blobs da conta"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Usada para representar uma assinatura fixa sem expiração definida"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "A User Delegation Key é uma credencial derivada de Azure AD para representar acessos com escopos e expiração definida."
                 },
                 "pergunta24": {
                     "descricao": "Qual alternativa descreve corretamente o ZRS (Zone Redundant Storage)?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Armazena dados em uma única zona de disponibilidade para menor custo possível"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Replicação global entre múltiplas regiões para recuperação de desastres completa"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Replicação dos dados em múltiplas zonas para garantir disponibilidade mesmo em caso de falha de uma zona"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exclusivo para blobs em Archive tier"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "ZRS replica dados automaticamente em múltiplas zonas para melhorar disponibilidade e resiliência contra falha de uma zona."
                 },
                 "pergunta25": {
                     "descricao": "Qual operação não pode ser feita diretamente em blobs no Archive tier?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Exclusão de blobs"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Listagem de blobs"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Leitura direta de dados"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Reidratação para Hot ou Cool"
                         }
                     },
-                    "correta": "alternativaC",
+                    "correta": "alternativa3",
                     "explicacao": "Blobs no Archive tier não podem ser lidos diretamente; requerem reidratação para Hot ou Cool."
                 },
                 "pergunta26": {
                     "descricao": "Qual alternativa descreve corretamente o método de autenticação para uma SAS tradicional?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Usa chave da conta para assinar a SAS e não requer Azure AD para autenticação"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Requer Azure AD para autenticação e assinatura da SAS"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exige uma assinatura de certificado para acessar o blob com SAS"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Usa credenciais locais de usuário para acessar o blob"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "A assinatura tradicional SAS não requer autenticação Azure AD, mas sim assinatura feita com a chave de acesso da conta."
                 },
                 "pergunta27": {
                     "descricao": "Qual alternativa descreve corretamente o método de reidratação de Archive para Hot/Cool?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Feito automaticamente ao tentar acessar o blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Feito por alteração manual ou através de regras de lifecycle"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Feito diretamente no portal sem necessidade de comandos ou regras específicas"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Feito automaticamente após 24h para todos blobs em Archive"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Reidratação requer alteração manual ou configuração de lifecycle para mudança de Archive para Hot ou Cool."
                 },
                 "pergunta28": {
                     "descricao": "Qual alternativa descreve corretamente a replicação GZRS (Geo-Zone Redundant Storage)?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Replicação entre múltiplos data centers em uma única zona de disponibilidade"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Replicação redundante de dados em múltiplas regiões e múltiplas zonas de disponibilidade para máxima resiliência"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Replicação para uma única zona com redundância interna de hardware e dispositivos de armazenamento"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exclusivo para Blob Storage Premium"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "GZRS combina replicação Geo-Redundant com redundância de zona para máxima disponibilidade e recuperação de desastre."
                 },
                 "pergunta29": {
                     "descricao": "Qual alternativa descreve corretamente o comportamento de uma assinatura SAS com IP restrito?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "A assinatura não funcionará para IPs não especificados no escopo"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "A assinatura funcionará para todos os IPs quando não especificado explicitamente"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Restringe todos os acessos à assinatura para IPs internos do Azure automaticamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exige autenticação Azure AD para IPs não registrados"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Se uma assinatura SAS estiver limitada a IPs específicos, tentativas de acesso de IPs não especificados não serão autorizadas."
                 },
                 "pergunta30": {
                     "descricao": "Qual alternativa descreve corretamente o limite de blocos para um Block Blob?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "5.000 blocos por blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "50.000 blocos por blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "100.000 blocos por blob"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "500.000 blocos por blob"
                         }
                     },
-                    "correta": "alternativaB",
+                    "correta": "alternativa2",
                     "explicacao": "Um Block Blob pode ter até 50.000 blocos, cada um com no máximo 100 MiB."
                 },
                 "pergunta31": {
                     "descricao": "Qual alternativa descreve corretamente o impacto de habilitar o versionamento de blobs no Azure Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Mantém todas as versões anteriores dos blobs para recuperação futura"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exclui todas as versões antigas automaticamente após 30 dias"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Impede gravações sucessivas no blob atual"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exige autenticação Azure AD para acessar versões anteriores"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Com versionamento habilitado, todas as mudanças no blob são preservadas e podem ser recuperadas no futuro."
                 },
                 "pergunta32": {
                     "descricao": "Qual alternativa descreve corretamente o método de habilitar e configurar o Immutability Policy em um blob?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Impede alterações e exclusões do blob por um período definido por política de imutabilidade"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Impede todas as operações de leitura no blob para melhorar a segurança"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exige autenticação multifator para todas as operações no blob marcado"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Impede replicações para diferentes contas de armazenamento"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "A política de imutabilidade garante que o blob não pode ser alterado ou excluído por um período específico para garantir conformidade."
                 },
                 "pergunta33": {
                     "descricao": "Qual alternativa descreve corretamente o método de ativação de Soft Delete para blobs?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Habilita recuperação de blobs excluídos por um período específico antes da exclusão permanente"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Impede todos os acessos de gravação no blob enquanto ativado"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exige autenticação Azure AD para ativação ou recuperação de blobs excluídos"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exclui automaticamente todos os blobs depois de 30 dias de ativação"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Soft Delete habilita recuperação de blobs excluídos por um período específico antes que sejam permanentemente excluídos."
                 },
                 "pergunta34": {
                     "descricao": "Qual alternativa descreve corretamente o método de controle de acesso para blobs por IP específico?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Usando IP Restrictions nas regras de Firewall do Storage Account ou SAS Tokens"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações de blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Usando exclusivamente Private Endpoints para acesso direto ao blob"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Usando autenticação básica com nome de usuário e senha"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "É possível restringir o acesso por IP tanto no Firewall do Storage Account quanto através de IP Restrictions em uma SAS."
                 },
                 "pergunta35": {
                     "descricao": "Qual alternativa descreve corretamente o método de replicação GRS (Geo Redundant Storage)?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Replicação para uma segunda região para recuperação de desastres com redundância completa de dados"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Replicação para múltiplas zonas de disponibilidade em uma única região Azure"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Replicação para backups locais no mesmo data center Azure"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exclusivo para contas Premium Blob Storage"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "GRS replica automaticamente dados para uma segunda região Azure para recuperação de desastres e redundância."
                 },
                 "pergunta36": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o Blob Indexing para pesquisa e filtro de blobs?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Usando o Azure Portal para habilitar e adicionar atributos de índice aos blobs"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para habilitar atributos de índice diretamente nos blobs"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Azure Logic Apps para adicionar atributos de índice automaticamente para cada blob armazenado"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "O Blob Indexing pode ser habilitado e configurado no Azure Portal para permitir busca e filtro por atributos definidos."
                 },
                 "pergunta37": {
                     "descricao": "Qual alternativa descreve corretamente o método para realizar mudanças de tier por regras de lifecycle no Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando regras de lifecycle para realizar mudanças automáticas de tier com base em idade e acessos do blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo alteração manual de tier para cada blob armazenado"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando uma Azure Logic App para verificar e alterar tiers a cada execução manual"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo ativação de Premium Blob para habilitar mudanças automáticas de tier"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Regras de lifecycle permitem alterar automaticamente o tier de armazenamento de acordo com idade e frequência de acesso ao blob."
                 },
                 "pergunta38": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o rastreamento de operações em Blob Storage para monitoramento e alertas?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure Monitor e Azure Storage Insights para rastrear operações e habilitar alertas de atividades específicas no blob storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativar rastreamento e alertas automaticamente"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando uma Azure Logic App para verificar todas as operações de blob periodicamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação de Premium Blob para ativação de alertas de operação"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure Monitor e Azure Storage Insights permitem rastrear operações e habilitar alertas para Blob Storage."
                 },
                 "pergunta39": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar recuperação de blobs excluídos por acidente?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Habilitar Soft Delete para Blob Storage para recuperação por um período configurado antes da exclusão permanente"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigir autenticação Azure AD para todas as operações de exclusão de blob para evitar perdas acidentais"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Exigir aprovação manual para todas as operações de exclusão de blob através de RBAC"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Utilizar Premium Blob para habilitar recuperação de blobs excluídos por acidente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Soft Delete habilita recuperação de blobs excluídos por acidente por um período definido antes que sejam excluídos permanentemente."
                 },
                 "pergunta40": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Blob Versioning para recuperação de dados antigos no Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Habilitar Blob Versioning para armazenar todas as mudanças e permitir recuperação de versões anteriores do blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigir autenticação Azure AD para todas as operações de gravação para ativação de versionamento automático"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizar uma Azure Logic App para verificar e realizar cópia manual de versões específicas do blob periodicamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigir habilitação manual para cada blob armazenado para ativação de versionamento"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Blob Versioning habilita o armazenamento de todas as mudanças realizadas no blob para recuperação de versões específicas no futuro."
                 },
                 "pergunta41": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Blob Inventory para gerar relatórios de blobs armazenados?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Blob Inventory para gerar relatórios periódicos de todos os blobs e suas propriedades"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para acessar todas as propriedades do blob diretamente"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Azure Logic Apps para varrer e verificar todos os blobs periodicamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Blob Inventory permite gerar relatórios periódicos de todos os blobs e suas propriedades para otimização e controle de dados."
                 },
                 "pergunta42": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o Firewall para Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Habilitando Firewall e redes virtuais para permitir acesso específico por IP e Subnets Azure"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações no blob"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Azure Logic Apps para verificar todas as operações no blob storage periodicamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual de Firewall para cada blob armazenado"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "O Firewall e as redes virtuais permitem restringir o acesso ao Blob Storage a IPs e Subnets específicas para aumentar a segurança."
                 },
                 "pergunta43": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o Acesso Privado ao Blob Storage via Private Endpoint?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Private Endpoints para permitir acesso direto e privado ao Blob Storage através da rede interna do Azure"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação de autenticação Azure AD para todas as operações no blob storage"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando IP Restrictions para restringir acesso público ao Blob Storage"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Private Endpoints permitem acesso direto e privado ao Blob Storage através de uma rede interna Azure, sem exposição pública."
                 },
                 "pergunta44": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o Access Tier Automático no Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando regras de lifecycle para realizar mudanças automáticas de tier com base em idade e frequência de acesso ao blob"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para ativação automática de tier para cada blob armazenado"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Azure Logic Apps para verificar e alterar tiers periodicamente para cada blob específico"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para mudanças de tier"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Regras de lifecycle permitem mudanças automáticas de tier para otimização de custo e acesso com base em idade e frequência de acesso ao blob."
                 },
                 "pergunta45": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Logs de Atividade para Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure Monitor e Azure Storage Insights para capturar e analisar Logs de Atividade no Blob Storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para ativação manual de Logs de Atividade para cada blob armazenado"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Azure Logic Apps para verificar e ativar Logs de Atividade periodicamente para cada blob específico"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Logs de Atividade"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure Monitor e Azure Storage Insights permitem habilitar e analisar Logs de Atividade para todas as operações no Blob Storage."
                 },
                 "pergunta46": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar o Políticas de Acesso Baseadas em Tempo para Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando User Delegation SAS para especificar escopos e tempos de expiração para acessos temporários"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações no Blob Storage automaticamente por padrão"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para permitir acesso por IP específico e por tempo limitado"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Políticas de Acesso Baseadas em Tempo"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "User Delegation SAS permite especificar escopos e tempos de expiração para acessos temporários no Blob Storage."
                 },
                 "pergunta47": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso Baseadas em RBAC para Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para atribuir permissões específicas para contas e usuários para acessar e operar no Blob Storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Políticas de Acesso Baseadas em RBAC"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para restringir acessos e permitir Políticas de Acesso Baseadas em RBAC automaticamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações de Blob para ativação de Políticas de Acesso Baseadas em RBAC"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem atribuir permissões específicas para contas e usuários para acessar e operar no Blob Storage com escopos definidos."
                 },
                 "pergunta48": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso Baseadas em Tags para Blob Storage?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Blob Indexing para associar tags específicas e definir Políticas de Acesso com base nas tags dos blobs"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo autenticação Azure AD para ativação de Políticas de Acesso Baseadas em Tags para todos os blobs"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para restringir acessos e ativar Políticas de Acesso Baseadas em Tags automaticamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Políticas de Acesso Baseadas em Tags"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Políticas de Acesso Baseadas em Tags para Blob Storage permitem associar tags específicas e definir acessos e operações com base nas tags dos blobs."
                 },
                 "pergunta49": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso Temporárias para Blob Storage com RBAC e Azure AD?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para atribuir direitos temporários para acessar e operar no Blob Storage com escopos e expiração definida"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Políticas Temporárias de Acesso"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para restringir acessos temporários com escopos e expiração definida automaticamente para Blob Storage"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações de Blob para ativação de Políticas Temporárias de Acesso automaticamente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem atribuir direitos temporários para acessar e operar no Blob Storage com escopos e expiração definida para aumentar a segurança."
                 },
                 "pergunta50": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso para Blob Storage com Controle Granular de Operações?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando RBAC para definir escopos e direitos granulares para operações específicas em Blob Storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado no container para ativação de Políticas de Acesso Granulares"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para restringir acessos e habilitar Políticas de Acesso Granulares para Blob Storage automaticamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações de Blob para ativação de Políticas de Acesso Granulares automaticamente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "RBAC permite definir escopos e direitos granulares para operações específicas no Blob Storage, atendendo requisitos de segurança e controle de acessos."
                 },
                 "pergunta51": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso para Blob Storage com Controle de Acesso Temporizado e Granular?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando User Delegation SAS para definir escopos e expirações específicas para acessos temporários e granulares no Blob Storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas de Acesso Granulares e Temporizadas"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas de Acesso Granulares e Temporizadas para Blob Storage automaticamente"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas de Acesso Granulares e Temporizadas"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "User Delegation SAS permite definir escopos e expirações específicas para acessos temporários e granulares ao Blob Storage."
                 },
                 "pergunta52": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas de Acesso Granulares para Blob Storage com Autenticação Azure AD e RBAC?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para definir Políticas Granulares para operações específicas no Blob Storage com controle por escopos e funções específicas"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares com Azure AD e RBAC"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares para Blob Storage automaticamente para todas as operações específicas"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares automaticamente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem definir Políticas Granulares para operações específicas no Blob Storage, com controle por escopos e funções específicas."
                 },
                 "pergunta53": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle por Azure AD e RBAC?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para definir escopos e expirações específicas para Políticas Granulares e Temporizadas no Blob Storage"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas com Azure AD e RBAC"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para Blob Storage automaticamente para todas as operações específicas"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas automaticamente"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem definir Políticas Granulares e Temporizadas para Blob Storage, especificando escopos e expirações específicas para operações e acessos definidos."
                 },
                 "pergunta54": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle de Acessos por RBAC e Azure AD?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para definir escopos e expirações específicas para Políticas Granulares e Temporizadas para Blob Storage com controle por função e escopos definidos"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas com RBAC e Azure AD"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para Blob Storage automaticamente para todas as operações específicas"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas automaticamente para Blob Storage"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem definir Políticas Granulares e Temporizadas para Blob Storage, com escopos e expiração definida para operações específicas e controle por função e escopos definidos."
                 },
                 "pergunta55": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle de Acessos e Operações por Azure AD e RBAC?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para definir Políticas Granulares e Temporizadas para Blob Storage com escopos e expiração definida para operações específicas e controle por função e escopos definidos"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas com Azure AD e RBAC automaticamente para todas as operações específicas"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para Blob Storage automaticamente para todas as operações específicas e escopos definidos"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas automaticamente para Blob Storage"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem definir Políticas Granulares e Temporizadas para Blob Storage, especificando escopos e expirações específicas para operações específicas e controle por função e escopos definidos."
                 },
                 "pergunta56": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle por Azure AD e RBAC para Operações Específicas?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para habilitar Políticas Granulares e Temporizadas para Blob Storage, especificando escopos e expirações para operações específicas e controle por função e escopos definidos"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas para operações específicas no Blob Storage com Azure AD e RBAC"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para operações específicas no Blob Storage automaticamente para todas as operações específicas e escopos definidos"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem habilitar Políticas Granulares e Temporizadas para Blob Storage para operações específicas e escopos definidos, com controle por função e expiração definida."
                 },
                 "pergunta57": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle de Operações por Azure AD e RBAC e Expiração Definida?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para definir Políticas Granulares e Temporizadas para Blob Storage com controle por função, escopos e expiração definida para operações específicas"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas para operações específicas com Azure AD e RBAC e Expiração Definida"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para operações específicas no Blob Storage automaticamente para todas as operações específicas e escopos definidos com expiração definida"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos com expiração definida automaticamente para Blob Storage"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem definir Políticas Granulares e Temporizadas para Blob Storage com controle por função, escopos e expiração definida para operações específicas."
                 },
                 "pergunta58": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle por Azure AD e RBAC e Expiração Definida para Operações Específicas e Controle por Função e Escopos Definidos?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos com expiração definida e controle por função e escopos para Blob Storage"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos definidos"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos definidos"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares."
                 },
                 "pergunta59": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle por Azure AD e RBAC e Expiração Definida para Operações Específicas e Granulares com Controle por Funções e Escopos Definidos?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos com expiração definida e controle por função e escopos para Blob Storage"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos definidos"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos definidos"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares."
                 },
                 "pergunta60": {
                     "descricao": "Qual alternativa descreve corretamente o método para habilitar Políticas Granulares e Temporizadas para Blob Storage com Controle por Azure AD e RBAC e Expiração Definida para Operações Específicas e Granulares com Controle por Funções e Escopos Definidos?",
                     "alternativas": {
-                        "alternativaA": {
+                        "alternativa1": {
                             "descricao": "Utilizando Azure AD e RBAC para habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares"
                         },
-                        "alternativaB": {
+                        "alternativa2": {
                             "descricao": "Exigindo habilitação manual para cada blob armazenado para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos com expiração definida e controle por função e escopos para Blob Storage automaticamente"
                         },
-                        "alternativaC": {
+                        "alternativa3": {
                             "descricao": "Utilizando Firewall para habilitar Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares"
                         },
-                        "alternativaD": {
+                        "alternativa4": {
                             "descricao": "Exigindo autenticação Azure AD para todas as operações para ativação de Políticas Granulares e Temporizadas para operações específicas e escopos definidos automaticamente para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares"
                         }
                     },
-                    "correta": "alternativaA",
+                    "correta": "alternativa1",
                     "explicacao": "Azure AD e RBAC permitem habilitar Políticas Granulares e Temporizadas para Blob Storage com expiração definida e controle por função e escopos para operações específicas e granulares."
                 }
             }
