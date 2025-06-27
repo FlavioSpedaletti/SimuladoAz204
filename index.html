@@ -141,7 +141,23 @@
             </div>
 
             <div class="chart-container">
-                <h3>Desempenho por Módulo</h3>
+                <div class="chart-header">
+                    <h3>Desempenho por Módulo</h3>
+                    <div class="chart-view-selector">
+                        <button class="chart-view-btn active" data-view="cards">
+                            <span class="view-icon">🃏</span>
+                            <span class="view-label">Cards</span>
+                        </button>
+                        <button class="chart-view-btn" data-view="minimal">
+                            <span class="view-icon">📊</span>
+                            <span class="view-label">Minimal</span>
+                        </button>
+                        <button class="chart-view-btn" data-view="table">
+                            <span class="view-icon">📋</span>
+                            <span class="view-label">Tabela</span>
+                        </button>
+                    </div>
+                </div>
                 <div id="chart" class="chart"></div>
             </div>
 

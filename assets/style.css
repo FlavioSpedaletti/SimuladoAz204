@@ -602,6 +602,197 @@ input[type="number"]:focus {
     margin-bottom: 40px;
 }
 
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.chart-view-selector {
+    display: flex;
+    background: var(--neutral-100);
+    border-radius: var(--border-radius-lg);
+    padding: 4px;
+    gap: 2px;
+}
+
+.chart-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: var(--transition-all);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--neutral-600);
+}
+
+.chart-view-btn:hover {
+    background: var(--neutral-200);
+    color: var(--neutral-800);
+}
+
+.chart-view-btn.active {
+    background: white;
+    color: var(--primary-600);
+    box-shadow: var(--shadow-sm);
+}
+
+.view-icon {
+    font-size: 14px;
+}
+
+.view-label {
+    font-size: 12px;
+}
+
+/* Visualização Minimalista */
+.chart-minimal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+    background: var(--neutral-50);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--neutral-200);
+}
+
+.chart-minimal-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.chart-minimal-item:last-child {
+    border-bottom: none;
+}
+
+.minimal-name {
+    font-weight: 500;
+    margin-right: 12px;
+    flex: 1;
+}
+
+.minimal-percentage {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+}
+
+/* Visualização Tabela */
+.chart-table {
+    width: 100%;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--neutral-200);
+}
+
+.chart-table-header {
+    background: var(--neutral-100);
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--neutral-800);
+    border-bottom: 1px solid var(--neutral-200);
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 120px;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.chart-table-row {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--neutral-100);
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 120px;
+    gap: 16px;
+    align-items: center;
+    transition: var(--transition-colors);
+}
+
+.chart-table-row:hover {
+    background: var(--neutral-50);
+}
+
+.chart-table-row:last-child {
+    border-bottom: none;
+}
+
+.table-module-name {
+    font-weight: 600;
+    color: var(--neutral-800);
+    font-size: 14px;
+}
+
+.table-stats {
+    font-size: 13px;
+    color: var(--neutral-600);
+    text-align: center;
+}
+
+.table-percentage {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    color: var(--success-500);
+}
+
+.table-percentage.critical {
+    color: var(--error-500);
+}
+
+.table-percentage.very-low {
+    color: #f97316;
+}
+
+.table-percentage.below-pass {
+    color: var(--warning-500);
+}
+
+.table-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--neutral-200);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.table-progress-fill {
+    height: 100%;
+    background: var(--success-500);
+    border-radius: var(--border-radius-sm);
+    transition: width 0.6s ease;
+}
+
+.table-progress-fill.critical {
+    background: var(--error-500);
+}
+
+.table-progress-fill.very-low {
+    background: #f97316;
+}
+
+.table-progress-fill.below-pass {
+    background: var(--warning-500);
+}
+
 .chart {
     display: flex;
     flex-direction: column;
@@ -610,6 +801,118 @@ input[type="number"]:focus {
     background: var(--neutral-50);
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--neutral-200);
+}
+
+/* Grid compacto para gráficos */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--neutral-200);
+    transition: var(--transition-all);
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--success-500);
+}
+
+.chart-card.below-pass::before {
+    background: var(--warning-500);
+}
+
+.chart-card.very-low::before {
+    background: #f97316; /* Laranja */
+}
+
+.chart-card.critical::before {
+    background: var(--error-500);
+}
+
+.chart-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.chart-card-title {
+    font-weight: 600;
+    color: var(--neutral-800);
+    font-size: 14px;
+    line-height: 1.3;
+    flex: 1;
+    padding-right: 12px;
+}
+
+.chart-card-percentage {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--success-500);
+}
+
+.chart-card.below-pass .chart-card-percentage {
+    color: var(--warning-500);
+}
+
+.chart-card.very-low .chart-card-percentage {
+    color: #f97316; /* Laranja */
+}
+
+.chart-card.critical .chart-card-percentage {
+    color: var(--error-500);
+}
+
+.chart-card-progress {
+    background: var(--neutral-200);
+    height: 8px;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.chart-card-bar {
+    height: 100%;
+    background: var(--success-500);
+    border-radius: var(--border-radius-sm);
+    transition: width 0.6s ease;
+}
+
+.chart-card.below-pass .chart-card-bar {
+    background: var(--warning-500);
+}
+
+.chart-card.very-low .chart-card-bar {
+    background: #f97316; /* Laranja */
+}
+
+.chart-card.critical .chart-card-bar {
+    background: var(--error-500);
+}
+
+.chart-card-stats {
+    font-size: 12px;
+    color: var(--neutral-600);
+    font-weight: 500;
 }
 
 .chart-bar {
@@ -947,6 +1250,64 @@ input[type="number"]:focus {
     
     .ai-fab-text {
         font-size: 13px;
+    }
+    
+    .chart-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .chart-card {
+        padding: 16px;
+    }
+    
+    .chart-card-title {
+        font-size: 13px;
+    }
+    
+    .chart-card-percentage {
+        font-size: 16px;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .chart-view-selector {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .chart-minimal {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .chart-minimal-item {
+        justify-content: space-between;
+    }
+    
+    .chart-table-header,
+    .chart-table-row {
+        grid-template-columns: 1fr 60px 60px 80px;
+        gap: 8px;
+        padding: 12px 16px;
+        font-size: 12px;
+    }
+    
+    .table-module-name {
+        font-size: 13px;
+    }
+    
+    .table-percentage {
+        font-size: 14px;
+    }
+    
+    .view-label {
+        display: none;
     }
 }
 

@@ -13,6 +13,7 @@ class SimuladoApp {
         this.timeLeft = 0;
         this.timerInterval = null;
         this.currentState = 'config';
+        this.chartViewMode = 'cards'; // Modo padrão de visualização
         
         // Dados para análise com IA
         this.performanceData = {
@@ -122,12 +123,10 @@ class SimuladoApp {
             const value = parseInt(e.target.value);
             if (value > 0) {
                 this.totalQuestions = value;
-                this.updateStartButtonState();
             } else {
-                e.target.value = 1;
-                this.totalQuestions = 1;
-                this.updateStartButtonState();
+                this.totalQuestions = 0;
             }
+            this.updateStartButtonState();
         });
 
         // Event listener para retry da análise IA
@@ -141,6 +140,15 @@ class SimuladoApp {
         document.addEventListener('click', (e) => {
             if (e.target.closest('#ai-analysis-fab')) {
                 this.generateAIAnalysis();
+            }
+        });
+
+        // Event listeners para seletor de visualização do gráfico
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.chart-view-btn')) {
+                const btn = e.target.closest('.chart-view-btn');
+                const viewMode = btn.dataset.view;
+                this.setChartViewMode(viewMode);
             }
         });
     }
@@ -167,10 +175,16 @@ class SimuladoApp {
     }
 
     startExam() {
-        if (this.totalQuestions <= 0) {
-            alert('O número de questões deve ser maior que zero!');
+        const questionQuantityInput = document.getElementById('question-quantity');
+        const inputValue = parseInt(questionQuantityInput.value);
+        
+        if (isNaN(inputValue) || inputValue <= 0) {
+            alert('Por favor, digite um número válido maior que zero para a quantidade de questões!');
+            questionQuantityInput.focus();
             return;
         }
+        
+        this.totalQuestions = inputValue;
         
         if (this.selectedModules.length === 0) {
             alert('Selecione pelo menos um módulo para continuar!');
@@ -525,30 +539,122 @@ class SimuladoApp {
         document.getElementById('pass-status').style.color = 
             this.results.passed ? '#38a169' : '#e53e3e';
 
+        // Carregar preferência de visualização
+        this.loadChartViewPreference();
+        
         this.renderChart();
         this.renderDetailedResults();
     }
 
     renderChart() {
         const chartContainer = document.getElementById('chart');
-        let chartHtml = '';
+        
+        switch (this.chartViewMode) {
+            case 'minimal':
+                this.renderChartMinimal(chartContainer);
+                break;
+            case 'table':
+                this.renderChartTable(chartContainer);
+                break;
+            default:
+                this.renderChartCards(chartContainer);
+        }
+    }
+
+    renderChartCards(container) {
+        let chartHtml = '<div class="chart-grid">';
 
         Object.keys(this.results.moduleStats).forEach(moduleKey => {
             const stats = this.results.moduleStats[moduleKey];
             const percentage = Math.round((stats.correct / stats.total) * 100);
-            const barHeight = Math.max(30, (percentage / 100) * 200);
+            
+            // Determinar cor baseada na performance (4 níveis)
+            let performanceClass = 'good';
+            if (percentage < 50) performanceClass = 'critical';        // Vermelho: <50%
+            else if (percentage < 60) performanceClass = 'very-low';   // Laranja: 50-59%
+            else if (percentage < 70) performanceClass = 'below-pass'; // Amarelo: 60-69%
+            // Verde: ≥70% (padrão 'good')
 
             chartHtml += `
-                <div class="chart-bar">
-                    <div class="bar-value">${percentage}%</div>
-                    <div class="bar" style="height: ${barHeight}px;"></div>
-                    <div class="bar-label">${stats.name}</div>
-                    <div style="font-size: 11px; color: #718096;">${stats.correct}/${stats.total}</div>
+                <div class="chart-card ${performanceClass}">
+                    <div class="chart-card-header">
+                        <div class="chart-card-title">${stats.name}</div>
+                        <div class="chart-card-percentage">${percentage}%</div>
+                    </div>
+                    <div class="chart-card-progress">
+                        <div class="chart-card-bar" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="chart-card-stats">${stats.correct}/${stats.total} questões</div>
                 </div>
             `;
         });
 
-        chartContainer.innerHTML = chartHtml;
+        chartHtml += '</div>';
+        container.innerHTML = chartHtml;
+    }
+
+    renderChartMinimal(container) {
+        let chartHtml = '<div class="chart-minimal">';
+
+        Object.keys(this.results.moduleStats).forEach(moduleKey => {
+            const stats = this.results.moduleStats[moduleKey];
+            const percentage = Math.round((stats.correct / stats.total) * 100);
+            
+            // Determinar cor baseada na performance
+            let performanceClass = 'good';
+            if (percentage < 50) performanceClass = 'critical';
+            else if (percentage < 60) performanceClass = 'very-low';
+            else if (percentage < 70) performanceClass = 'below-pass';
+
+            chartHtml += `
+                <div class="chart-minimal-item">
+                    <span class="minimal-name">${stats.name}:</span>
+                    <span class="minimal-percentage ${performanceClass}">${percentage}%</span>
+                </div>
+            `;
+        });
+
+        chartHtml += '</div>';
+        container.innerHTML = chartHtml;
+    }
+
+    renderChartTable(container) {
+        let chartHtml = `
+            <div class="chart-table">
+                <div class="chart-table-header">
+                    <div>Módulo</div>
+                    <div>Acertos</div>
+                    <div>Nota</div>
+                    <div>Progresso</div>
+                </div>
+        `;
+
+        Object.keys(this.results.moduleStats).forEach(moduleKey => {
+            const stats = this.results.moduleStats[moduleKey];
+            const percentage = Math.round((stats.correct / stats.total) * 100);
+            
+            // Determinar cor baseada na performance
+            let performanceClass = 'good';
+            if (percentage < 50) performanceClass = 'critical';
+            else if (percentage < 60) performanceClass = 'very-low';
+            else if (percentage < 70) performanceClass = 'below-pass';
+
+            chartHtml += `
+                <div class="chart-table-row">
+                    <div class="table-module-name">${stats.name}</div>
+                    <div class="table-stats">${stats.correct}/${stats.total}</div>
+                    <div class="table-percentage ${performanceClass}">${percentage}%</div>
+                    <div class="table-progress">
+                        <div class="table-progress-bar">
+                            <div class="table-progress-fill ${performanceClass}" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        chartHtml += '</div>';
+        container.innerHTML = chartHtml;
     }
 
     renderDetailedResults() {
@@ -984,6 +1090,31 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
             screen.classList.add('hidden');
         });
         document.getElementById(screenId).classList.remove('hidden');
+    }
+
+    setChartViewMode(viewMode) {
+        this.chartViewMode = viewMode;
+        
+        // Atualizar botões ativos
+        document.querySelectorAll('.chart-view-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-view="${viewMode}"]`).classList.add('active');
+        
+        // Salvar preferência no localStorage
+        localStorage.setItem('chart_view_mode', viewMode);
+        
+        // Re-renderizar gráfico se estamos na tela de resultados
+        if (this.currentState === 'results' && this.results) {
+            this.renderChart();
+        }
+    }
+
+    loadChartViewPreference() {
+        const savedMode = localStorage.getItem('chart_view_mode');
+        if (savedMode && ['cards', 'minimal', 'table'].includes(savedMode)) {
+            this.setChartViewMode(savedMode);
+        }
     }
 }
 
