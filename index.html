@@ -145,6 +145,24 @@
                 <div id="chart" class="chart"></div>
             </div>
 
+            <div id="ai-analysis-section" class="ai-analysis-section">
+                <h3>🤖 Análise Personalizada com IA</h3>
+                <div id="ai-analysis-content" class="ai-analysis-content">
+                    <div id="ai-loading" class="ai-loading">
+                        <div class="ai-spinner"></div>
+                        <p>Analisando seu desempenho com inteligência artificial...</p>
+                        <small>Aguarde alguns segundos para receber recomendações personalizadas</small>
+                    </div>
+                    <div id="ai-results" class="ai-results hidden"></div>
+                    <div id="ai-error" class="ai-error hidden">
+                        <div class="ai-error-icon">⚠️</div>
+                        <h4>Análise IA indisponível</h4>
+                        <p>Não foi possível gerar a análise personalizada no momento. Tente novamente mais tarde.</p>
+                        <button id="retry-ai-analysis" class="btn btn-secondary">Tentar Novamente</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="detailed-results">
                 <h3 class="results-section-title">Gabarito Detalhado</h3>
                 <div id="questions-review"></div>
@@ -168,6 +186,14 @@
             </a>
         </p>
     </footer>
+
+    <!-- Botão Flutuante de Análise IA -->
+    <div id="ai-analysis-fab" class="ai-analysis-fab hidden">
+        <div class="ai-fab-content">
+            <span class="ai-fab-icon">🤖</span>
+            <span class="ai-fab-text">Análise com IA<br><small>(grátis)</small></span>
+        </div>
+    </div>
 
     <script>
         document.write(`<script src="assets/script.js?v=${timestamp}"><\/script>`);

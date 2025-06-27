@@ -853,9 +853,7 @@
                             "descricao": "Habilitar Always On"
                         },
                         "alternativa4": {
-                            "descricao": {
-                                "descricao": "Habilitar acesso privado via IP interno"
-                            }
+                            "descricao": "Habilitar acesso privado via IP interno"
                         }
                     },
                     "correta": "alternativa2",
