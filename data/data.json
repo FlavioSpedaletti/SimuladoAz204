@@ -4583,6 +4583,1152 @@
                     "explicacao": "A replicação multi-região aumenta disponibilidade e redundância global para operações de leitura e gravação com controle de consistência definida por operação e região habilitada."
                 }
             }
+        },
+        "modulo5": {
+            "nome": "📦 Containerized Solutions",
+            "descricao": "Container Registry, Container Instances e App Service para aplicações containerizadas.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "Qual recurso do Azure é usado para armazenar e gerenciar imagens de container de forma segura e privada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Container Instances"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure App Service"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Container Registry"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Kubernetes Service"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Azure Container Registry (ACR) é um repositório privado de imagens Docker totalmente gerenciado."
+                },
+                "pergunta2": {
+                    "descricao": "Qual serviço do Azure é mais adequado para executar cargas pontuais em containers sem gerenciar infraestrutura?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure App Service"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Container Apps"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Container Registry"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Container Instances"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O Azure Container Instances (ACI) é ideal para workloads rápidos e temporários, sem orquestração."
+                },
+                "pergunta3": {
+                    "descricao": "Você quer enviar uma imagem local para o ACR. Qual comando Azure CLI é o mais adequado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr task create"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr push"
+                        },
+                        "alternativa3": {
+                            "descricao": "docker push"
+                        },
+                        "alternativa4": {
+                            "descricao": "az container create"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O comando padrão para enviar imagens para o ACR é o `docker push` após login com `az acr login`."
+                },
+                "pergunta4": {
+                    "descricao": "Qual abordagem é recomendada para proteger variáveis sensíveis (como connection strings) em Azure Container Apps?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Armazenar no código-fonte"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurar no AppSettings.json"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar Azure Key Vault integrado com ACA"
+                        },
+                        "alternativa4": {
+                            "descricao": "Expor via variável de ambiente no código"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Azure Key Vault é a opção segura e integrada recomendada para armazenar segredos e injetar em ACA."
+                },
+                "pergunta5": {
+                    "descricao": "Quais recursos ACI suporta para agrupar múltiplos containers com rede e ciclo de vida compartilhados?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "App Services Plans"
+                        },
+                        "alternativa2": {
+                            "descricao": "Container Groups"
+                        },
+                        "alternativa3": {
+                            "descricao": "Pod Services"
+                        },
+                        "alternativa4": {
+                            "descricao": "VM Scale Sets"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O ACI suporta container groups, que são semelhantes a pods no Kubernetes, compartilhando rede e armazenamento."
+                },
+                "pergunta6": {
+                    "descricao": "Como conceder acesso seguro ao ACR para um serviço ACA?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Atribuir identidade gerenciada ao ACA com permissão AcrPull"
+                        },
+                        "alternativa2": {
+                            "descricao": "Definir credenciais estáticas no código"
+                        },
+                        "alternativa3": {
+                            "descricao": "Liberar o ACR como repositório público"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar RBAC no ACI"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O uso de identidade gerenciada + papel AcrPull é a prática recomendada para autenticar serviços com o ACR."
+                },
+                "pergunta7": {
+                    "descricao": "Qual tecnologia no ACA permite escalar containers com base em eventos externos como filas ou tópicos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Log Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "KEDA"
+                        },
+                        "alternativa3": {
+                            "descricao": "Dapr"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Monitor"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "KEDA (Kubernetes-based Event Driven Autoscaler) permite autoescala com base em eventos, como mensagens em fila."
+                },
+                "pergunta8": {
+                    "descricao": "Você deseja expor a porta correta do container no ACI. Qual deve ser usada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Porta 80"
+                        },
+                        "alternativa2": {
+                            "descricao": "Qualquer porta disponível"
+                        },
+                        "alternativa3": {
+                            "descricao": "Porta declarada no Dockerfile (EXPOSE)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Porta 443 obrigatoriamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "É necessário expor explicitamente a porta correta no comando CLI ou YAML, normalmente a mesma usada no Dockerfile."
+                },
+                "pergunta9": {
+                    "descricao": "No ACA, qual probe verifica se o container ainda está funcionando corretamente?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Startup probe"
+                        },
+                        "alternativa2": {
+                            "descricao": "Liveness probe"
+                        },
+                        "alternativa3": {
+                            "descricao": "Readiness probe"
+                        },
+                        "alternativa4": {
+                            "descricao": "Health check HTTP"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A liveness probe identifica se o container está saudável — se falhar, ele será reiniciado."
+                },
+                "pergunta10": {
+                    "descricao": "No ACA, após um deploy com nova imagem, o que acontece com a instância anterior?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela continua ativa até o tráfego ser movido"
+                        },
+                        "alternativa2": {
+                            "descricao": "É encerrada automaticamente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Permanece ativa em segundo plano"
+                        },
+                        "alternativa4": {
+                            "descricao": "É migrada para a nova imagem"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O ACA suporta revisões, então a versão anterior continua ativa até que o roteamento seja alterado."
+                },
+                "pergunta11": {
+                    "descricao": "Qual comando CLI permite realizar build de imagem diretamente no ACR a partir de um Dockerfile?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr task run"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr build"
+                        },
+                        "alternativa3": {
+                            "descricao": "docker build"
+                        },
+                        "alternativa4": {
+                            "descricao": "az container create"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O comando 'az acr build' permite compilar diretamente imagens usando o ACR, sem usar Docker local."
+                },
+                "pergunta12": {
+                    "descricao": "Você deseja listar as imagens existentes em um repositório do ACR. Qual comando usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr image list"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr repository show-tags"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr repository list"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr image show"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Para listar as tags de uma imagem específica em um repositório do ACR, usa-se 'az acr repository show-tags'."
+                },
+                "pergunta13": {
+                    "descricao": "Você deseja que uma aplicação ACA escale automaticamente com base em mensagens em um Azure Queue Storage. O que deve configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Auto Scaling Rule padrão"
+                        },
+                        "alternativa2": {
+                            "descricao": "Webhook"
+                        },
+                        "alternativa3": {
+                            "descricao": "KEDA com trigger de Queue"
+                        },
+                        "alternativa4": {
+                            "descricao": "ScaleSet com timer"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "KEDA permite escalar ACA com base em eventos, como filas do Azure Storage ou Service Bus."
+                },
+                "pergunta14": {
+                    "descricao": "Você quer que containers no ACA compartilhem a mesma rede e se comuniquem via localhost. Qual abordagem usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Deploy múltiplos apps no mesmo environment"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar sidecars com hostname DNS"
+                        },
+                        "alternativa3": {
+                            "descricao": "Utilizar revisions paralelas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não é possível usar localhost entre containers no ACA"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "No ACA, múltiplos containers comunicam-se via DNS interno, não via localhost. Para localhost, use ACI."
+                },
+                "pergunta15": {
+                    "descricao": "Como permitir que um ACA use uma imagem do ACR privado com segurança?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Habilitar acesso anônimo ao ACR"
+                        },
+                        "alternativa2": {
+                            "descricao": "Conceder RBAC para identidade do ACA"
+                        },
+                        "alternativa3": {
+                            "descricao": "Fornecer login/senha do ACR via código"
+                        },
+                        "alternativa4": {
+                            "descricao": "Expor o repositório como público"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A identidade gerenciada do ACA precisa de RBAC 'AcrPull' para acessar o ACR privado com segurança."
+                },
+                "pergunta16": {
+                    "descricao": "Você quer configurar múltiplos containers no ACA com sidecar pattern. Eles podem usar 'localhost' para se comunicar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Sim, todos compartilham rede local"
+                        },
+                        "alternativa2": {
+                            "descricao": "Sim, se o environment for privado"
+                        },
+                        "alternativa3": {
+                            "descricao": "Não, a comunicação é por DNS interno"
+                        },
+                        "alternativa4": {
+                            "descricao": "Sim, se o container principal for exposto"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "No ACA, mesmo containers definidos no mesmo app usam DNS interno para comunicação, não localhost."
+                },
+                "pergunta17": {
+                    "descricao": "Você quer verificar o status de uma instância de ACA. Qual comando CLI usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az containerapp status"
+                        },
+                        "alternativa2": {
+                            "descricao": "az containerapp show"
+                        },
+                        "alternativa3": {
+                            "descricao": "az app status"
+                        },
+                        "alternativa4": {
+                            "descricao": "az appservice status"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "'az containerapp show' é o comando correto para obter detalhes de um container app específico."
+                },
+                "pergunta18": {
+                    "descricao": "Você quer escalonar um container no ACA com base em eventos do Service Bus. Qual componente você precisa?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "App Service Plan"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Gateway"
+                        },
+                        "alternativa3": {
+                            "descricao": "KEDA trigger com Service Bus"
+                        },
+                        "alternativa4": {
+                            "descricao": "Timer Function"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "KEDA é o componente que permite configurar escalabilidade com base em eventos do Azure Service Bus."
+                },
+                "pergunta19": {
+                    "descricao": "Qual comando CLI permite listar todos os repositórios dentro de um ACR?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr list"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr repository list"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr repo get"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr show-repos"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "'az acr repository list' retorna todos os repositórios registrados em um ACR específico."
+                },
+                "pergunta20": {
+                    "descricao": "Você precisa de um container para rodar apenas uma tarefa pontual e depois encerrar. Qual serviço usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure App Service"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Kubernetes Service"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Container Apps"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Container Instances"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "ACI é ideal para workloads efêmeros e tarefas curtas, como scripts, sem necessidade de orquestração."
+                },
+                "pergunta21": {
+                    "descricao": "Você quer isolar dois Container Apps para que eles não compartilhem ambiente nem recursos de rede. O que fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criar dois Container Apps no mesmo Environment"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criar dois Container Apps com revisões diferentes"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar dois Container Apps em Environments diferentes"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar namespaces diferentes no mesmo App"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Ambientes de Container Apps isolam redes, identidade e configuração. Para isolar, use environments distintos."
+                },
+                "pergunta22": {
+                    "descricao": "Você quer configurar uma regra de escalonamento baseada em requisições HTTP por segundo. Qual tipo de scaling usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Escalonamento por CPU"
+                        },
+                        "alternativa2": {
+                            "descricao": "Escalonamento HTTP (scale rule)"
+                        },
+                        "alternativa3": {
+                            "descricao": "Escalonamento por memória"
+                        },
+                        "alternativa4": {
+                            "descricao": "Timer scale trigger"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O Container Apps permite configurar regras de escalonamento com base no volume de requisições HTTP."
+                },
+                "pergunta23": {
+                    "descricao": "Você quer expor dois serviços ACA que compartilham o mesmo domínio personalizado. O que fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar Application Gateway"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criar dois certificados TLS separados"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar dois Container Apps com paths distintos e domínio customizado"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar Load Balancer padrão"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "É possível mapear múltiplos Container Apps para o mesmo domínio, usando rotas com paths específicos."
+                },
+                "pergunta24": {
+                    "descricao": "O que acontece quando você atualiza um Container App com uma nova imagem?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A revisão anterior é destruída automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "A nova revisão substitui imediatamente a antiga"
+                        },
+                        "alternativa3": {
+                            "descricao": "A nova revisão roda paralelamente sem tráfego"
+                        },
+                        "alternativa4": {
+                            "descricao": "A nova revisão é criada e o tráfego pode ser roteado entre as versões"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O ACA cria uma nova revisão e permite dividir o tráfego entre a revisão atual e a anterior (blue/green deployment)."
+                },
+                "pergunta25": {
+                    "descricao": "Qual componente permite injetar segredos em ACA a partir do Azure Key Vault?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Volume Mount"
+                        },
+                        "alternativa2": {
+                            "descricao": "App Service Environment"
+                        },
+                        "alternativa3": {
+                            "descricao": "Secrets vinculados ao Key Vault"
+                        },
+                        "alternativa4": {
+                            "descricao": "Environment Variables"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Segredos do Key Vault podem ser vinculados diretamente como secrets do ACA e injetados como variáveis."
+                },
+                "pergunta26": {
+                    "descricao": "Você quer executar múltiplos containers em ACA que se comuniquem internamente. Qual configuração usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Várias revisions"
+                        },
+                        "alternativa2": {
+                            "descricao": "Vários Container Apps em um único ambiente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Sidecar containers dentro de um mesmo Container App"
+                        },
+                        "alternativa4": {
+                            "descricao": "Deployment separado com Load Balancer"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Dentro de um único Container App, múltiplos containers podem rodar juntos e se comunicar via DNS interno (sidecar pattern)."
+                },
+                "pergunta27": {
+                    "descricao": "Qual componente permite criar builds automáticos no ACR sempre que houver alteração no código-fonte?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure DevOps Pipeline"
+                        },
+                        "alternativa2": {
+                            "descricao": "Webhook em App Service"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Logic App"
+                        },
+                        "alternativa4": {
+                            "descricao": "ACR Tasks"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "ACR Tasks permitem configurar automação de builds, inclusive por webhook de push em repositórios Git."
+                },
+                "pergunta28": {
+                    "descricao": "Você deseja que uma imagem no ACR seja usada por um ACI. O que deve garantir?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Expor o ACR publicamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Atribuir permissão AcrPull à identidade do ACI"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar o ACI em uma VNet com DNS privado"
+                        },
+                        "alternativa4": {
+                            "descricao": "Utilizar connection string da imagem"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Para que ACI acesse imagens privadas no ACR, é necessário conceder permissão 'AcrPull' à identidade atribuída do ACI."
+                },
+                "pergunta29": {
+                    "descricao": "Qual comando CLI lista todas as imagens de um repositório em ACR?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr list"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr repository show"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr repository show-tags"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr repo images"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "'az acr repository show-tags' mostra as imagens (tags) armazenadas dentro de um repositório ACR específico."
+                },
+                "pergunta30": {
+                    "descricao": "Você deseja ver os logs de execução de um container no ACI. Qual comando utilizar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az container logs"
+                        },
+                        "alternativa2": {
+                            "descricao": "az containerapp logs show"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr logs"
+                        },
+                        "alternativa4": {
+                            "descricao": "az logs show --container"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "'az container logs' é usado para visualizar logs de containers em execução no Azure Container Instances."
+                },
+                "pergunta31": {
+                    "descricao": "Você quer garantir que um Container App seja exposto apenas internamente em uma VNet. Qual configuração usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Desabilitar HTTPS"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar domínio personalizado com TLS"
+                        },
+                        "alternativa3": {
+                            "descricao": "Definir o ingress como 'internal'"
+                        },
+                        "alternativa4": {
+                            "descricao": "Remover portas públicas do container"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "No Container Apps, o Ingress pode ser definido como interno para restringir o tráfego à VNet."
+                },
+                "pergunta32": {
+                    "descricao": "Você quer aplicar SSL/TLS em um domínio personalizado no ACA. Qual recurso usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure CDN"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure DNS com NS record"
+                        },
+                        "alternativa3": {
+                            "descricao": "Certificado TLS gerenciado no ACA"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Key Vault apenas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O ACA permite gerenciar certificados SSL com domínios personalizados diretamente via Azure CLI ou portal."
+                },
+                "pergunta33": {
+                    "descricao": "Você precisa publicar sua imagem local no ACR. Qual comando vem após o build?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "docker push"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr update"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr login"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr deploy"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Após o build, o comando `docker push` é usado para enviar a imagem ao Azure Container Registry (ACR)."
+                },
+                "pergunta34": {
+                    "descricao": "Você quer remover uma imagem obsoleta do ACR. Qual comando usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr repository delete"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr purge"
+                        },
+                        "alternativa3": {
+                            "descricao": "az acr image delete"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr clean"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "'az acr repository delete' permite excluir imagens ou tags específicas de um repositório no ACR."
+                },
+                "pergunta35": {
+                    "descricao": "Qual das opções permite que múltiplos containers no ACI compartilhem armazenamento e rede?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Container revisions"
+                        },
+                        "alternativa2": {
+                            "descricao": "Container groups"
+                        },
+                        "alternativa3": {
+                            "descricao": "Docker volumes"
+                        },
+                        "alternativa4": {
+                            "descricao": "Container apps environment"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Container groups no ACI compartilham rede, armazenamento e ciclo de vida, semelhante a pods no Kubernetes."
+                },
+                "pergunta36": {
+                    "descricao": "Você precisa escalonar um ACA baseado no número de mensagens no Azure Service Bus. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Auto Scaling Plan"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Monitor alert"
+                        },
+                        "alternativa3": {
+                            "descricao": "Scale Rule por CPU"
+                        },
+                        "alternativa4": {
+                            "descricao": "KEDA com trigger de Service Bus"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "KEDA permite escalar instâncias com base no backlog de mensagens no Azure Service Bus, usando triggers nativas."
+                },
+                "pergunta37": {
+                    "descricao": "Você deseja permitir deploys automatizados no ACA quando uma nova imagem for publicada no ACR. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Event Grid"
+                        },
+                        "alternativa2": {
+                            "descricao": "Webhook manual"
+                        },
+                        "alternativa3": {
+                            "descricao": "ACR Task com webhook"
+                        },
+                        "alternativa4": {
+                            "descricao": "Application Gateway"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O ACR pode usar Tasks com webhooks para acionar atualizações em ACA automaticamente após push de imagem."
+                },
+                "pergunta38": {
+                    "descricao": "Qual recurso do Azure você usaria para implantar containers com múltiplos ambientes, suporte a escalonamento e observabilidade integrada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Container Apps"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Virtual Machines"
+                        },
+                        "alternativa3": {
+                            "descricao": "App Service para Linux"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Functions Premium Plan"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O ACA oferece suporte a múltiplos environments, escalonamento com KEDA e integração com Log Analytics e Application Insights."
+                },
+                "pergunta39": {
+                    "descricao": "Você quer dividir 30% do tráfego para uma nova revisão no ACA. Qual comando usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az containerapp set-traffic"
+                        },
+                        "alternativa2": {
+                            "descricao": "az containerapp ingress set"
+                        },
+                        "alternativa3": {
+                            "descricao": "az containerapp revision split"
+                        },
+                        "alternativa4": {
+                            "descricao": "az containerapp traffic set"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O comando 'az containerapp traffic set' permite dividir o tráfego entre revisões no ACA."
+                },
+                "pergunta40": {
+                    "descricao": "Você quer que dois ACA compartilhem variáveis de ambiente comuns. Qual abordagem usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Definir no Dockerfile"
+                        },
+                        "alternativa2": {
+                            "descricao": "Reutilizar revisions"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar variables via secrets e reutilizar"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurar environment variables globalmente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Segredos e variáveis podem ser criados e reutilizados entre aplicações no mesmo environment de ACA."
+                },
+                "pergunta41": {
+                    "descricao": "Você quer autenticar no ACR via CLI para um push de imagem. Qual comando usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az acr authorize"
+                        },
+                        "alternativa2": {
+                            "descricao": "az acr login"
+                        },
+                        "alternativa3": {
+                            "descricao": "docker login acr.azure.com"
+                        },
+                        "alternativa4": {
+                            "descricao": "az docker acr-login"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O comando 'az acr login' realiza a autenticação do Docker com o ACR via CLI."
+                },
+                "pergunta42": {
+                    "descricao": "Você precisa configurar log de saída dos containers no ACA. Qual recurso usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Gateway"
+                        },
+                        "alternativa3": {
+                            "descricao": "Log Analytics"
+                        },
+                        "alternativa4": {
+                            "descricao": "Blob Storage manual"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O ACA pode ser integrado ao Azure Monitor e Log Analytics para exportação dos logs dos containers."
+                },
+                "pergunta43": {
+                    "descricao": "Você deseja rodar um container ACA apenas durante um horário específico. Qual opção é ideal?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Escalonamento por CPU"
+                        },
+                        "alternativa2": {
+                            "descricao": "Utilizar Logic App com Webhook para start/stop"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar revision de staging"
+                        },
+                        "alternativa4": {
+                            "descricao": "Instanciar ACA sob demanda com função Premium"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Você pode automatizar o ciclo de vida de um ACA com Logic Apps, usando Webhooks ou CLI via schedules."
+                },
+                "pergunta44": {
+                    "descricao": "Você deseja forçar o ACA a sempre puxar a imagem mais recente do ACR ao reiniciar. Qual configuração?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Habilitar continuous deployment"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurar imagePullPolicy como Always"
+                        },
+                        "alternativa3": {
+                            "descricao": "Resetar environment"
+                        },
+                        "alternativa4": {
+                            "descricao": "Setar container restartMode como Always"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Embora ACA não use YAML direto como Kubernetes, ele segue a lógica de imagePullPolicy com opção implícita no CLI ou revisão."
+                },
+                "pergunta45": {
+                    "descricao": "Você quer usar secrets no ACA para armazenar connection strings. Onde eles são montados?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Injetados como variáveis de ambiente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Como arquivos JSON no filesystem"
+                        },
+                        "alternativa3": {
+                            "descricao": "No repositório da imagem"
+                        },
+                        "alternativa4": {
+                            "descricao": "Expostos via DNS interno"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Secrets no ACA são injetados no container como variáveis de ambiente ou volumes, dependendo da configuração."
+                },
+                "pergunta46": {
+                    "descricao": "Você quer integrar o ACA com o Azure Monitor. O que precisa ser configurado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Nada, é habilitado por padrão"
+                        },
+                        "alternativa2": {
+                            "descricao": "Associar Log Analytics workspace no environment"
+                        },
+                        "alternativa3": {
+                            "descricao": "Instalar extensão de diagnóstico no container"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar volume compartilhado com o Azure Monitor Agent"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A integração com Azure Monitor é feita vinculando o Container Apps Environment a um Log Analytics workspace."
+                },
+                "pergunta47": {
+                    "descricao": "Qual comando CLI é usado para criar um Azure Container Instance?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az containerapp create"
+                        },
+                        "alternativa2": {
+                            "descricao": "az container registry create"
+                        },
+                        "alternativa3": {
+                            "descricao": "az container create"
+                        },
+                        "alternativa4": {
+                            "descricao": "az acr instance create"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O comando correto para criar uma instância de ACI via Azure CLI é 'az container create'."
+                },
+                "pergunta48": {
+                    "descricao": "Você deseja que o ACI acesse um repositório de imagem privado no ACR. Qual requisito é obrigatório?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Linkar com Azure App Service"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar Docker Hub como proxy"
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerar um token JWT manual"
+                        },
+                        "alternativa4": {
+                            "descricao": "Conceder 'AcrPull' para a identidade atribuída"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "A identidade gerenciada do ACI precisa da role AcrPull para autenticar com repositórios privados no ACR."
+                },
+                "pergunta49": {
+                    "descricao": "Você quer que seu container app seja reiniciado em caso de falha. Qual configuração garante isso?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "healthCheck"
+                        },
+                        "alternativa2": {
+                            "descricao": "restartPolicy = Never"
+                        },
+                        "alternativa3": {
+                            "descricao": "restartPolicy = Always"
+                        },
+                        "alternativa4": {
+                            "descricao": "imagePullPolicy = IfNotPresent"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Para reinício automático após falhas, o restartPolicy deve estar definido como 'Always'."
+                },
+                "pergunta50": {
+                    "descricao": "Qual método permite aplicar blue/green deployment em ACA?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar Azure DevTest Labs"
+                        },
+                        "alternativa2": {
+                            "descricao": "Utilizar apenas revisões internas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar revisões e dividir tráfego com CLI"
+                        },
+                        "alternativa4": {
+                            "descricao": "Aplicar versionamento na imagem apenas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O ACA permite criar múltiplas revisões e controlar o tráfego entre elas, viabilizando blue/green deployment."
+                },
+                "pergunta51": {
+                    "descricao": "Você deseja configurar um container ACA com múltiplos volumes persistentes. Qual recurso usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Blob montado com Web App"
+                        },
+                        "alternativa2": {
+                            "descricao": "Container Group com disco local"
+                        },
+                        "alternativa3": {
+                            "descricao": "Volumes com Azure File Share"
+                        },
+                        "alternativa4": {
+                            "descricao": "Storage Emulator em localhost"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O ACA pode montar volumes usando Azure File Shares para persistência entre reinícios."
+                },
+                "pergunta52": {
+                    "descricao": "Você precisa que o ACA tenha acesso privado ao ACR sem autenticação explícita. O que fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Tornar o ACR público"
+                        },
+                        "alternativa2": {
+                            "descricao": "Gerar username/password e definir como secrets"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar a role AcrPush para a identidade do ACA"
+                        },
+                        "alternativa4": {
+                            "descricao": "Conceder role 'AcrPull' à identidade gerenciada do ACA"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "A maneira segura de permitir que ACA acesse o ACR é conceder 'AcrPull' para sua identidade gerenciada."
+                },
+                "pergunta53": {
+                    "descricao": "Você quer verificar se um container no ACA está saudável. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Port expose no Dockerfile"
+                        },
+                        "alternativa2": {
+                            "descricao": "Probes TCP no app service"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configuração de log analytics"
+                        },
+                        "alternativa4": {
+                            "descricao": "Health Probes (liveness/readiness)"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Probes de liveness/readiness são usados para verificar a saúde dos containers no ACA, como no Kubernetes."
+                },
+                "pergunta54": {
+                    "descricao": "Você quer rodar um container no ACI por apenas 5 minutos. Qual configuração é ideal?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Definir restartPolicy como Always"
+                        },
+                        "alternativa2": {
+                            "descricao": "Programar o stop via Function"
+                        },
+                        "alternativa3": {
+                            "descricao": "Definir um container de execução única com timeout"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurar triggers no ACA"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Para tarefas de curta duração, você pode usar o ACI com um comando de execução única e aguardar o término."
+                },
+                "pergunta55": {
+                    "descricao": "Você quer configurar revisões no ACA para manter apenas as últimas 5 versões. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Deploy slots"
+                        },
+                        "alternativa2": {
+                            "descricao": "Política de retenção de revisões"
+                        },
+                        "alternativa3": {
+                            "descricao": "KEDA cleanup rule"
+                        },
+                        "alternativa4": {
+                            "descricao": "Container lifecycle rule"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Você pode configurar a política de retenção de revisões no ACA para manter apenas um número específico de versões."
+                },
+                "pergunta56": {
+                    "descricao": "Você deseja receber alertas quando um container no ACA estiver com erro. O que configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Firewall"
+                        },
+                        "alternativa2": {
+                            "descricao": "Log Analytics com alertas do Azure Monitor"
+                        },
+                        "alternativa3": {
+                            "descricao": "Secrets rotacionáveis"
+                        },
+                        "alternativa4": {
+                            "descricao": "Webhook de restart"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Ao conectar o ACA ao Log Analytics, é possível configurar alertas com base em métricas ou logs."
+                },
+                "pergunta57": {
+                    "descricao": "Você quer isolar redes entre diferentes Container Apps. Qual recurso utilizar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar revisões diferentes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criar subdomínios diferentes"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar environments separados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Desabilitar secrets compartilhados"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Environments diferentes em ACA garantem isolamento de rede, identidade e variáveis."
+                },
+                "pergunta58": {
+                    "descricao": "Você precisa fazer rollback para uma revisão anterior do Container App. Qual comando usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az containerapp revision set-inactive"
+                        },
+                        "alternativa2": {
+                            "descricao": "az containerapp scale down"
+                        },
+                        "alternativa3": {
+                            "descricao": "az containerapp rollback"
+                        },
+                        "alternativa4": {
+                            "descricao": "az containerapp revision set-traffic"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Para redirecionar o tráfego a uma revisão anterior (rollback), usa-se 'az containerapp revision set-traffic'."
+                },
+                "pergunta59": {
+                    "descricao": "Você quer rodar testes em uma revisão sem impactar os usuários. Qual prática usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Colocar o container em staging"
+                        },
+                        "alternativa2": {
+                            "descricao": "Habilitar tráfego 0% para revisão nova"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar app paralelo"
+                        },
+                        "alternativa4": {
+                            "descricao": "Substituir imagem base"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Criar uma nova revisão e definir tráfego como 0% permite validar sem afetar produção."
+                },
+                "pergunta60": {
+                    "descricao": "Você precisa garantir comunicação segura entre ACA e um banco na mesma VNet. O que é necessário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Habilitar NAT Gateway"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar connection string via public IP"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ativar DNS interno e ingress interno com VNet"
+                        },
+                        "alternativa4": {
+                            "descricao": "Conceder role no Key Vault"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Para comunicação privada e segura via VNet, habilita-se o ingress interno e DNS privado entre recursos."
+                }
+            }
         }
     }
 }
