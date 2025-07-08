@@ -5729,6 +5729,1152 @@
                     "explicacao": "Para comunicação privada e segura via VNet, habilita-se o ingress interno e DNS privado entre recursos."
                 }
             }
+        },
+        "modulo6": {
+            "nome": "🔐 Autenticação, Autorização e Segurança",
+            "descricao": "Autenticação e autorização em Azure, incluindo Managed Identities, Key Vault e segurança em Container Apps.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "Você quer autenticar uma aplicação web no Azure AD e permitir acesso a APIs protegidas. Qual biblioteca você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure.Identity"
+                        },
+                        "alternativa2": {
+                            "descricao": "Microsoft.Identity.Web"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure.Security.KeyVault"
+                        },
+                        "alternativa4": {
+                            "descricao": "Microsoft.Azure.Services.AppAuthentication"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Microsoft.Identity.Web é a biblioteca recomendada para apps ASP.NET integrando com a Microsoft Identity Platform."
+                },
+                "pergunta2": {
+                    "descricao": "Qual escopo mínimo é necessário para login interativo com Microsoft Graph?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "User.Read"
+                        },
+                        "alternativa2": {
+                            "descricao": "User.Read.All"
+                        },
+                        "alternativa3": {
+                            "descricao": "Directory.Read.All"
+                        },
+                        "alternativa4": {
+                            "descricao": "openid"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O escopo User.Read é o mínimo necessário para login interativo e recuperação do perfil básico do usuário."
+                },
+                "pergunta3": {
+                    "descricao": "Qual é a finalidade da claim 'aud' em um token JWT?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Data de expiração"
+                        },
+                        "alternativa2": {
+                            "descricao": "Identifica o usuário"
+                        },
+                        "alternativa3": {
+                            "descricao": "Define quem pode aceitar o token"
+                        },
+                        "alternativa4": {
+                            "descricao": "Define os escopos"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A claim 'aud' (audience) indica quem deve aceitar o token – normalmente, a API protegida."
+                },
+                "pergunta4": {
+                    "descricao": "Como garantir que um token JWT não foi modificado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Verificando o claim 'exp'"
+                        },
+                        "alternativa2": {
+                            "descricao": "Decodificando com base64"
+                        },
+                        "alternativa3": {
+                            "descricao": "Validando a assinatura digital com a chave pública"
+                        },
+                        "alternativa4": {
+                            "descricao": "Validando o issuer"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A integridade de um token JWT é garantida por sua assinatura digital, que deve ser validada com a chave pública do emissor."
+                },
+                "pergunta5": {
+                    "descricao": "Você deseja que uma Azure Function leia segredos do Azure Key Vault com segurança. Qual abordagem usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Armazenar o segredo em variável de ambiente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar SAS Token"
+                        },
+                        "alternativa3": {
+                            "descricao": "Habilitar System Assigned Managed Identity e conceder acesso via RBAC ou Access Policy"
+                        },
+                        "alternativa4": {
+                            "descricao": "Codificar o segredo no código-fonte"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Managed Identities são a forma recomendada de autenticar aplicações Azure com Key Vault sem armazenar segredos."
+                },
+                "pergunta6": {
+                    "descricao": "Você quer expor uma Connection String sensível via App Configuration. Qual prática é mais segura?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criptografar com SHA-1"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar Key Vault reference e identidade gerenciada"
+                        },
+                        "alternativa3": {
+                            "descricao": "Esconder a chave em uma nomenclatura obfuscada"
+                        },
+                        "alternativa4": {
+                            "descricao": "Salvar direto no appsettings.json"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O uso de Key Vault references permite armazenar segredos fora do App Configuration e mantê-los seguros."
+                },
+                "pergunta7": {
+                    "descricao": "Qual dessas opções representa uma prática recomendada ao usar SAS Tokens?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Gerar SAS com validade de 1 ano"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar HTTPS e limitar permissões e tempo"
+                        },
+                        "alternativa3": {
+                            "descricao": "Armazenar o SAS Token no código"
+                        },
+                        "alternativa4": {
+                            "descricao": "Compartilhar o SAS Token em múltiplos clientes simultaneamente"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "SAS Tokens devem ser limitados em escopo, tempo e sempre usados sobre HTTPS para segurança."
+                },
+                "pergunta8": {
+                    "descricao": "Você precisa dar acesso temporário a um container no Blob Storage sem criar uma identidade. O que deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Managed Identity"
+                        },
+                        "alternativa2": {
+                            "descricao": "RBAC"
+                        },
+                        "alternativa3": {
+                            "descricao": "Shared Access Signature (SAS)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Access Policy no App Service"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O uso de SAS Tokens permite conceder acesso granular e temporário sem criar identidades adicionais."
+                },
+                "pergunta9": {
+                    "descricao": "Você precisa armazenar segredos para múltiplos ambientes no Key Vault. O que é recomendado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criar múltiplas versões do mesmo segredo"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar tags ou prefixos nos nomes dos segredos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar um segredo único com estrutura JSON"
+                        },
+                        "alternativa4": {
+                            "descricao": "Salvar tudo como um único certificado"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Prefixos ou tags ajudam a organizar segredos por ambiente (ex: dev-db-conn, prod-db-conn)."
+                },
+                "pergunta10": {
+                    "descricao": "Você quer criptografar um segredo no Azure App Configuration. O que precisa configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar encryption scope com chave própria"
+                        },
+                        "alternativa2": {
+                            "descricao": "Referenciar o segredo no Key Vault e usar identidade gerenciada"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar um SAS Token protegido por chave"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar TLS no nível da aplicação"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "App Configuration não criptografa valores diretamente. Você usa Key Vault Reference com Managed Identity para segurança."
+                },
+                "pergunta11": {
+                    "descricao": "Você está usando MSAL para autenticação silenciosa. Qual método usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AcquireTokenInteractive()"
+                        },
+                        "alternativa2": {
+                            "descricao": "AcquireTokenSilent()"
+                        },
+                        "alternativa3": {
+                            "descricao": "AcquireTokenByUsernamePassword()"
+                        },
+                        "alternativa4": {
+                            "descricao": "AuthenticateAsync()"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "AcquireTokenSilent busca tokens do cache sem prompt de login, sendo ideal para autenticação silenciosa."
+                },
+                "pergunta12": {
+                    "descricao": "O que é um 'service principal' no Azure AD?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Conta de usuário com permissões administrativas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Grupo de segurança com acesso à rede"
+                        },
+                        "alternativa3": {
+                            "descricao": "Representação de uma aplicação registrada no diretório"
+                        },
+                        "alternativa4": {
+                            "descricao": "Token temporário de autenticação"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O service principal é a identidade de uma aplicação dentro do tenant do Azure AD."
+                },
+                "pergunta13": {
+                    "descricao": "Você quer acessar o Microsoft Graph como uma daemon app. Qual fluxo usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Authorization Code Flow"
+                        },
+                        "alternativa2": {
+                            "descricao": "Device Code Flow"
+                        },
+                        "alternativa3": {
+                            "descricao": "Client Credentials Flow"
+                        },
+                        "alternativa4": {
+                            "descricao": "Implicit Flow"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Client Credentials Flow é ideal para aplicações daemon ou backend que não envolvem interação do usuário."
+                },
+                "pergunta14": {
+                    "descricao": "Em um token JWT, o que representa o 'exp'?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Hora de emissão"
+                        },
+                        "alternativa2": {
+                            "descricao": "Emissor"
+                        },
+                        "alternativa3": {
+                            "descricao": "Data de expiração"
+                        },
+                        "alternativa4": {
+                            "descricao": "Permissões (scopes)"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "'exp' define a data e hora de expiração do token JWT, usada na validação da sua validade."
+                },
+                "pergunta15": {
+                    "descricao": "Qual serviço **não** suporta autenticação via Managed Identity?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure SQL Database"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Blob Storage"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure DevOps Repos"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Azure DevOps Repos não está integrado com Managed Identities para autenticação de aplicações."
+                },
+                "pergunta16": {
+                    "descricao": "O que acontece com uma User Assigned Managed Identity ao mover o recurso?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela é excluída automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ela é desativada"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ela continua válida e pode ser reatribuída"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ela gera novo clientId automaticamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Identidades atribuídas ao usuário são independentes e podem ser reaproveitadas entre recursos."
+                },
+                "pergunta17": {
+                    "descricao": "Qual dessas opções representa um fluxo de autenticação com usuário interativo?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Client Credentials Flow"
+                        },
+                        "alternativa2": {
+                            "descricao": "Device Code Flow"
+                        },
+                        "alternativa3": {
+                            "descricao": "On-Behalf-Of Flow"
+                        },
+                        "alternativa4": {
+                            "descricao": "Assertion Grant Flow"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Device Code Flow permite login interativo em dispositivos com input limitado, como terminais."
+                },
+                "pergunta18": {
+                    "descricao": "Qual destas práticas reduz o risco de exposição de secrets?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Salvar secrets em config.json"
+                        },
+                        "alternativa2": {
+                            "descricao": "Armazenar secrets no Key Vault e usar identidade gerenciada"
+                        },
+                        "alternativa3": {
+                            "descricao": "Incluir secrets em variáveis de ambiente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Obfuscar secrets com base64"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A melhor prática é usar Azure Key Vault e acessar com identidade gerenciada em vez de armazenar localmente."
+                },
+                "pergunta19": {
+                    "descricao": "Você deseja permitir que apenas uma função específica acesse um segredo do Key Vault. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Grupo de usuários"
+                        },
+                        "alternativa2": {
+                            "descricao": "RBAC com escopo de recurso"
+                        },
+                        "alternativa3": {
+                            "descricao": "Identidade gerenciada + política de acesso restrita"
+                        },
+                        "alternativa4": {
+                            "descricao": "Token JWT com claim personalizada"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Combinar Managed Identity com política de acesso no Key Vault garante acesso restrito e seguro."
+                },
+                "pergunta20": {
+                    "descricao": "Você precisa garantir que os dados de configuração sejam criptografados em repouso no App Configuration. O que fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ativar criptografia em nível de campo"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar um application gateway com TLS"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar chaves gerenciadas pelo cliente (CMK)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Desabilitar o cache do App Configuration"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "App Configuration permite usar CMKs para criptografar os dados sensíveis armazenados em repouso."
+                },
+                "pergunta21": {
+                    "descricao": "Qual claim JWT indica o emissor do token?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "aud"
+                        },
+                        "alternativa2": {
+                            "descricao": "iss"
+                        },
+                        "alternativa3": {
+                            "descricao": "sub"
+                        },
+                        "alternativa4": {
+                            "descricao": "iat"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A claim 'iss' identifica quem emitiu o token, geralmente a autoridade de autenticação."
+                },
+                "pergunta22": {
+                    "descricao": "Ao usar SAS para acesso a Blob Storage, o que invalida o token?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Alterar a chave da conta de armazenamento"
+                        },
+                        "alternativa2": {
+                            "descricao": "Acessar via HTTP sem HTTPS"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar o token após o expiry"
+                        },
+                        "alternativa4": {
+                            "descricao": "Modificar o nome do container"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Rotacionar a chave de conta invalida todos os SAS Tokens assinados com ela."
+                },
+                "pergunta23": {
+                    "descricao": "Qual método do MSAL é usado para obter token para uma aplicação sem usuário (daemon)?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AcquireTokenSilent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "AcquireTokenInteractive()"
+                        },
+                        "alternativa3": {
+                            "descricao": "AcquireTokenForClient()"
+                        },
+                        "alternativa4": {
+                            "descricao": "AcquireTokenByUsernamePassword()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "AcquireTokenForClient é usado no fluxo client credentials para aplicações sem usuário."
+                },
+                "pergunta24": {
+                    "descricao": "Qual tipo de SAS usa credenciais baseadas no Azure AD ao invés da chave da conta?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Account SAS"
+                        },
+                        "alternativa2": {
+                            "descricao": "Service SAS"
+                        },
+                        "alternativa3": {
+                            "descricao": "User Delegation SAS"
+                        },
+                        "alternativa4": {
+                            "descricao": "Stored Access Policy SAS"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "User Delegation SAS usa credenciais do Azure AD e permite revogação via RBAC."
+                },
+                "pergunta25": {
+                    "descricao": "Para usar Client Credentials Flow, o que é obrigatório configurar na aplicação registrada no Azure AD?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Redirect URI"
+                        },
+                        "alternativa2": {
+                            "descricao": "Client Secret ou certificado"
+                        },
+                        "alternativa3": {
+                            "descricao": "Scopes com consentimento do usuário"
+                        },
+                        "alternativa4": {
+                            "descricao": "Impersonation Settings"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Client Secret ou certificado é obrigatório para autenticar a aplicação no fluxo client credentials."
+                },
+                "pergunta26": {
+                    "descricao": "Qual claim representa a hora de emissão do token JWT?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "exp"
+                        },
+                        "alternativa2": {
+                            "descricao": "nbf"
+                        },
+                        "alternativa3": {
+                            "descricao": "iat"
+                        },
+                        "alternativa4": {
+                            "descricao": "aud"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "'iat' (issued at) indica o instante em que o token foi emitido."
+                },
+                "pergunta27": {
+                    "descricao": "Qual claim lista os escopos concedidos a um token de acesso?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "scp"
+                        },
+                        "alternativa2": {
+                            "descricao": "aud"
+                        },
+                        "alternativa3": {
+                            "descricao": "roles"
+                        },
+                        "alternativa4": {
+                            "descricao": "iss"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A claim 'scp' contém os scopes concedidos ao token."
+                },
+                "pergunta28": {
+                    "descricao": "Para evitar exposição de segredos no App Configuration, qual abordagem é recomendada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Guardar segredos criptografados localmente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar Key Vault references com Managed Identity"
+                        },
+                        "alternativa3": {
+                            "descricao": "Armazenar segredos em variáveis de ambiente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Evitar uso de segredos"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Referenciar segredos no Key Vault é a prática segura para proteger dados sensíveis."
+                },
+                "pergunta29": {
+                    "descricao": "Qual formato representa uma referência a um segredo no Azure Key Vault?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "mysecret"
+                        },
+                        "alternativa2": {
+                            "descricao": "https://myvault.vault.azure.net/secrets/mysecret"
+                        },
+                        "alternativa3": {
+                            "descricao": "secretKey"
+                        },
+                        "alternativa4": {
+                            "descricao": "tokenSecret"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A URL do Key Vault é usada para acessar segredos armazenados."
+                },
+                "pergunta30": {
+                    "descricao": "Qual prática é recomendada para proteger segredos em aplicações Azure?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Hardcode no código fonte"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar Managed Identity com Azure Key Vault"
+                        },
+                        "alternativa3": {
+                            "descricao": "Salvar em arquivos de texto"
+                        },
+                        "alternativa4": {
+                            "descricao": "Armazenar em banco de dados sem criptografia"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Managed Identity junto com Key Vault elimina a necessidade de armazenar segredos diretamente."
+                },
+                "pergunta31": {
+                    "descricao": "Qual método MSAL é indicado para obter token sem interação do usuário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AcquireTokenSilent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "AcquireTokenInteractive()"
+                        },
+                        "alternativa3": {
+                            "descricao": "AcquireTokenByUsernamePassword()"
+                        },
+                        "alternativa4": {
+                            "descricao": "AcquireTokenDeviceCode()"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "AcquireTokenSilent tenta obter tokens do cache sem prompt de login."
+                },
+                "pergunta32": {
+                    "descricao": "O que é um Service Principal no Azure AD?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Conta de usuário"
+                        },
+                        "alternativa2": {
+                            "descricao": "Identidade da aplicação no tenant"
+                        },
+                        "alternativa3": {
+                            "descricao": "Token de acesso"
+                        },
+                        "alternativa4": {
+                            "descricao": "Grupo de segurança"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Service Principal representa a identidade da aplicação no Azure AD."
+                },
+                "pergunta33": {
+                    "descricao": "Qual fluxo MSAL é recomendado para aplicativos daemon ou servidores?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Authorization Code Flow"
+                        },
+                        "alternativa2": {
+                            "descricao": "Device Code Flow"
+                        },
+                        "alternativa3": {
+                            "descricao": "Client Credentials Flow"
+                        },
+                        "alternativa4": {
+                            "descricao": "Implicit Flow"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Client Credentials Flow é usado para autenticação sem usuário."
+                },
+                "pergunta34": {
+                    "descricao": "Em um JWT, qual claim representa o tempo em que o token passa a ser válido?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "nbf"
+                        },
+                        "alternativa2": {
+                            "descricao": "iat"
+                        },
+                        "alternativa3": {
+                            "descricao": "exp"
+                        },
+                        "alternativa4": {
+                            "descricao": "aud"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "'nbf' (not before) indica o instante antes do qual o token não deve ser aceito."
+                },
+                "pergunta35": {
+                    "descricao": "Qual dos seguintes é um fluxo interativo para dispositivos limitados (ex: terminal)?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Authorization Code Flow"
+                        },
+                        "alternativa2": {
+                            "descricao": "Device Code Flow"
+                        },
+                        "alternativa3": {
+                            "descricao": "Client Credentials Flow"
+                        },
+                        "alternativa4": {
+                            "descricao": "On-Behalf-Of Flow"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Device Code Flow permite login em dispositivos com interface limitada."
+                },
+                "pergunta36": {
+                    "descricao": "Ao usar Managed Identity, como você controla acesso ao Key Vault?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Atribuindo política de acesso no Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criando secrets manualmente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurando RBAC no recurso de armazenamento"
+                        },
+                        "alternativa4": {
+                            "descricao": "Atribuindo tokens manualmente"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "As políticas de acesso do Key Vault controlam permissões para identidades gerenciadas."
+                },
+                "pergunta37": {
+                    "descricao": "Você quer limitar o tempo de vida de um SAS Token. Qual parâmetro configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "StartTime"
+                        },
+                        "alternativa2": {
+                            "descricao": "ExpiryTime"
+                        },
+                        "alternativa3": {
+                            "descricao": "IP Range"
+                        },
+                        "alternativa4": {
+                            "descricao": "Permissions"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "ExpiryTime define quando o SAS Token deixa de ser válido."
+                },
+                "pergunta38": {
+                    "descricao": "Como você pode atualizar segredos do Key Vault sem reiniciar sua aplicação no Azure?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando Azure App Configuration com Key Vault references e refresh dinâmico"
+                        },
+                        "alternativa2": {
+                            "descricao": "Atualizando variáveis de ambiente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Reimplantando a aplicação"
+                        },
+                        "alternativa4": {
+                            "descricao": "Alterando o código fonte"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "App Configuration com Key Vault references permite refresh dinâmico de configurações."
+                },
+                "pergunta39": {
+                    "descricao": "Qual prática melhora a segurança do uso de tokens em múltiplas instâncias da aplicação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Revalidar o token a cada uso"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar cache compartilhado para tokens entre instâncias"
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerar um token novo para cada instância"
+                        },
+                        "alternativa4": {
+                            "descricao": "Enviar tokens por email seguro"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Cache compartilhado evita múltiplas requisições desnecessárias e melhora performance."
+                },
+                "pergunta40": {
+                    "descricao": "Ao usar MSAL, o que significa 'refresh token'?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Token usado para autenticação inicial"
+                        },
+                        "alternativa2": {
+                            "descricao": "Token para renovar access token expirado"
+                        },
+                        "alternativa3": {
+                            "descricao": "Token de acesso ao Microsoft Graph"
+                        },
+                        "alternativa4": {
+                            "descricao": "Token que expira junto com o access token"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Refresh token é usado para obter um novo access token sem nova autenticação do usuário."
+                },
+                "pergunta41": {
+                    "descricao": "Qual método MSAL você usaria para autenticação interativa em um aplicativo desktop?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AcquireTokenSilent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "AcquireTokenInteractive()"
+                        },
+                        "alternativa3": {
+                            "descricao": "AcquireTokenForClient()"
+                        },
+                        "alternativa4": {
+                            "descricao": "AcquireTokenByUsernamePassword()"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "AcquireTokenInteractive() inicia um fluxo de login interativo para aplicativos desktop."
+                },
+                "pergunta42": {
+                    "descricao": "Como garantir que uma aplicação web use tokens válidos ao chamar APIs protegidas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Validar assinatura, issuer e audience do token"
+                        },
+                        "alternativa2": {
+                            "descricao": "Verificar apenas a claim 'sub'"
+                        },
+                        "alternativa3": {
+                            "descricao": "Aceitar tokens expirados se forem recentes"
+                        },
+                        "alternativa4": {
+                            "descricao": "Aceitar qualquer token desde que venha do Azure AD"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Para segurança, valida-se assinatura, emissor e audiência do token."
+                },
+                "pergunta43": {
+                    "descricao": "Você deseja monitorar o uso dos segredos do Key Vault. Qual recurso usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Diagnostic Settings com logs para Azure Monitor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Security Center"
+                        },
+                        "alternativa3": {
+                            "descricao": "RBAC"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Policy"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Diagnostic Settings habilitam logs e métricas para auditoria do Key Vault."
+                },
+                "pergunta44": {
+                    "descricao": "Você quer conceder acesso a um segredo no Key Vault para um aplicativo específico. Qual abordagem usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Política de acesso baseada em identidade gerenciada"
+                        },
+                        "alternativa2": {
+                            "descricao": "Compartilhar o segredo via variável de ambiente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar um usuário dedicado para o aplicativo"
+                        },
+                        "alternativa4": {
+                            "descricao": "Permitir acesso público ao segredo"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Políticas de acesso configuradas para Managed Identities são seguras e recomendadas."
+                },
+                "pergunta45": {
+                    "descricao": "Qual tipo de credencial é recomendado para aplicações daemon no Azure AD?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Senha do usuário"
+                        },
+                        "alternativa2": {
+                            "descricao": "Certificado ou client secret"
+                        },
+                        "alternativa3": {
+                            "descricao": "Refresh token"
+                        },
+                        "alternativa4": {
+                            "descricao": "SAS Token"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Certificados ou client secrets são usados para autenticação sem usuário (client credentials)."
+                },
+                "pergunta46": {
+                    "descricao": "Qual das opções a seguir permite que uma aplicação atualize segredos no Key Vault sem credenciais explícitas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Managed Identity"
+                        },
+                        "alternativa2": {
+                            "descricao": "Storage Account Key"
+                        },
+                        "alternativa3": {
+                            "descricao": "SAS Token"
+                        },
+                        "alternativa4": {
+                            "descricao": "Shared Key"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Managed Identities eliminam a necessidade de armazenar credenciais em código."
+                },
+                "pergunta47": {
+                    "descricao": "Qual configuração é necessária para usar Azure App Configuration com Key Vault references?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Configurar Managed Identity e permissões no Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Armazenar segredos em texto claro no App Configuration"
+                        },
+                        "alternativa3": {
+                            "descricao": "Adicionar a chave do App Configuration ao Key Vault"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar TLS no App Configuration"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "App Configuration deve ter identidade gerenciada com acesso ao Key Vault para usar referências."
+                },
+                "pergunta48": {
+                    "descricao": "Qual a função do scope em um token OAuth 2.0?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Identificar o usuário"
+                        },
+                        "alternativa2": {
+                            "descricao": "Definir as permissões concedidas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Indicar o emissor"
+                        },
+                        "alternativa4": {
+                            "descricao": "Indicar a expiração"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Scopes definem o que o token permite acessar."
+                },
+                "pergunta49": {
+                    "descricao": "Qual fluxo MSAL permite delegar a identidade do usuário para uma API backend?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Authorization Code Flow"
+                        },
+                        "alternativa2": {
+                            "descricao": "On-Behalf-Of Flow"
+                        },
+                        "alternativa3": {
+                            "descricao": "Device Code Flow"
+                        },
+                        "alternativa4": {
+                            "descricao": "Client Credentials Flow"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "On-Behalf-Of permite a uma API agir em nome do usuário para chamar outras APIs."
+                },
+                "pergunta50": {
+                    "descricao": "Como a rotação de chaves no Azure Storage afeta SAS Tokens existentes?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Tokens assinados com a chave antiga permanecem válidos"
+                        },
+                        "alternativa2": {
+                            "descricao": "Tokens antigos são invalidados imediatamente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Tokens são renovados automaticamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Tokens não são afetados"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Rotacionar a chave de conta invalida todos os SAS Tokens assinados com ela."
+                },
+                "pergunta51": {
+                    "descricao": "Qual comando Azure CLI cria uma Managed Identity atribuída ao usuário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az identity create"
+                        },
+                        "alternativa2": {
+                            "descricao": "az ad sp create"
+                        },
+                        "alternativa3": {
+                            "descricao": "az keyvault set-policy"
+                        },
+                        "alternativa4": {
+                            "descricao": "az vm assign-identity"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "az identity create cria uma User Assigned Managed Identity."
+                },
+                "pergunta52": {
+                    "descricao": "Para proteger dados sensíveis em trânsito, qual protocolo deve ser usado para chamadas API?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "HTTP"
+                        },
+                        "alternativa2": {
+                            "descricao": "FTP"
+                        },
+                        "alternativa3": {
+                            "descricao": "HTTPS"
+                        },
+                        "alternativa4": {
+                            "descricao": "TCP"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "HTTPS garante criptografia e integridade na comunicação entre cliente e servidor."
+                },
+                "pergunta53": {
+                    "descricao": "Como você pode limitar o acesso a um segredo no Key Vault apenas a determinados usuários ou aplicações?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando políticas de acesso do Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Compartilhando o segredo via e-mail"
+                        },
+                        "alternativa3": {
+                            "descricao": "Guardando o segredo em variáveis de ambiente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Armazenando o segredo no código"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Políticas de acesso do Key Vault definem quem pode acessar os segredos."
+                },
+                "pergunta54": {
+                    "descricao": "Qual método MSAL permite obter tokens para um usuário com nome e senha (não recomendado)?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AcquireTokenByUsernamePassword()"
+                        },
+                        "alternativa2": {
+                            "descricao": "AcquireTokenSilent()"
+                        },
+                        "alternativa3": {
+                            "descricao": "AcquireTokenInteractive()"
+                        },
+                        "alternativa4": {
+                            "descricao": "AcquireTokenForClient()"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "AcquireTokenByUsernamePassword permite autenticação direta com credenciais, mas não é recomendado."
+                },
+                "pergunta55": {
+                    "descricao": "Você quer usar App Configuration para aplicar configurações diferentes para ambientes dev e prod. Como fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar labels para diferenciar ambientes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criar instâncias separadas para cada ambiente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar variáveis de ambiente no código"
+                        },
+                        "alternativa4": {
+                            "descricao": "Salvar configurações no banco de dados"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Labels são usadas para separar configurações por ambiente dentro da mesma instância."
+                },
+                "pergunta56": {
+                    "descricao": "Qual das opções abaixo é uma vantagem do uso de Managed Identities?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Não requer armazenar credenciais no código"
+                        },
+                        "alternativa2": {
+                            "descricao": "Permite acesso anônimo aos recursos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Garante que tokens nunca expiram"
+                        },
+                        "alternativa4": {
+                            "descricao": "Substitui o Azure AD"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Managed Identities eliminam a necessidade de gerenciar credenciais manualmente."
+                },
+                "pergunta57": {
+                    "descricao": "Você precisa garantir que uma aplicação possa acessar Key Vault sem expor segredos. Qual a melhor abordagem?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Configurar Managed Identity e dar permissões no Key Vault"
+                        },
+                        "alternativa2": {
+                            "descricao": "Armazenar secrets em variáveis de ambiente"
+                        },
+                        "alternativa3": {
+                            "descricao": "Salvar secrets em arquivos de configuração"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar SAS Tokens"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Managed Identity integrada ao Key Vault oferece segurança e simplicidade."
+                },
+                "pergunta58": {
+                    "descricao": "O que é o Refresh Token em um fluxo OAuth2?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Token para renovar o Access Token expirado"
+                        },
+                        "alternativa2": {
+                            "descricao": "Token usado para autenticação inicial"
+                        },
+                        "alternativa3": {
+                            "descricao": "Token que concede acesso ao Microsoft Graph"
+                        },
+                        "alternativa4": {
+                            "descricao": "Token para revogar permissões"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Refresh Token é usado para obter um novo Access Token sem que o usuário precise se autenticar novamente."
+                },
+                "pergunta59": {
+                    "descricao": "Como você pode auditar acessos a um Azure Key Vault?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Habilitando diagnostic logs para Azure Monitor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurando RBAC"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usando Managed Identities"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurando App Configuration"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Logs diagnósticos são usados para auditoria e monitoramento de acesso."
+                },
+                "pergunta60": {
+                    "descricao": "O que significa 'least privilege' no contexto de segurança de identidades no Azure?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Conceder apenas permissões necessárias para a tarefa"
+                        },
+                        "alternativa2": {
+                            "descricao": "Permitir acesso irrestrito para evitar erros"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar credenciais administrativas para todos os serviços"
+                        },
+                        "alternativa4": {
+                            "descricao": "Compartilhar tokens entre aplicações"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Least privilege significa conceder somente as permissões estritamente necessárias, aumentando a segurança."
+                }
+            }
         }
     }
 }
