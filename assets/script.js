@@ -220,31 +220,45 @@ class SimuladoApp {
 
     generateExamQuestions() {
         this.examQuestions = [];
-        const questionsPerModule = Math.floor(this.totalQuestions / this.selectedModules.length);
-        const extraQuestions = this.totalQuestions % this.selectedModules.length;
-
-        this.selectedModules.forEach((moduleKey, index) => {
+        // 1. Embaralhar as perguntas de cada módulo selecionado
+        const moduleQuestions = this.selectedModules.map(moduleKey => {
             const module = this.data.modulos[moduleKey];
             const questions = Object.keys(module.perguntas);
-            
-            let questionsToTake = questionsPerModule;
-            if (index < extraQuestions) {
-                questionsToTake += 1;
-            }
-
-            const shuffledQuestions = this.shuffleArray([...questions]);
-            const selectedQuestions = shuffledQuestions.slice(0, Math.min(questionsToTake, questions.length));
-
-            selectedQuestions.forEach(questionKey => {
-                this.examQuestions.push({
-                    moduleKey,
-                    moduleName: module.nome,
-                    questionKey,
-                    question: module.perguntas[questionKey]
-                });
-            });
+            const shuffled = this.shuffleArray([...questions]);
+            return {
+                moduleKey,
+                moduleName: module.nome,
+                questions: shuffled,
+                perguntas: module.perguntas
+            };
         });
 
+        let totalAdded = 0;
+        let exhaustedModules = new Set();
+        let moduleIndex = 0;
+        // 2. Round-robin: enquanto não atingir o total desejado e ainda houver questões
+        while (totalAdded < this.totalQuestions && exhaustedModules.size < moduleQuestions.length) {
+            const mod = moduleQuestions[moduleIndex];
+            if (mod.questions.length > 0) {
+                const questionKey = mod.questions.shift();
+                this.examQuestions.push({
+                    moduleKey: mod.moduleKey,
+                    moduleName: mod.moduleName,
+                    questionKey,
+                    question: mod.perguntas[questionKey]
+                });
+                totalAdded++;
+                if (this.examQuestions.length >= this.totalQuestions) break;
+                if (mod.questions.length === 0) {
+                    exhaustedModules.add(moduleIndex);
+                }
+            } else {
+                exhaustedModules.add(moduleIndex);
+            }
+            moduleIndex = (moduleIndex + 1) % moduleQuestions.length;
+        }
+
+        // Embaralhar a ordem final das questões
         this.examQuestions = this.shuffleArray(this.examQuestions);
         this.userAnswers = new Array(this.examQuestions.length).fill(null);
         this.skippedQuestions = [];
