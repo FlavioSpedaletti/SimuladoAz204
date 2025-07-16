@@ -11456,8 +11456,1149 @@
         },
         "modulo10": {
             "nome": "📨 Soluções baseadas em mensagens",
-            "descricao": "",
-            "perguntas": {}
+            "descricao": "Arquitetura de mensageria assíncrona, incluindo Azure Service Bus, Queue Storage, tópicos, assinaturas e padrões de processamento de mensagens.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "Você está desenvolvendo uma aplicação que precisa garantir a entrega ordenada de mensagens relacionadas a um mesmo usuário. Qual recurso do Azure Service Bus você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Message Sessions"
+                        },
+                        "alternativa2": {
+                            "descricao": "Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "Message Deferral"
+                        },
+                        "alternativa4": {
+                            "descricao": "Auto-forwarding"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Message Sessions permitem garantir a ordem de entrega para mensagens com o mesmo SessionId."
+                },
+                "pergunta2": {
+                    "descricao": "Qual das opções abaixo é verdadeira sobre Azure Storage Queues?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Suportam mensagens maiores que 1 MB"
+                        },
+                        "alternativa2": {
+                            "descricao": "Permitem comunicação entre microserviços com ordering garantido"
+                        },
+                        "alternativa3": {
+                            "descricao": "São mais simples e baratas que o Azure Service Bus"
+                        },
+                        "alternativa4": {
+                            "descricao": "Suportam sessões nativamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Storage Queues são mais baratas e mais simples, mas com recursos limitados em comparação ao Service Bus."
+                },
+                "pergunta3": {
+                    "descricao": "O que acontece quando uma mensagem excede o número máximo de tentativas de entrega em uma Service Bus Queue com Dead-lettering habilitado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela é descartada permanentemente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ela é enviada para a fila de mensagens expiradas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ela é movida para a Dead-letter Queue"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ela é reenviada para o remetente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Após atingir o MaxDeliveryCount, a mensagem é movida automaticamente para a Dead-letter Queue."
+                },
+                "pergunta4": {
+                    "descricao": "Qual mecanismo do Azure Service Bus evita que mensagens duplicadas sejam processadas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Duplicate Detection"
+                        },
+                        "alternativa2": {
+                            "descricao": "PeekLock"
+                        },
+                        "alternativa3": {
+                            "descricao": "SessionId"
+                        },
+                        "alternativa4": {
+                            "descricao": "AutoDeleteOnIdle"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Duplicate Detection usa o MessageId e um tempo de retenção para evitar processamento duplicado."
+                },
+                "pergunta5": {
+                    "descricao": "Qual é o comportamento padrão de uma mensagem enviada para uma Storage Queue se ela não for lida dentro de seu tempo de vida (TTL)?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "É movida para uma Dead-letter Queue"
+                        },
+                        "alternativa2": {
+                            "descricao": "É automaticamente reenviada"
+                        },
+                        "alternativa3": {
+                            "descricao": "É descartada pelo sistema"
+                        },
+                        "alternativa4": {
+                            "descricao": "É marcada como “expirada” e lida posteriormente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Mensagens em Storage Queues são automaticamente descartadas quando atingem seu TTL."
+                },
+                "pergunta6": {
+                    "descricao": "Qual é a principal vantagem do modo de recebimento PeekLock em comparação ao modo ReceiveAndDelete no Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Permite processar mensagens em lote"
+                        },
+                        "alternativa2": {
+                            "descricao": "Garante ordering de mensagens"
+                        },
+                        "alternativa3": {
+                            "descricao": "Permite reprocessar mensagens caso ocorra uma falha"
+                        },
+                        "alternativa4": {
+                            "descricao": "Permite múltiplos leitores simultâneos"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "PeekLock mantém a mensagem na fila até que seja explicitamente completada, permitindo reprocessamento em caso de falha."
+                },
+                "pergunta7": {
+                    "descricao": "Em uma arquitetura distribuída, qual opção é a melhor para reduzir o acoplamento entre sistemas produtores e consumidores de mensagens?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Service Bus Topics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Queue Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "SignalR"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Service Bus Topics permitem pub/sub, desacoplando os produtores dos consumidores."
+                },
+                "pergunta8": {
+                    "descricao": "Qual configuração deve ser habilitada para evitar que mensagens antigas preencham uma Service Bus Queue?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "MaxDeliveryCount"
+                        },
+                        "alternativa2": {
+                            "descricao": "Message TTL"
+                        },
+                        "alternativa3": {
+                            "descricao": "Auto-forwarding"
+                        },
+                        "alternativa4": {
+                            "descricao": "EnablePartitioning"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "TTL (Time To Live) define quanto tempo a mensagem pode viver antes de expirar."
+                },
+                "pergunta9": {
+                    "descricao": "O que o método PeekMessageAsync() faz em Azure Storage Queues?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Remove a mensagem da fila"
+                        },
+                        "alternativa2": {
+                            "descricao": "Lê e bloqueia a mensagem para outros consumidores"
+                        },
+                        "alternativa3": {
+                            "descricao": "Lê a mensagem sem removê-la da fila"
+                        },
+                        "alternativa4": {
+                            "descricao": "Verifica se há mensagens expiradas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "PeekMessageAsync() permite visualizar a mensagem sem removê-la nem alterá-la."
+                },
+                "pergunta10": {
+                    "descricao": "Qual é o tamanho máximo de uma mensagem no Azure Queue Storage?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "64 KB"
+                        },
+                        "alternativa2": {
+                            "descricao": "256 KB"
+                        },
+                        "alternativa3": {
+                            "descricao": "1 MB"
+                        },
+                        "alternativa4": {
+                            "descricao": "5 MB"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A documentação oficial do Azure define o tamanho máximo de uma mensagem como 64 KB."
+                },
+                "pergunta11": {
+                    "descricao": "Você precisa evitar que duas instâncias da aplicação processem a mesma mensagem simultaneamente em uma Service Bus Queue. Qual modo de recebimento deve ser usado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ReceiveAndDelete"
+                        },
+                        "alternativa2": {
+                            "descricao": "BatchMode"
+                        },
+                        "alternativa3": {
+                            "descricao": "PeekLock"
+                        },
+                        "alternativa4": {
+                            "descricao": "Defer"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "PeekLock impede que outras instâncias processem a mesma mensagem durante o período de lock."
+                },
+                "pergunta12": {
+                    "descricao": "Você deseja usar sessões em uma fila do Service Bus. O que precisa ser configurado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "RequiresSession = true"
+                        },
+                        "alternativa2": {
+                            "descricao": "EnableDuplicateDetection = true"
+                        },
+                        "alternativa3": {
+                            "descricao": "EnablePartitioning = true"
+                        },
+                        "alternativa4": {
+                            "descricao": "UsePartitionKey = true"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Para suportar sessões, a fila deve ter RequiresSession habilitado."
+                },
+                "pergunta13": {
+                    "descricao": "Qual propriedade define por quanto tempo uma mensagem pode permanecer na fila antes de expirar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "LockDuration"
+                        },
+                        "alternativa2": {
+                            "descricao": "MaxDeliveryCount"
+                        },
+                        "alternativa3": {
+                            "descricao": "DefaultMessageTimeToLive"
+                        },
+                        "alternativa4": {
+                            "descricao": "SessionTimeout"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "DefaultMessageTimeToLive define o tempo de vida padrão da mensagem na fila."
+                },
+                "pergunta14": {
+                    "descricao": "Você deseja encaminhar automaticamente mensagens de uma fila para outra. Qual recurso do Service Bus deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "EnableSessionForwarding"
+                        },
+                        "alternativa2": {
+                            "descricao": "Auto-forwarding"
+                        },
+                        "alternativa3": {
+                            "descricao": "Queue Redirection"
+                        },
+                        "alternativa4": {
+                            "descricao": "Session Forwarding"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Auto-forwarding permite redirecionar mensagens de uma fila para outra automaticamente."
+                },
+                "pergunta15": {
+                    "descricao": "Qual ferramenta permite inspecionar mensagens em Storage Queues, incluindo conteúdo e status?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Monitor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Service Bus Explorer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Storage Explorer"
+                        },
+                        "alternativa4": {
+                            "descricao": "Log Analytics"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Storage Explorer é a ferramenta oficial para explorar filas de armazenamento."
+                },
+                "pergunta16": {
+                    "descricao": "Você está usando o modo ReceiveAndDelete para receber mensagens. O que acontece se ocorrer uma falha no processamento?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem é reenviada automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem vai para a Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "A mensagem é perdida"
+                        },
+                        "alternativa4": {
+                            "descricao": "O lock é renovado automaticamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "No modo ReceiveAndDelete, a mensagem é removida imediatamente e não pode ser recuperada em caso de falha."
+                },
+                "pergunta17": {
+                    "descricao": "Você deseja garantir a ordem de processamento de mensagens em uma fila particionada. O que é necessário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar PartitionKey igual em todas as mensagens"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ativar Duplicate Detection"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar SessionId"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar Retry Policy"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A única forma de garantir ordering real no Service Bus é usando SessionId com RequiresSession = true."
+                },
+                "pergunta18": {
+                    "descricao": "Você precisa garantir que uma mensagem seja processada uma única vez. Qual serviço usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Service Bus"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Queue Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Notification Hubs"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Service Bus oferece garantias de entrega com suporte a duplicate detection e PeekLock para evitar reprocessamento."
+                },
+                "pergunta19": {
+                    "descricao": "Você deseja permitir múltiplos consumidores em um modelo pub/sub com isolamento. Qual estrutura usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Storage Queue"
+                        },
+                        "alternativa2": {
+                            "descricao": "Service Bus Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "Service Bus Topic"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Grid"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Topics permitem múltiplos assinantes independentes usando Subscriptions."
+                },
+                "pergunta20": {
+                    "descricao": "O que acontece quando o LockDuration expira antes do processamento da mensagem no modo PeekLock?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem é deletada automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem vai para a Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "A mensagem se torna visível novamente para reprocessamento"
+                        },
+                        "alternativa4": {
+                            "descricao": "O lock é automaticamente renovado"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Se o LockDuration expirar sem que a mensagem seja completada, ela volta para a fila para ser lida novamente."
+                },
+                "pergunta21": {
+                    "descricao": "Qual configuração no Azure Service Bus permite dividir mensagens automaticamente entre múltiplas partições físicas para melhorar escalabilidade?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "EnableDuplicateDetection"
+                        },
+                        "alternativa2": {
+                            "descricao": "AutoDeleteOnIdle"
+                        },
+                        "alternativa3": {
+                            "descricao": "EnablePartitioning"
+                        },
+                        "alternativa4": {
+                            "descricao": "LockDuration"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "EnablePartitioning permite distribuir mensagens em partições físicas, aumentando o throughput."
+                },
+                "pergunta22": {
+                    "descricao": "Qual é o comportamento padrão do Azure Service Bus quando uma mensagem não é processada com sucesso e atinge o MaxDeliveryCount?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem é reenviada indefinidamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem é movida para a Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "A mensagem é excluída"
+                        },
+                        "alternativa4": {
+                            "descricao": "A fila inteira é travada"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Quando o número de tentativas excede MaxDeliveryCount, a mensagem vai para a Dead-letter Queue."
+                },
+                "pergunta23": {
+                    "descricao": "Qual propriedade você deve definir ao enviar uma mensagem com SessionId em uma fila com suporte a sessões?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "PartitionKey"
+                        },
+                        "alternativa2": {
+                            "descricao": "CorrelationId"
+                        },
+                        "alternativa3": {
+                            "descricao": "ReplyToSessionId"
+                        },
+                        "alternativa4": {
+                            "descricao": "SessionId"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "A propriedade SessionId é usada para agrupar mensagens em sessões para processamento ordenado."
+                },
+                "pergunta24": {
+                    "descricao": "Para garantir o processamento em ordem de mensagens relacionadas, qual estrutura do Service Bus deve ser usada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Topic com Subscription Rules"
+                        },
+                        "alternativa2": {
+                            "descricao": "Queue com SessionId"
+                        },
+                        "alternativa3": {
+                            "descricao": "Storage Queue com prioridade"
+                        },
+                        "alternativa4": {
+                            "descricao": "Queue com Duplicate Detection"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "SessionId garante ordem de entrega dentro da fila ao usar RequiresSession."
+                },
+                "pergunta25": {
+                    "descricao": "Você está usando Azure Queue Storage e precisa aumentar temporariamente o tempo de invisibilidade de uma mensagem em processamento. Qual método deve ser usado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "UpdateMessageAsync"
+                        },
+                        "alternativa2": {
+                            "descricao": "ExtendMessageLockAsync"
+                        },
+                        "alternativa3": {
+                            "descricao": "RenewLockAsync"
+                        },
+                        "alternativa4": {
+                            "descricao": "UpdateVisibilityTimeoutAsync"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "UpdateMessageAsync permite renovar o pop-receipt e estender o tempo de invisibilidade."
+                },
+                "pergunta26": {
+                    "descricao": "Qual o tempo máximo que uma mensagem pode permanecer invisível em uma Storage Queue após ser lida?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "1 minuto"
+                        },
+                        "alternativa2": {
+                            "descricao": "5 minutos"
+                        },
+                        "alternativa3": {
+                            "descricao": "7 dias"
+                        },
+                        "alternativa4": {
+                            "descricao": "1 hora"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O tempo máximo de invisibilidade (visibility timeout) é de até 7 dias, mas cada operação suporta até 1 minuto por padrão."
+                },
+                "pergunta27": {
+                    "descricao": "Qual dos recursos a seguir não está disponível no Azure Storage Queue, mas está no Azure Service Bus Queue?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Time-to-Live"
+                        },
+                        "alternativa2": {
+                            "descricao": "Dead-lettering"
+                        },
+                        "alternativa3": {
+                            "descricao": "Expiração de mensagens"
+                        },
+                        "alternativa4": {
+                            "descricao": "Retry automático"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Dead-lettering só está disponível no Azure Service Bus, não no Storage Queue."
+                },
+                "pergunta28": {
+                    "descricao": "Qual ferramenta você pode usar para monitorar as mensagens movidas para uma Dead-letter Queue?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Monitor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Service Bus Explorer"
+                        },
+                        "alternativa4": {
+                            "descricao": "Traffic Manager"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Service Bus Explorer permite inspecionar e gerenciar mensagens em Dead-letter Queues."
+                },
+                "pergunta29": {
+                    "descricao": "Ao configurar o Azure Service Bus, qual parâmetro permite garantir que uma fila seja apagada automaticamente após um tempo de inatividade?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AutoDeleteOnIdle"
+                        },
+                        "alternativa2": {
+                            "descricao": "MaxIdleTime"
+                        },
+                        "alternativa3": {
+                            "descricao": "QueueRetention"
+                        },
+                        "alternativa4": {
+                            "descricao": "DeleteWhenEmpty"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "AutoDeleteOnIdle exclui filas que ficam inativas por tempo determinado."
+                },
+                "pergunta30": {
+                    "descricao": "Qual estrutura do Azure Service Bus permite a implementação de pub/sub com múltiplos assinantes?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Queues"
+                        },
+                        "alternativa2": {
+                            "descricao": "Topics"
+                        },
+                        "alternativa3": {
+                            "descricao": "Storage Queues"
+                        },
+                        "alternativa4": {
+                            "descricao": "Partitions"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Topics permitem fan-out com múltiplas subscriptions para modelos pub/sub."
+                },
+                "pergunta31": {
+                    "descricao": "Você deseja aplicar lógica condicional para permitir que uma Subscription de um Topic só receba mensagens com propriedade 'tipo' igual a 'pedido'. O que você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Auto-forwarding"
+                        },
+                        "alternativa2": {
+                            "descricao": "Subscription Rules com filtros"
+                        },
+                        "alternativa3": {
+                            "descricao": "SessionId = 'pedido'"
+                        },
+                        "alternativa4": {
+                            "descricao": "Duplicate Detection"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Subscription Rules com SQL filters permitem entregar mensagens apenas com propriedades específicas."
+                },
+                "pergunta32": {
+                    "descricao": "Você precisa garantir o envio futuro de uma mensagem para que ela só seja processada daqui a 30 minutos. Qual propriedade utilizar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ScheduledEnqueueTimeUtc"
+                        },
+                        "alternativa2": {
+                            "descricao": "TimeToLive"
+                        },
+                        "alternativa3": {
+                            "descricao": "VisibilityTimeout"
+                        },
+                        "alternativa4": {
+                            "descricao": "DeferUntil"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "ScheduledEnqueueTimeUtc agenda a mensagem para ficar visível apenas no horário definido."
+                },
+                "pergunta33": {
+                    "descricao": "Em um processamento de mensagens com Azure Service Bus, qual mecanismo pode ser usado para adiar o processamento de uma mensagem sem perdê-la?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Retry Policy"
+                        },
+                        "alternativa2": {
+                            "descricao": "Auto-forwarding"
+                        },
+                        "alternativa3": {
+                            "descricao": "Defer()"
+                        },
+                        "alternativa4": {
+                            "descricao": "Dead-lettering"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Defer() permite adiar o processamento da mensagem mantendo-a acessível via sequence number."
+                },
+                "pergunta34": {
+                    "descricao": "Você deseja que uma fila seja excluída automaticamente após 1 hora sem uso. Qual valor deve ser definido para AutoDeleteOnIdle?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "5 minutos"
+                        },
+                        "alternativa2": {
+                            "descricao": "30 minutos"
+                        },
+                        "alternativa3": {
+                            "descricao": "1 hora"
+                        },
+                        "alternativa4": {
+                            "descricao": "6 horas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "AutoDeleteOnIdle define um tempo de inatividade após o qual a fila é excluída automaticamente."
+                },
+                "pergunta35": {
+                    "descricao": "O que acontece com uma mensagem marcada como ‘deferred’ no Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela não será entregue automaticamente e deve ser recuperada manualmente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ela será excluída após o LockDuration"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ela será movida para a Dead-letter Queue"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ela será automaticamente reenviada"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Mensagens deferidas não são entregues automaticamente; precisam ser buscadas manualmente com seu SequenceNumber."
+                },
+                "pergunta36": {
+                    "descricao": "Você deseja rastrear mensagens entre múltiplos serviços para análise e correlação. Qual propriedade usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "SessionId"
+                        },
+                        "alternativa2": {
+                            "descricao": "CorrelationId"
+                        },
+                        "alternativa3": {
+                            "descricao": "MessageId"
+                        },
+                        "alternativa4": {
+                            "descricao": "ReplyTo"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "CorrelationId é usado para rastrear o fluxo de uma mensagem entre sistemas."
+                },
+                "pergunta37": {
+                    "descricao": "Qual é o comportamento do Azure Queue Storage quando uma mensagem é lida, mas não deletada dentro do tempo de visibilidade?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem é excluída"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem é movida para uma Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "A mensagem volta a ficar visível na fila"
+                        },
+                        "alternativa4": {
+                            "descricao": "A mensagem é deferida"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Se não for deletada após o tempo de invisibilidade, a mensagem volta a ficar disponível na fila."
+                },
+                "pergunta38": {
+                    "descricao": "Você está implementando um consumidor que deve processar mensagens ordenadas por cliente. Qual propriedade usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "PartitionKey"
+                        },
+                        "alternativa2": {
+                            "descricao": "CorrelationId"
+                        },
+                        "alternativa3": {
+                            "descricao": "SessionId"
+                        },
+                        "alternativa4": {
+                            "descricao": "ReplyToSessionId"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "SessionId permite agrupar e processar mensagens em ordem por chave lógica (ex: cliente)."
+                },
+                "pergunta39": {
+                    "descricao": "Você deseja permitir que diferentes serviços recebam cópias da mesma mensagem com comportamentos distintos. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Queue"
+                        },
+                        "alternativa2": {
+                            "descricao": "Topic com múltiplas Subscriptions"
+                        },
+                        "alternativa3": {
+                            "descricao": "Batching"
+                        },
+                        "alternativa4": {
+                            "descricao": "Partitioned Queue"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Topics com múltiplas subscriptions permitem entrega de cópias da mesma mensagem a diferentes consumidores."
+                },
+                "pergunta40": {
+                    "descricao": "O que acontece com uma mensagem no Service Bus após o LockDuration expirar e ela não for completada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem é automaticamente deletada"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem é enviada para a Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "A mensagem volta para a fila para nova tentativa de entrega"
+                        },
+                        "alternativa4": {
+                            "descricao": "O lock é renovado indefinidamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Ao expirar o lock sem completar, a mensagem volta à fila e pode ser reprocessada."
+                },
+                "pergunta41": {
+                    "descricao": "O que acontece com uma mensagem no Azure Service Bus se o LockDuration expirar sem que ela seja completada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela é deletada automaticamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ela vai para a Dead-letter Queue"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ela se torna visível novamente na fila"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ela é deferida"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Após o LockDuration expirar, a mensagem volta a ficar visível para reprocessamento."
+                },
+                "pergunta42": {
+                    "descricao": "Qual das opções abaixo NÃO é suportada pelo Azure Storage Queue?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Recebimento de mensagens em lote"
+                        },
+                        "alternativa2": {
+                            "descricao": "Peek de mensagens"
+                        },
+                        "alternativa3": {
+                            "descricao": "Agendamento de mensagens para o futuro"
+                        },
+                        "alternativa4": {
+                            "descricao": "DeleteMessageAsync"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Storage Queue não possui agendamento nativo como o Service Bus (ScheduledEnqueueTimeUtc)."
+                },
+                "pergunta43": {
+                    "descricao": "Você deseja que uma fila seja excluída automaticamente após ficar inativa por um período. Qual propriedade usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "EnablePartitioning"
+                        },
+                        "alternativa2": {
+                            "descricao": "AutoForward"
+                        },
+                        "alternativa3": {
+                            "descricao": "AutoDeleteOnIdle"
+                        },
+                        "alternativa4": {
+                            "descricao": "EnableSessions"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "AutoDeleteOnIdle exclui a fila automaticamente após inatividade contínua."
+                },
+                "pergunta44": {
+                    "descricao": "Você deseja criar múltiplas subscriptions de um mesmo tópico, cada uma com filtros distintos. Qual estrutura usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Queues com SessionId"
+                        },
+                        "alternativa2": {
+                            "descricao": "Queue com Partitions"
+                        },
+                        "alternativa3": {
+                            "descricao": "Topic com Subscription Rules"
+                        },
+                        "alternativa4": {
+                            "descricao": "Queue com AutoForward"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Subscription Rules permitem filtros personalizados para cada subscription em um tópico."
+                },
+                "pergunta45": {
+                    "descricao": "No Azure Storage Queue, qual método deve ser usado para excluir uma mensagem da fila após o processamento?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "DeleteMessageAsync"
+                        },
+                        "alternativa2": {
+                            "descricao": "CompleteAsync"
+                        },
+                        "alternativa3": {
+                            "descricao": "RemoveAsync"
+                        },
+                        "alternativa4": {
+                            "descricao": "AcknowledgeMessage"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Em Storage Queue, o método para remoção de mensagens é DeleteMessageAsync(messageId, popReceipt)."
+                },
+                "pergunta46": {
+                    "descricao": "O que é Dead-letter Queue no contexto do Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Uma fila temporária para mensagens agendadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Uma fila de controle que armazena logs"
+                        },
+                        "alternativa3": {
+                            "descricao": "Uma fila especial para mensagens com falha de processamento"
+                        },
+                        "alternativa4": {
+                            "descricao": "Uma fila para mensagens expiradas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Dead-letter Queue armazena mensagens que não puderam ser entregues ou processadas corretamente."
+                },
+                "pergunta47": {
+                    "descricao": "Você deseja rastrear mensagens entre serviços em uma arquitetura distribuída. Qual propriedade utilizar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "SessionId"
+                        },
+                        "alternativa2": {
+                            "descricao": "ReplyTo"
+                        },
+                        "alternativa3": {
+                            "descricao": "CorrelationId"
+                        },
+                        "alternativa4": {
+                            "descricao": "PartitionKey"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "CorrelationId ajuda a rastrear o caminho completo da mensagem entre serviços."
+                },
+                "pergunta48": {
+                    "descricao": "O que o recurso Duplicate Detection do Azure Service Bus faz?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Remove mensagens duplicadas de forma automática da fila"
+                        },
+                        "alternativa2": {
+                            "descricao": "Deleta mensagens já processadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Evita que mensagens com mesmo MessageId sejam entregues novamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Reenvia mensagens com falha"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Duplicate Detection usa o MessageId para ignorar mensagens duplicadas em um intervalo de tempo."
+                },
+                "pergunta49": {
+                    "descricao": "O que o método PeekLock faz no Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Deleta a mensagem da fila"
+                        },
+                        "alternativa2": {
+                            "descricao": "Lê a mensagem sem travar o processamento"
+                        },
+                        "alternativa3": {
+                            "descricao": "Lê e bloqueia a mensagem temporariamente até completá-la"
+                        },
+                        "alternativa4": {
+                            "descricao": "Lê a mensagem e a reenfileira automaticamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "PeekLock permite processar mensagens com segurança e explicitamente marcá-las como completadas."
+                },
+                "pergunta50": {
+                    "descricao": "Você deseja distribuir mensagens para diferentes serviços com base em regras. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Queue Storage"
+                        },
+                        "alternativa2": {
+                            "descricao": "Topic + Subscriptions com filtros"
+                        },
+                        "alternativa3": {
+                            "descricao": "Service Bus Queue com AutoForward"
+                        },
+                        "alternativa4": {
+                            "descricao": "SessionId com PartitionKey"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Topics com múltiplas subscriptions e filtros permitem distribuir mensagens para serviços distintos com base em regras."
+                },
+                "pergunta51": {
+                    "descricao": "Como criar diferentes lógicas de entrega para cada consumidor em um tópico do Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criando várias filas independentes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criando múltiplas subscriptions com regras"
+                        },
+                        "alternativa3": {
+                            "descricao": "Utilizando SessionId dinâmico"
+                        },
+                        "alternativa4": {
+                            "descricao": "Utilizando BatchMode"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "As subscriptions com filtros permitem segmentar as mensagens com base em propriedades personalizadas."
+                },
+                "pergunta52": {
+                    "descricao": "Você está usando batching no Service Bus. Qual limitação deve ser considerada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Máximo de 1024 mensagens por lote"
+                        },
+                        "alternativa2": {
+                            "descricao": "Batch não suporta mensagens agendadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "O tamanho total do batch não pode exceder o limite de 256 KB"
+                        },
+                        "alternativa4": {
+                            "descricao": "Batch só funciona com sessões habilitadas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O batch inteiro não pode exceder o limite de tamanho de 256 KB."
+                },
+                "pergunta53": {
+                    "descricao": "Você está usando uma fila particionada. O que pode ocorrer com a ordem das mensagens?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A ordem pode ser perdida se SessionId não for usado"
+                        },
+                        "alternativa2": {
+                            "descricao": "A ordem é sempre garantida"
+                        },
+                        "alternativa3": {
+                            "descricao": "A fila será automaticamente convertida em não particionada"
+                        },
+                        "alternativa4": {
+                            "descricao": "A fila será descartada após 24h"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Partições paralelizam o envio e leitura, então a ordem se perde se não usar SessionId."
+                },
+                "pergunta54": {
+                    "descricao": "Você deseja que todas as mensagens de uma fila sejam encaminhadas para outra fila. Qual propriedade usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ForwardTo"
+                        },
+                        "alternativa2": {
+                            "descricao": "PartitionKey"
+                        },
+                        "alternativa3": {
+                            "descricao": "ReplyToSessionId"
+                        },
+                        "alternativa4": {
+                            "descricao": "Duplicate Detection"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "ForwardTo permite redirecionar automaticamente as mensagens recebidas para outra entidade."
+                },
+                "pergunta55": {
+                    "descricao": "Você quer limitar o número de tentativas antes que a mensagem vá para a Dead-letter Queue. Qual propriedade configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "RetryCount"
+                        },
+                        "alternativa2": {
+                            "descricao": "VisibilityTimeout"
+                        },
+                        "alternativa3": {
+                            "descricao": "MaxDeliveryCount"
+                        },
+                        "alternativa4": {
+                            "descricao": "LockDuration"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "MaxDeliveryCount define quantas tentativas serão feitas antes de mover a mensagem para a DLQ."
+                },
+                "pergunta56": {
+                    "descricao": "Qual método remove uma mensagem do Azure Service Bus após processamento bem-sucedido?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AbandonMessageAsync()"
+                        },
+                        "alternativa2": {
+                            "descricao": "CompleteMessageAsync()"
+                        },
+                        "alternativa3": {
+                            "descricao": "DeferMessageAsync()"
+                        },
+                        "alternativa4": {
+                            "descricao": "DeleteMessageAsync()"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "CompleteMessageAsync sinaliza que a mensagem foi processada com sucesso e pode ser removida da fila."
+                },
+                "pergunta57": {
+                    "descricao": "O que acontece com uma mensagem deferida no Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ela é excluída automaticamente após 5 minutos"
+                        },
+                        "alternativa2": {
+                            "descricao": "Ela permanece invisível até ser recuperada por SequenceNumber"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ela é movida para a Dead-letter Queue"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ela será reenviada automaticamente após 1 tentativa"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Mensagens deferidas não são processadas automaticamente; devem ser recuperadas manualmente."
+                },
+                "pergunta58": {
+                    "descricao": "O que acontece se você enviar uma mensagem com SessionId para uma fila que não está configurada com RequiresSession?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A mensagem será processada normalmente"
+                        },
+                        "alternativa2": {
+                            "descricao": "A mensagem será roteada automaticamente para outra fila"
+                        },
+                        "alternativa3": {
+                            "descricao": "O envio falhará com erro"
+                        },
+                        "alternativa4": {
+                            "descricao": "A mensagem será deferida automaticamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Se RequiresSession não estiver habilitado, o envio da mensagem com SessionId falha."
+                },
+                "pergunta59": {
+                    "descricao": "Você deseja visualizar o conteúdo da próxima mensagem em uma Storage Queue sem removê-la. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ReceiveMessageAsync()"
+                        },
+                        "alternativa2": {
+                            "descricao": "Defer()"
+                        },
+                        "alternativa3": {
+                            "descricao": "PeekMessageAsync()"
+                        },
+                        "alternativa4": {
+                            "descricao": "PopMessageAsync()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "PeekMessageAsync lê a próxima mensagem sem removê-la da fila nem alterar o pop-receipt."
+                },
+                "pergunta60": {
+                    "descricao": "Você quer agendar uma mensagem para ser processada no futuro. Qual propriedade deve usar no Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "DeferTimeUtc"
+                        },
+                        "alternativa2": {
+                            "descricao": "ExpiryTime"
+                        },
+                        "alternativa3": {
+                            "descricao": "ScheduledEnqueueTimeUtc"
+                        },
+                        "alternativa4": {
+                            "descricao": "TimeToLive"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "ScheduledEnqueueTimeUtc permite agendar a visibilidade da mensagem para o futuro."
+                }
+            }
         },
         "modulo11": {
             "nome": "📊 Application Insights",
