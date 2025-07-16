@@ -60,6 +60,9 @@
     <meta name="msapplication-TileImage" content="assets/ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-27VY8F43YN"></script>
     <script>
@@ -211,8 +214,63 @@
         </div>
     </div>
 
+    <!-- Indicadores de Status de Conexão -->
+    <div id="offline-indicator" class="offline-indicator">
+        Modo Offline - Dados salvos localmente
+    </div>
+    <div id="online-indicator" class="online-indicator">
+        Conectado - Dados atualizados
+    </div>
+
     <script>
         document.write(`<script src="assets/script.js?v=${timestamp}"><\/script>`);
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    // Limpar service workers antigos se houver problema
+                    const existingRegistration = await navigator.serviceWorker.getRegistration();
+                    if (existingRegistration) {
+                        console.log('Service Worker existente encontrado, atualizando...');
+                    }
+
+                    const registration = await navigator.serviceWorker.register('/sw.js');
+                    console.log('✅ Service Worker registrado com sucesso:', registration.scope);
+                    
+                    registration.addEventListener('updatefound', () => {
+                        console.log('🔄 Nova versão do Service Worker encontrada');
+                        const newWorker = registration.installing;
+                        if (newWorker) {
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    if (confirm('Nova versão disponível! Deseja atualizar?')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    // Forçar atualização do Service Worker
+                    registration.update();
+                    
+                } catch (error) {
+                    console.error('❌ Falha ao registrar Service Worker:', error);
+                    console.error('Detalhes do erro:', error.message);
+                }
+            });
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                console.log('🔄 Service Worker controller mudou, recarregando página');
+                window.location.reload();
+            });
+        } else {
+            console.warn('⚠️ Service Worker não é suportado neste navegador');
+        }
     </script>
 </body>
 </html>

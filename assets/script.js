@@ -32,6 +32,7 @@ class SimuladoApp {
         await this.loadData();
         this.setupEventListeners();
         this.renderModules();
+        this.setupOfflineDetection();
     }
 
     async loadData() {
@@ -1128,6 +1129,50 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
         const savedMode = localStorage.getItem('chart_view_mode');
         if (savedMode && ['cards', 'minimal', 'table'].includes(savedMode)) {
             this.setChartViewMode(savedMode);
+        }
+    }
+
+    setupOfflineDetection() {
+        const offlineIndicator = document.getElementById('offline-indicator');
+        const onlineIndicator = document.getElementById('online-indicator');
+        let isInitialLoad = true;
+
+        const showOfflineIndicator = () => {
+            offlineIndicator.classList.add('show');
+            onlineIndicator.classList.remove('show');
+            
+            setTimeout(() => {
+                if (!navigator.onLine) {
+                    offlineIndicator.classList.remove('show');
+                }
+            }, 5000);
+        };
+
+        const showOnlineIndicator = () => {
+            if (!isInitialLoad) {
+                onlineIndicator.classList.add('show');
+                offlineIndicator.classList.remove('show');
+                
+                setTimeout(() => {
+                    onlineIndicator.classList.remove('show');
+                }, 3000);
+            }
+            isInitialLoad = false;
+        };
+
+        const updateConnectionStatus = () => {
+            if (navigator.onLine) {
+                showOnlineIndicator();
+            } else {
+                showOfflineIndicator();
+            }
+        };
+
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        if (!navigator.onLine) {
+            showOfflineIndicator();
         }
     }
 }

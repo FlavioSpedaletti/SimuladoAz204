@@ -9161,6 +9161,2308 @@
                     "explicacao": "Managed Identities eliminam a necessidade de gerenciar credenciais manualmente."
                 }
             }
+        },
+        "modulo8": {
+            "nome": "🔗 Gerenciamento de APIs",
+            "descricao": "Gerenciamento, publicação, proteção e monitoramento de APIs usando Azure API Management.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "O que é o Azure API Management?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Uma solução para armazenar dados relacionais."
+                        },
+                        "alternativa2": {
+                            "descricao": "Um serviço para hospedar funções serverless."
+                        },
+                        "alternativa3": {
+                            "descricao": "Uma plataforma para gerenciar, proteger e escalar APIs."
+                        },
+                        "alternativa4": {
+                            "descricao": "Um sistema de monitoramento de redes."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Azure API Management permite publicar, proteger, transformar e monitorar APIs com segurança e escala."
+                },
+                "pergunta2": {
+                    "descricao": "Qual componente do API Management atua como ponto de entrada para os consumidores?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Management Plane"
+                        },
+                        "alternativa2": {
+                            "descricao": "Developer Portal"
+                        },
+                        "alternativa3": {
+                            "descricao": "API Gateway"
+                        },
+                        "alternativa4": {
+                            "descricao": "Subscription Service"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O API Gateway recebe requisições dos consumidores e aplica políticas de controle e roteamento para o backend."
+                },
+                "pergunta3": {
+                    "descricao": "Qual política você usaria para limitar o número de chamadas por segundo?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "validate-jwt"
+                        },
+                        "alternativa2": {
+                            "descricao": "rate-limit"
+                        },
+                        "alternativa3": {
+                            "descricao": "quota"
+                        },
+                        "alternativa4": {
+                            "descricao": "log-to-eventhub"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A política rate-limit é usada para limitar o número de chamadas em um determinado intervalo de tempo."
+                },
+                "pergunta4": {
+                    "descricao": "O Developer Portal do API Management é usado para:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Configurar políticas internas de segurança."
+                        },
+                        "alternativa2": {
+                            "descricao": "Consumidores explorarem e testarem APIs disponíveis."
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerenciar grupos de usuários internos."
+                        },
+                        "alternativa4": {
+                            "descricao": "Publicar eventos para Event Grid."
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O Developer Portal permite que consumidores de APIs explorem a documentação, testem chamadas e gerenciem suas subscriptions."
+                },
+                "pergunta5": {
+                    "descricao": "Qual elemento permite agrupar múltiplas APIs para controle de acesso e assinatura?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Groups"
+                        },
+                        "alternativa2": {
+                            "descricao": "Users"
+                        },
+                        "alternativa3": {
+                            "descricao": "Products"
+                        },
+                        "alternativa4": {
+                            "descricao": "Policies"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Products no API Management agrupam uma ou mais APIs e são usados para definir requisitos como assinatura, aprovação e limite de uso."
+                },
+                "pergunta6": {
+                    "descricao": "Qual política é usada para validar tokens de acesso do tipo JWT?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "validate-key"
+                        },
+                        "alternativa2": {
+                            "descricao": "check-token"
+                        },
+                        "alternativa3": {
+                            "descricao": "validate-jwt"
+                        },
+                        "alternativa4": {
+                            "descricao": "require-authentication"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A política validate-jwt permite validar tokens JWT emitidos por provedores de identidade configurados."
+                },
+                "pergunta7": {
+                    "descricao": "Qual desses componentes permite a um usuário criar e testar APIs publicadas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "API Gateway"
+                        },
+                        "alternativa2": {
+                            "descricao": "Developer Portal"
+                        },
+                        "alternativa3": {
+                            "descricao": "Management Plane"
+                        },
+                        "alternativa4": {
+                            "descricao": "Publisher Portal"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O Developer Portal é voltado para consumidores de APIs, permitindo explorar, testar e gerenciar subscriptions."
+                },
+                "pergunta8": {
+                    "descricao": "Qual é o objetivo da política set-header?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Modificar ou adicionar cabeçalhos na requisição ou resposta."
+                        },
+                        "alternativa2": {
+                            "descricao": "Validar o valor de headers obrigatórios."
+                        },
+                        "alternativa3": {
+                            "descricao": "Bloquear headers não autorizados."
+                        },
+                        "alternativa4": {
+                            "descricao": "Criptografar os headers enviados ao backend."
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A política set-header permite adicionar, substituir ou remover valores de cabeçalhos HTTP."
+                },
+                "pergunta9": {
+                    "descricao": "Uma Subscription Key é necessária quando:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A API exige OAuth."
+                        },
+                        "alternativa2": {
+                            "descricao": "O Product está configurado para 'Require subscription'."
+                        },
+                        "alternativa3": {
+                            "descricao": "A API está protegida por validate-jwt."
+                        },
+                        "alternativa4": {
+                            "descricao": "O Product é do tipo interno."
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Quando um Product exige assinatura, a Subscription Key deve ser enviada nas chamadas à API."
+                },
+                "pergunta10": {
+                    "descricao": "Você deseja limitar o número total de chamadas em um período fixo. Qual política usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "rate-limit"
+                        },
+                        "alternativa2": {
+                            "descricao": "quota"
+                        },
+                        "alternativa3": {
+                            "descricao": "limit-per-user"
+                        },
+                        "alternativa4": {
+                            "descricao": "throttle"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A política quota impõe um limite fixo de chamadas em um período (ex: 1000 por dia)."
+                },
+                "pergunta11": {
+                    "descricao": "Qual grupo padrão dá acesso a todos os desenvolvedores no Developer Portal?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Administrators"
+                        },
+                        "alternativa2": {
+                            "descricao": "Publishers"
+                        },
+                        "alternativa3": {
+                            "descricao": "Guests"
+                        },
+                        "alternativa4": {
+                            "descricao": "Developers"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O grupo 'Developers' é o padrão atribuído a novos usuários do Developer Portal."
+                },
+                "pergunta12": {
+                    "descricao": "Uma API em um Product com 'Require subscription' está recebendo chamadas sem chave. O que ocorre?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A requisição é aceita normalmente."
+                        },
+                        "alternativa2": {
+                            "descricao": "A chave é gerada automaticamente."
+                        },
+                        "alternativa3": {
+                            "descricao": "A requisição falha com erro 401 ou 403."
+                        },
+                        "alternativa4": {
+                            "descricao": "O Product ignora essa configuração por padrão."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Se a chave não for enviada e o Product exigir assinatura, a chamada falha com erro de autenticação."
+                },
+                "pergunta13": {
+                    "descricao": "Qual comando do Azure CLI lista os APIs existentes em uma instância de API Management?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az apim api list"
+                        },
+                        "alternativa2": {
+                            "descricao": "az apim api show"
+                        },
+                        "alternativa3": {
+                            "descricao": "az apim list"
+                        },
+                        "alternativa4": {
+                            "descricao": "az apim show-apis"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O comando correto para listar APIs é az apim api list."
+                },
+                "pergunta14": {
+                    "descricao": "Qual destas políticas é usada para interromper a execução e retornar uma resposta customizada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "abort-request"
+                        },
+                        "alternativa2": {
+                            "descricao": "redirect"
+                        },
+                        "alternativa3": {
+                            "descricao": "log-to-eventhub"
+                        },
+                        "alternativa4": {
+                            "descricao": "return-response"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "A política return-response encerra o pipeline e retorna a resposta informada imediatamente."
+                },
+                "pergunta15": {
+                    "descricao": "Você quer adicionar logging para requisições em uma API específica. O que você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Policy"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Insights + log-to-applicationinsights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Monitor Metrics"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Grid"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Para registrar logs detalhados, usa-se a política log-to-applicationinsights com Application Insights configurado."
+                },
+                "pergunta16": {
+                    "descricao": "Qual elemento do API Management define se um grupo pode acessar determinado Product?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Subscription"
+                        },
+                        "alternativa2": {
+                            "descricao": "Group Assignment"
+                        },
+                        "alternativa3": {
+                            "descricao": "Access Rule"
+                        },
+                        "alternativa4": {
+                            "descricao": "Permission Binding"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Grupos são associados a Products por meio de permissões que controlam o acesso ao conteúdo."
+                },
+                "pergunta17": {
+                    "descricao": "O que o campo 'subscriptionRequired' faz em um Product?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Garante que o Product esteja visível publicamente."
+                        },
+                        "alternativa2": {
+                            "descricao": "Exige uma chave de assinatura para acessar APIs associadas."
+                        },
+                        "alternativa3": {
+                            "descricao": "Habilita autenticação OAuth obrigatória."
+                        },
+                        "alternativa4": {
+                            "descricao": "Define se a API será protegida por CORS."
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Quando subscriptionRequired está ativado, todas as chamadas às APIs precisam da chave da assinatura (subscription key)."
+                },
+                "pergunta18": {
+                    "descricao": "Uma política quota está configurada com 100 chamadas por dia. O que acontece após atingir o limite?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "As chamadas continuam, mas com aviso."
+                        },
+                        "alternativa2": {
+                            "descricao": "As chamadas são redirecionadas para outro endpoint."
+                        },
+                        "alternativa3": {
+                            "descricao": "As chamadas são bloqueadas até o reset da cota."
+                        },
+                        "alternativa4": {
+                            "descricao": "As chamadas são colocadas em fila."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Após atingir a cota diária, as requisições são bloqueadas com erro 429 até o ciclo ser renovado."
+                },
+                "pergunta19": {
+                    "descricao": "Onde você configura o back-end real que será chamado por uma API?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "No Developer Portal"
+                        },
+                        "alternativa2": {
+                            "descricao": "Na Subscription"
+                        },
+                        "alternativa3": {
+                            "descricao": "Na política set-backend-service"
+                        },
+                        "alternativa4": {
+                            "descricao": "Na definição do grupo"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A política set-backend-service define para qual endpoint HTTP a chamada será roteada."
+                },
+                "pergunta20": {
+                    "descricao": "Você deseja aplicar uma política a todas as operações de uma API. Onde você deve configurá-la?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "No nível do Product"
+                        },
+                        "alternativa2": {
+                            "descricao": "No nível da API"
+                        },
+                        "alternativa3": {
+                            "descricao": "No nível da operação individual"
+                        },
+                        "alternativa4": {
+                            "descricao": "No Developer Portal"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Políticas no nível da API se aplicam a todas as suas operações, a menos que sejam sobrescritas localmente."
+                },
+                "pergunta21": {
+                    "descricao": "Qual política é usada para bloquear chamadas com base em endereço IP?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ip-filter"
+                        },
+                        "alternativa2": {
+                            "descricao": "ip-whitelist"
+                        },
+                        "alternativa3": {
+                            "descricao": "check-ip"
+                        },
+                        "alternativa4": {
+                            "descricao": "validate-client-ip"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A política ip-filter permite permitir ou bloquear chamadas com base no endereço IP de origem."
+                },
+                "pergunta22": {
+                    "descricao": "Qual ferramenta é recomendada para personalizar profundamente o Developer Portal?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "React Admin"
+                        },
+                        "alternativa2": {
+                            "descricao": "Visual Studio Code"
+                        },
+                        "alternativa3": {
+                            "descricao": "Swagger Editor"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure API Studio"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O novo Developer Portal é baseado em React e pode ser customizado usando ferramentas React-friendly como React Admin."
+                },
+                "pergunta23": {
+                    "descricao": "Qual comando do Azure CLI exporta uma API para um arquivo OpenAPI?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "az apim api export-definition"
+                        },
+                        "alternativa2": {
+                            "descricao": "az apim api export"
+                        },
+                        "alternativa3": {
+                            "descricao": "az apim export-api"
+                        },
+                        "alternativa4": {
+                            "descricao": "az apim api save-openapi"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O comando correto é az apim api export, que permite exportar APIs para OpenAPI ou WSDL."
+                },
+                "pergunta24": {
+                    "descricao": "Ao usar policies para manipular chamadas, qual política define variáveis temporárias?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "context-variable"
+                        },
+                        "alternativa2": {
+                            "descricao": "declare-variable"
+                        },
+                        "alternativa3": {
+                            "descricao": "set-variable"
+                        },
+                        "alternativa4": {
+                            "descricao": "define-variable"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "set-variable define variáveis dentro do escopo da execução da política."
+                },
+                "pergunta25": {
+                    "descricao": "Qual a função do Azure Monitor em relação ao API Management?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Coleta métricas e logs nativos da plataforma."
+                        },
+                        "alternativa2": {
+                            "descricao": "Gerencia assinaturas de usuários."
+                        },
+                        "alternativa3": {
+                            "descricao": "Executa políticas de segurança."
+                        },
+                        "alternativa4": {
+                            "descricao": "Controla o fluxo de requisições entre APIs."
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O Azure Monitor fornece telemetria nativa da plataforma, como latência, contagem de chamadas, erros, etc."
+                },
+                "pergunta26": {
+                    "descricao": "Como você restringe o uso de uma API a um horário específico?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "time-restriction"
+                        },
+                        "alternativa2": {
+                            "descricao": "check-header"
+                        },
+                        "alternativa3": {
+                            "descricao": "verify-schedule"
+                        },
+                        "alternativa4": {
+                            "descricao": "validate-time"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Você pode usar check-header junto com lógica personalizada para restringir acesso por data/hora com base em headers ou context variables."
+                },
+                "pergunta27": {
+                    "descricao": "O que é necessário para rastrear correlações entre frontend e backend?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Correlation ID"
+                        },
+                        "alternativa2": {
+                            "descricao": "Subscription Key"
+                        },
+                        "alternativa3": {
+                            "descricao": "Access Token"
+                        },
+                        "alternativa4": {
+                            "descricao": "Backend Policy"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A inclusão de um Correlation ID permite rastrear a requisição ponta a ponta entre APIM e o backend."
+                },
+                "pergunta28": {
+                    "descricao": "Qual dessas opções permite limitar chamadas por usuário individual?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "rate-limit"
+                        },
+                        "alternativa2": {
+                            "descricao": "rate-limit-by-key"
+                        },
+                        "alternativa3": {
+                            "descricao": "quota"
+                        },
+                        "alternativa4": {
+                            "descricao": "user-throttle"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A política rate-limit-by-key permite definir um limite por chave única, como a Subscription Key de cada usuário."
+                },
+                "pergunta29": {
+                    "descricao": "Você precisa reescrever o caminho da URL antes de enviar ao backend. Qual política usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "rewrite-path"
+                        },
+                        "alternativa2": {
+                            "descricao": "rewrite-uri"
+                        },
+                        "alternativa3": {
+                            "descricao": "set-path"
+                        },
+                        "alternativa4": {
+                            "descricao": "replace-uri"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "rewrite-uri é usada para alterar o caminho da URL antes do encaminhamento para o backend."
+                },
+                "pergunta30": {
+                    "descricao": "Como proteger uma API contra uso excessivo por um único IP?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "check-ip"
+                        },
+                        "alternativa2": {
+                            "descricao": "ip-filter + rate-limit-by-key (baseado em IP)"
+                        },
+                        "alternativa3": {
+                            "descricao": "require-jwt"
+                        },
+                        "alternativa4": {
+                            "descricao": "log-to-applicationinsights"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Com ip-filter você controla o IP permitido e com rate-limit-by-key usando o IP como chave, limita chamadas por IP."
+                },
+                "pergunta31": {
+                    "descricao": "O que o Management Plane permite fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Gerenciar APIs, usuários, products e policies via portal ou script."
+                        },
+                        "alternativa2": {
+                            "descricao": "Roteia chamadas de APIs para o backend."
+                        },
+                        "alternativa3": {
+                            "descricao": "Controla acesso ao Developer Portal."
+                        },
+                        "alternativa4": {
+                            "descricao": "Acompanha logs em tempo real."
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O Management Plane é o plano de gerenciamento da instância, usado para configurar tudo via Portal, ARM, Bicep, CLI ou REST API."
+                },
+                "pergunta32": {
+                    "descricao": "Para habilitar rastreabilidade e logs detalhados, qual política é essencial?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "log-to-applicationinsights"
+                        },
+                        "alternativa2": {
+                            "descricao": "log-to-eventhub"
+                        },
+                        "alternativa3": {
+                            "descricao": "monitor-usage"
+                        },
+                        "alternativa4": {
+                            "descricao": "send-log"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Essa política envia dados customizados para o Application Insights, como headers, claims e variáveis de contexto."
+                },
+                "pergunta33": {
+                    "descricao": "Uma API precisa verificar se um header personalizado existe. Qual política usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "check-header"
+                        },
+                        "alternativa2": {
+                            "descricao": "require-header"
+                        },
+                        "alternativa3": {
+                            "descricao": "validate-header"
+                        },
+                        "alternativa4": {
+                            "descricao": "inspect-header"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "check-header avalia se um header existe e permite aplicar condições baseadas nisso."
+                },
+                "pergunta34": {
+                    "descricao": "Como você adiciona uma API ao Developer Portal?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Associando-a a um Product"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criando uma Policy de publicação"
+                        },
+                        "alternativa3": {
+                            "descricao": "Habilitando visibilidade pública"
+                        },
+                        "alternativa4": {
+                            "descricao": "Criando uma role no portal"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Uma API se torna visível no Developer Portal quando está associada a um Product que tenha visibilidade habilitada."
+                },
+                "pergunta35": {
+                    "descricao": "Você deseja substituir a URL base da chamada recebida. Qual política usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "rewrite-uri"
+                        },
+                        "alternativa2": {
+                            "descricao": "set-backend-url"
+                        },
+                        "alternativa3": {
+                            "descricao": "set-path"
+                        },
+                        "alternativa4": {
+                            "descricao": "redirect-uri"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "A rewrite-uri modifica a URL do request antes do encaminhamento."
+                },
+                "pergunta36": {
+                    "descricao": "Qual política define o serviço de backend de uma API?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "set-backend-service"
+                        },
+                        "alternativa2": {
+                            "descricao": "define-backend-url"
+                        },
+                        "alternativa3": {
+                            "descricao": "set-uri"
+                        },
+                        "alternativa4": {
+                            "descricao": "rewrite-backend"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "set-backend-service define o endpoint real de backend para onde as chamadas serão encaminhadas."
+                },
+                "pergunta37": {
+                    "descricao": "Você precisa expor APIs internas via rede privada no Azure. Qual recurso usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ExpressRoute"
+                        },
+                        "alternativa2": {
+                            "descricao": "VNet Integration + Internal Mode"
+                        },
+                        "alternativa3": {
+                            "descricao": "Custom DNS"
+                        },
+                        "alternativa4": {
+                            "descricao": "IP Filtering"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A integração com VNet em modo interno permite expor APIs apenas dentro da rede privada do Azure."
+                },
+                "pergunta38": {
+                    "descricao": "Para definir limites por chave individual (ex: por client_id), você usaria:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "quota"
+                        },
+                        "alternativa2": {
+                            "descricao": "ip-filter"
+                        },
+                        "alternativa3": {
+                            "descricao": "rate-limit-by-key"
+                        },
+                        "alternativa4": {
+                            "descricao": "subscription-limiter"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "rate-limit-by-key aplica um limite por uma chave específica (como Subscription Key ou client_id do token)."
+                },
+                "pergunta39": {
+                    "descricao": "Uma Subscription Key pode ser usada para:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Acessar apenas o Developer Portal"
+                        },
+                        "alternativa2": {
+                            "descricao": "Autenticar chamadas às APIs que exigem assinatura"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criar políticas personalizadas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Executar scripts no Management Plane"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A Subscription Key é exigida para chamadas a APIs que estão em Products com 'Require subscription'."
+                },
+                "pergunta40": {
+                    "descricao": "Você quer criar uma nova versão de uma API sem afetar a atual. O que usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Revision"
+                        },
+                        "alternativa2": {
+                            "descricao": "Version"
+                        },
+                        "alternativa3": {
+                            "descricao": "Clone API"
+                        },
+                        "alternativa4": {
+                            "descricao": "Policy Snapshot"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O sistema de 'Version' permite ter múltiplas versões de uma mesma API em paralelo, com path segment ou header para distinção."
+                },
+                "pergunta41": {
+                    "descricao": "Qual política deve ser usada para modificar o caminho da URL da requisição antes de enviá-la ao backend?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "rewrite-path"
+                        },
+                        "alternativa2": {
+                            "descricao": "rewrite-uri"
+                        },
+                        "alternativa3": {
+                            "descricao": "set-backend-service"
+                        },
+                        "alternativa4": {
+                            "descricao": "redirect-uri"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "rewrite-uri altera a URL da requisição, permitindo personalização do caminho antes do encaminhamento ao backend."
+                },
+                "pergunta42": {
+                    "descricao": "Ao marcar um Product com 'Require approval', o que acontece?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usuários podem usar a API imediatamente."
+                        },
+                        "alternativa2": {
+                            "descricao": "A assinatura é aprovada automaticamente."
+                        },
+                        "alternativa3": {
+                            "descricao": "É necessária aprovação manual do administrador."
+                        },
+                        "alternativa4": {
+                            "descricao": "A API exige autenticação com Azure AD."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Quando um Product exige aprovação, o administrador deve aprovar manualmente a solicitação de acesso."
+                },
+                "pergunta43": {
+                    "descricao": "Qual política permite validar um token de acesso JWT?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "check-jwt"
+                        },
+                        "alternativa2": {
+                            "descricao": "require-token"
+                        },
+                        "alternativa3": {
+                            "descricao": "validate-jwt"
+                        },
+                        "alternativa4": {
+                            "descricao": "auth-token"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "validate-jwt é usada para verificar a assinatura, emissor e claims do token JWT."
+                },
+                "pergunta44": {
+                    "descricao": "O Developer Portal do API Management é baseado em qual tecnologia?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Angular"
+                        },
+                        "alternativa2": {
+                            "descricao": "ASP.NET Core"
+                        },
+                        "alternativa3": {
+                            "descricao": "React"
+                        },
+                        "alternativa4": {
+                            "descricao": "Vue.js"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O portal moderno do APIM é baseado em React, permitindo personalização com ferramentas modernas de front-end."
+                },
+                "pergunta45": {
+                    "descricao": "Se o backend estiver fora do ar e nenhuma política de fallback estiver configurada, o que acontece?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A API retorna erro 404."
+                        },
+                        "alternativa2": {
+                            "descricao": "A API retorna resposta vazia."
+                        },
+                        "alternativa3": {
+                            "descricao": "A API retorna erro 500."
+                        },
+                        "alternativa4": {
+                            "descricao": "A requisição é redirecionada automaticamente."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Sem políticas de fallback ou cache, falhas de backend retornam erro 500 (Internal Server Error)."
+                },
+                "pergunta46": {
+                    "descricao": "Qual política adiciona ou modifica um parâmetro na URL de uma requisição?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "set-query-parameter"
+                        },
+                        "alternativa2": {
+                            "descricao": "append-path"
+                        },
+                        "alternativa3": {
+                            "descricao": "rewrite-uri"
+                        },
+                        "alternativa4": {
+                            "descricao": "set-url-param"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "set-query-parameter permite adicionar ou sobrescrever parâmetros de consulta (query string)."
+                },
+                "pergunta47": {
+                    "descricao": "Ao importar uma especificação OpenAPI para o API Management, o que é criado automaticamente?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A implementação da API."
+                        },
+                        "alternativa2": {
+                            "descricao": "O backend da API."
+                        },
+                        "alternativa3": {
+                            "descricao": "A documentação e estrutura da API com operações."
+                        },
+                        "alternativa4": {
+                            "descricao": "Um gateway dedicado."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A importação cria a definição da API (rotas, parâmetros, descrições), mas não a lógica de backend."
+                },
+                "pergunta48": {
+                    "descricao": "Qual política é usada para remover cabeçalhos de uma requisição ou resposta?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "remove-header"
+                        },
+                        "alternativa2": {
+                            "descricao": "delete-header"
+                        },
+                        "alternativa3": {
+                            "descricao": "unset-header"
+                        },
+                        "alternativa4": {
+                            "descricao": "clear-header"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "remove-header elimina cabeçalhos específicos, úteis por motivos de segurança ou limpeza de resposta."
+                },
+                "pergunta49": {
+                    "descricao": "Qual cabeçalho é usado para rastrear requisições entre serviços?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "trace-id"
+                        },
+                        "alternativa2": {
+                            "descricao": "correlation-id"
+                        },
+                        "alternativa3": {
+                            "descricao": "x-transaction-id"
+                        },
+                        "alternativa4": {
+                            "descricao": "activity-id"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "correlation-id é utilizado para rastrear chamadas entre múltiplos serviços e facilitar debugging e tracing."
+                },
+                "pergunta50": {
+                    "descricao": "Para testar uma API protegida por JWT no Developer Portal, você deve:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Solicitar um novo token via portal."
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar uma Subscription Key genérica."
+                        },
+                        "alternativa3": {
+                            "descricao": "Inserir manualmente um token JWT válido."
+                        },
+                        "alternativa4": {
+                            "descricao": "Desabilitar temporariamente o validate-jwt."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Developer Portal não emite tokens OAuth automaticamente, então é necessário informar um JWT válido manualmente."
+                },
+                "pergunta51": {
+                    "descricao": "Qual serviço permite exportar logs de chamadas da API em tempo real?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Log Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Event Grid"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Event Hub"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Key Vault"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Azure Event Hub pode ser configurado como destino para exportação contínua de logs de chamadas em tempo real."
+                },
+                "pergunta52": {
+                    "descricao": "As políticas globais (global policies) se aplicam a:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Uma API específica."
+                        },
+                        "alternativa2": {
+                            "descricao": "Uma operação específica."
+                        },
+                        "alternativa3": {
+                            "descricao": "Um Product."
+                        },
+                        "alternativa4": {
+                            "descricao": "Toda a instância de API Management."
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Políticas globais são configuradas no nível da instância e afetam todas as APIs e operações automaticamente."
+                },
+                "pergunta53": {
+                    "descricao": "Qual limitação da camada 'Consumption' do API Management?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Não suporta políticas personalizadas."
+                        },
+                        "alternativa2": {
+                            "descricao": "Não pode importar APIs."
+                        },
+                        "alternativa3": {
+                            "descricao": "Não permite mais de 1 API."
+                        },
+                        "alternativa4": {
+                            "descricao": "Não suporta redes virtuais (VNet)."
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "A camada Consumption é serverless e econômica, mas não suporta integração com redes virtuais (VNet)."
+                },
+                "pergunta54": {
+                    "descricao": "Você quer aplicar limites diferentes por rota (operation). O que fazer?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criar um Product para cada rota."
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar uma política global."
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar a política quota no nível do Product."
+                        },
+                        "alternativa4": {
+                            "descricao": "Aplicar políticas diretamente no nível da operação."
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Para políticas específicas por operação (rota), você deve aplicá-las diretamente no nível da operação desejada."
+                },
+                "pergunta55": {
+                    "descricao": "O que acontece se você excluir o único Product associado a uma API?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "A API continua acessível normalmente."
+                        },
+                        "alternativa2": {
+                            "descricao": "A API é automaticamente atribuída a outro Product."
+                        },
+                        "alternativa3": {
+                            "descricao": "A API continua visível mas exige autenticação extra."
+                        },
+                        "alternativa4": {
+                            "descricao": "As chamadas à API começam a falhar (404)."
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Sem Product associado, a API não é mais exposta via Gateway e retorna 404 até ser reatribuída."
+                },
+                "pergunta56": {
+                    "descricao": "Qual recurso permite publicar APIs privadas, visíveis apenas em redes internas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Private Endpoint (VNet Internal Mode)"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Bastion"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure DNS Zones"
+                        },
+                        "alternativa4": {
+                            "descricao": "Private DNS Resolver"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Ao configurar o APIM em modo VNet Interno com Private Endpoint, as APIs ficam acessíveis apenas dentro da rede privada."
+                },
+                "pergunta57": {
+                    "descricao": "O que é verdade sobre a política log-to-applicationinsights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "É ativada automaticamente ao vincular o Application Insights."
+                        },
+                        "alternativa2": {
+                            "descricao": "Não pode ser usada com logs customizados."
+                        },
+                        "alternativa3": {
+                            "descricao": "Precisa ser adicionada manualmente para capturar dados."
+                        },
+                        "alternativa4": {
+                            "descricao": "Só funciona com Event Hubs."
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A política precisa ser definida manualmente para registrar dados customizados no Application Insights."
+                },
+                "pergunta58": {
+                    "descricao": "Qual destas políticas não existe no Azure API Management?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "check-header"
+                        },
+                        "alternativa2": {
+                            "descricao": "rate-limit"
+                        },
+                        "alternativa3": {
+                            "descricao": "restrict-ip"
+                        },
+                        "alternativa4": {
+                            "descricao": "set-body"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Não existe política chamada restrict-ip. O correto seria ip-filter para esse propósito."
+                },
+                "pergunta59": {
+                    "descricao": "O que é possível ao criar múltiplas versões de uma API?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Associar cada versão a uma URL distinta."
+                        },
+                        "alternativa2": {
+                            "descricao": "Ter apenas uma versão pública."
+                        },
+                        "alternativa3": {
+                            "descricao": "Bloquear políticas em versões diferentes."
+                        },
+                        "alternativa4": {
+                            "descricao": "Exigir JWT apenas na versão mais recente."
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "As versões podem ser diferenciadas por URL, por query string ou por header — dependendo da configuração."
+                },
+                "pergunta60": {
+                    "descricao": "Qual política valida se um header obrigatório está presente?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "check-header"
+                        },
+                        "alternativa2": {
+                            "descricao": "require-header"
+                        },
+                        "alternativa3": {
+                            "descricao": "validate-header"
+                        },
+                        "alternativa4": {
+                            "descricao": "assert-header"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "check-header avalia se um header existe e pode redirecionar ou bloquear se não estiver presente."
+                }
+            }
+        },
+        "modulo9": {
+            "nome": "⚙️ Soluções baseadas em eventos",
+            "descricao": "Arquitetura orientada a eventos, incluindo Event Grid, Event Hub e integração com Azure Functions.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "Você está criando uma aplicação que precisa reagir a eventos de criação de blobs no Azure Storage. Qual serviço você deve usar para garantir baixo acoplamento e entrega confiável de eventos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Notification Hubs"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Logic Apps"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Event Hubs"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Azure Event Grid é ideal para eventos relacionados a criação, exclusão e modificação de blobs no Azure Storage, permitindo baixo acoplamento e entrega confiável."
+                },
+                "pergunta2": {
+                    "descricao": "Qual é o papel do Event Subscription no Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Publicar eventos em múltiplos tópicos"
+                        },
+                        "alternativa2": {
+                            "descricao": "Registrar o endpoint do consumidor que receberá os eventos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Armazenar eventos em uma fila temporária"
+                        },
+                        "alternativa4": {
+                            "descricao": "Processar eventos e repassá-los para APIs REST"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A Event Subscription registra o endpoint que será notificado quando os eventos forem publicados no tópico."
+                },
+                "pergunta3": {
+                    "descricao": "Em uma solução com Event Hubs, por que você usaria o EventProcessorClient?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Para escrever eventos diretamente no tópico"
+                        },
+                        "alternativa2": {
+                            "descricao": "Para gerenciar concorrência e checkpointing durante o consumo dos eventos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Para executar pipelines de machine learning automaticamente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Para configurar a retenção automática de eventos"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O EventProcessorClient ajuda a gerenciar múltiplos consumidores, concorrência e checkpointing para garantir processamento correto dos eventos."
+                },
+                "pergunta4": {
+                    "descricao": "Um dos benefícios do Azure Event Grid em relação ao Service Bus é:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Garantia de ordenação absoluta dos eventos"
+                        },
+                        "alternativa2": {
+                            "descricao": "Suporte a eventos complexos com replay automático"
+                        },
+                        "alternativa3": {
+                            "descricao": "Baixa latência na entrega de eventos em arquitetura pub/sub"
+                        },
+                        "alternativa4": {
+                            "descricao": "Persistência de mensagens por padrão"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Grid oferece entrega de eventos com baixa latência e arquitetura pub/sub desacoplada, diferente do foco do Service Bus."
+                },
+                "pergunta5": {
+                    "descricao": "No Event Hubs, o que representa uma partition?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Um tópico interno usado para agrupar assinantes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Um contêiner para armazenar eventos processados"
+                        },
+                        "alternativa3": {
+                            "descricao": "Uma unidade de paralelismo para leitura e escrita de eventos"
+                        },
+                        "alternativa4": {
+                            "descricao": "Um canal seguro de mensagens criptografadas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Partições são unidades de paralelismo e permitem múltiplos consumidores processarem eventos em paralelo."
+                },
+                "pergunta6": {
+                    "descricao": "Qual das opções abaixo representa um cenário ideal para uso do Azure Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Envio de notificações push para dispositivos móveis"
+                        },
+                        "alternativa2": {
+                            "descricao": "Streaming de dados de telemetria em tempo real para análise"
+                        },
+                        "alternativa3": {
+                            "descricao": "Encaminhamento de e-mails em lote"
+                        },
+                        "alternativa4": {
+                            "descricao": "Processamento de documentos de entrada via OCR"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Hubs é ideal para ingestão em larga escala e streaming em tempo real, como telemetria de sensores e logs."
+                },
+                "pergunta7": {
+                    "descricao": "Qual das opções abaixo é um event handler suportado nativamente pelo Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Automation Runbook"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure SQL Database"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Databricks"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Container Registry"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Azure Automation Runbooks podem ser acionados diretamente via Event Grid como handlers de eventos."
+                },
+                "pergunta8": {
+                    "descricao": "Qual tipo de autenticação é recomendada para acessar o Azure Event Hubs de forma segura em produção?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Basic Authentication com chave de API"
+                        },
+                        "alternativa2": {
+                            "descricao": "Shared Access Signature (SAS) ou Managed Identity"
+                        },
+                        "alternativa3": {
+                            "descricao": "Login com usuário e senha do Azure"
+                        },
+                        "alternativa4": {
+                            "descricao": "OAuth 2.0 via Active Directory B2C"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "SAS e Managed Identity são métodos recomendados para acesso seguro ao Event Hubs."
+                },
+                "pergunta9": {
+                    "descricao": "O que acontece quando um handler de evento no Event Grid não responde com sucesso?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "O evento é descartado imediatamente"
+                        },
+                        "alternativa2": {
+                            "descricao": "O Event Grid tenta reenviar por um tempo com backoff exponencial"
+                        },
+                        "alternativa3": {
+                            "descricao": "Um alerta é enviado para o administrador do Azure"
+                        },
+                        "alternativa4": {
+                            "descricao": "O endpoint é bloqueado automaticamente"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid implementa política de retry exponencial para eventos que não recebem confirmação de entrega."
+                },
+                "pergunta10": {
+                    "descricao": "Você deseja receber apenas eventos de exclusão de blob de um contêiner específico. Qual opção você deve usar ao criar a subscription no Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Enable Dead-lettering"
+                        },
+                        "alternativa2": {
+                            "descricao": "Set Subject Filters"
+                        },
+                        "alternativa3": {
+                            "descricao": "Use Retry Policy"
+                        },
+                        "alternativa4": {
+                            "descricao": "Select Event Schema"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Filtros de assunto (Subject Filters) permitem restringir os eventos entregues com base no caminho do recurso."
+                },
+                "pergunta11": {
+                    "descricao": "O Azure Event Hubs foi projetado para qual tipo de cenário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Eventos de negócios com poucos dados por evento"
+                        },
+                        "alternativa2": {
+                            "descricao": "Enfileiramento de tarefas para background workers"
+                        },
+                        "alternativa3": {
+                            "descricao": "Ingestão de grandes volumes de dados em alta velocidade"
+                        },
+                        "alternativa4": {
+                            "descricao": "Orquestração de workflows distribuídos"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Hubs é um serviço de ingestão de eventos em grande escala e alta velocidade, para streaming de dados."
+                },
+                "pergunta12": {
+                    "descricao": "Um consumidor que lê eventos do Event Hub pode usar checkpoints para:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Confirmar a entrega do evento ao destino final"
+                        },
+                        "alternativa2": {
+                            "descricao": "Garantir que o evento seja criptografado"
+                        },
+                        "alternativa3": {
+                            "descricao": "Marcar até onde os eventos já foram processados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Reenviar eventos perdidos automaticamente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Checkpoints indicam a posição do último evento processado, para evitar reprocessamento após reinício."
+                },
+                "pergunta13": {
+                    "descricao": "Qual a diferença principal entre Azure Event Grid e Azure Service Bus?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Event Grid é mais adequado para mensagens longas e ordenadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Grid é ideal para comunicação entre serviços com baixa latência e alto volume"
+                        },
+                        "alternativa3": {
+                            "descricao": "Service Bus é usado somente para streaming de dados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Grid oferece enfileiramento com FIFO garantido"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid foca em eventos pequenos, pub/sub com baixa latência; Service Bus é para mensagens confiáveis e ordenadas."
+                },
+                "pergunta14": {
+                    "descricao": "Um cliente está usando Azure Event Grid com um endpoint HTTP como handler. Como garantir segurança básica na comunicação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Adicionar uma chave de acesso no cabeçalho personalizado"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar IP fixo no endpoint"
+                        },
+                        "alternativa3": {
+                            "descricao": "Assinar todos os eventos com certificado digital"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar CORS dinâmico no Event Grid"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O uso de chaves no cabeçalho (header) é uma forma simples de autenticar endpoints HTTP."
+                },
+                "pergunta15": {
+                    "descricao": "Quando um evento é entregue com sucesso pelo Event Grid, o que é retornado ao sistema de origem?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "HTTP 301"
+                        },
+                        "alternativa2": {
+                            "descricao": "HTTP 503"
+                        },
+                        "alternativa3": {
+                            "descricao": "HTTP 200"
+                        },
+                        "alternativa4": {
+                            "descricao": "Nenhum retorno é necessário"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "HTTP 200 confirma a entrega e processamento bem-sucedido do evento."
+                },
+                "pergunta16": {
+                    "descricao": "Qual recurso pode ser usado junto com Event Hubs para garantir tolerância a falhas e escalabilidade no consumo de eventos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Front Door"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure API Management"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Storage Blob Container"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Functions com EventProcessorClient"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Azure Functions usando EventProcessorClient permitem processamento escalável e tolerante a falhas."
+                },
+                "pergunta17": {
+                    "descricao": "No Event Grid, qual é o propósito do Dead-lettering?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Registrar todos os eventos recebidos com sucesso"
+                        },
+                        "alternativa2": {
+                            "descricao": "Aumentar a taxa de throughput"
+                        },
+                        "alternativa3": {
+                            "descricao": "Armazenar eventos que falharam após tentativas de entrega"
+                        },
+                        "alternativa4": {
+                            "descricao": "Agendar eventos para entrega posterior"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Dead-lettering armazena eventos que não foram entregues após várias tentativas."
+                },
+                "pergunta18": {
+                    "descricao": "Qual das seguintes opções é um exemplo de event source do Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure API Management"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Key Vault"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Blob Storage"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Virtual Machine"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Azure Blob Storage é um event source nativo para o Event Grid."
+                },
+                "pergunta19": {
+                    "descricao": "Qual tipo de modelo de comunicação é implementado no Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Request/Response"
+                        },
+                        "alternativa2": {
+                            "descricao": "Peer-to-Peer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Publish/Subscribe"
+                        },
+                        "alternativa4": {
+                            "descricao": "Broadcast/Unicast"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Grid implementa o padrão Publish/Subscribe para eventos desacoplados."
+                },
+                "pergunta20": {
+                    "descricao": "Qual dos seguintes serviços pode ser usado como consumidor final de eventos do Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Load Balancer"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Cosmos DB"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Logic Apps"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Application Gateway"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Azure Logic Apps podem ser configurados como handlers para receber eventos do Event Grid."
+                },
+                "pergunta21": {
+                    "descricao": "Você precisa rotear eventos para diferentes handlers com base no conteúdo do evento no Azure Event Grid. Qual recurso você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Event Filters"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Routes"
+                        },
+                        "alternativa3": {
+                            "descricao": "Partition Keys"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Tags"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Event Filters permitem rotear eventos com base no conteúdo, como prefixos ou sufixos no assunto."
+                },
+                "pergunta22": {
+                    "descricao": "Ao usar Azure Event Hubs, o que acontece se o throughput exceder a capacidade contratada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Os eventos são automaticamente reencaminhados para um tópico reserva"
+                        },
+                        "alternativa2": {
+                            "descricao": "A ingestão falha com erro de quota excedida"
+                        },
+                        "alternativa3": {
+                            "descricao": "Os eventos são retidos no buffer local do publisher"
+                        },
+                        "alternativa4": {
+                            "descricao": "A latência de leitura aumenta gradualmente"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Quando o throughput ultrapassa a capacidade, eventos são rejeitados com erro de quota excedida."
+                },
+                "pergunta23": {
+                    "descricao": "No contexto do Event Grid, o que é um tópico personalizado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Um canal gerenciado para eventos originados de serviços Azure"
+                        },
+                        "alternativa2": {
+                            "descricao": "Um tópico usado para armazenar mensagens criptografadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Um endpoint criado por um usuário ou app para publicar eventos próprios"
+                        },
+                        "alternativa4": {
+                            "descricao": "Um agrupamento lógico de eventos do Azure Monitor"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Tópicos personalizados são criados por apps para publicar seus próprios eventos."
+                },
+                "pergunta24": {
+                    "descricao": "Você quer limitar quais eventos chegam ao seu handler no Event Grid, aceitando apenas eventos relacionados a um contêiner específico do Blob Storage. Qual técnica você deve aplicar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Webhook Signature"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Versioning"
+                        },
+                        "alternativa3": {
+                            "descricao": "Subject Filtering"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Hashing"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Subject Filtering permite filtrar eventos por partes do caminho do recurso, como um contêiner específico."
+                },
+                "pergunta25": {
+                    "descricao": "Qual recurso do Event Hubs permite que múltiplos consumidores leiam o mesmo stream de eventos de forma independente?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Consumer Groups"
+                        },
+                        "alternativa2": {
+                            "descricao": "Shards"
+                        },
+                        "alternativa3": {
+                            "descricao": "Event Tiers"
+                        },
+                        "alternativa4": {
+                            "descricao": "Event Topics"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Consumer Groups permitem que múltiplos consumidores leiam a mesma partição independentemente."
+                },
+                "pergunta26": {
+                    "descricao": "Qual dos seguintes serviços pode ser tanto publisher quanto subscriber em soluções baseadas em eventos no Azure?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure App Service"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Blob Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Kubernetes Service"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Logic Apps"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Logic Apps podem atuar tanto como publisher quanto como subscriber em eventos."
+                },
+                "pergunta27": {
+                    "descricao": "O Azure Event Grid pode usar qual protocolo para entregar eventos a endpoints customizados?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "AMQP"
+                        },
+                        "alternativa2": {
+                            "descricao": "HTTP/HTTPS"
+                        },
+                        "alternativa3": {
+                            "descricao": "TCP/IP"
+                        },
+                        "alternativa4": {
+                            "descricao": "gRPC"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid entrega eventos via HTTP ou HTTPS para endpoints customizados."
+                },
+                "pergunta28": {
+                    "descricao": "Qual opção representa uma boa prática ao consumir eventos com Azure Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Consumir diretamente da API REST sem controle de partição"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar apenas 1 consumidor para simplificar o processamento"
+                        },
+                        "alternativa3": {
+                            "descricao": "Utilizar checkpointing em armazenamento blob para escalabilidade"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ler todas as partições em paralelo manualmente"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Checkpointing em Blob Storage é recomendado para controle do progresso e escalabilidade."
+                },
+                "pergunta29": {
+                    "descricao": "Qual é a função do System Properties em eventos do Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Garantir integridade de payloads com hashes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Incluir metadados como offset, partition key e enqueued time"
+                        },
+                        "alternativa3": {
+                            "descricao": "Proteger o tráfego com criptografia TLS"
+                        },
+                        "alternativa4": {
+                            "descricao": "Aplicar versionamento de mensagens"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "System Properties contêm metadados úteis para o processamento do evento."
+                },
+                "pergunta30": {
+                    "descricao": "O que é um Consumer Group no Azure Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Um conjunto de funções do Azure que disparam em paralelo"
+                        },
+                        "alternativa2": {
+                            "descricao": "Um modelo de segurança baseado em funções"
+                        },
+                        "alternativa3": {
+                            "descricao": "Um grupo lógico que permite múltiplos leitores simultâneos do mesmo stream"
+                        },
+                        "alternativa4": {
+                            "descricao": "Uma política de autorização para SAS tokens"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Consumer Group permite que vários consumidores leiam eventos independentemente sem conflito."
+                },
+                "pergunta31": {
+                    "descricao": "Qual das seguintes opções descreve melhor o uso do Azure Service Bus em uma arquitetura orientada a eventos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Alta taxa de eventos com baixa latência e tolerância a duplicatas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Envio confiável com suporte a mensagens ordenadas e sessões"
+                        },
+                        "alternativa3": {
+                            "descricao": "Streaming contínuo de telemetria para Data Lake"
+                        },
+                        "alternativa4": {
+                            "descricao": "Distribuição massiva de eventos sem garantia de entrega"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Service Bus oferece envio confiável, ordenação e sessões para mensagens complexas."
+                },
+                "pergunta32": {
+                    "descricao": "O Event Grid pode ser integrado a Azure Functions. Qual trigger deve ser usada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ServiceBusTrigger"
+                        },
+                        "alternativa2": {
+                            "descricao": "EventGridTrigger"
+                        },
+                        "alternativa3": {
+                            "descricao": "TimerTrigger"
+                        },
+                        "alternativa4": {
+                            "descricao": "BlobTrigger"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Azure Functions usam o EventGridTrigger para serem acionadas por eventos do Event Grid."
+                },
+                "pergunta33": {
+                    "descricao": "Em um cenário com múltiplos consumidores e necessidade de tolerância a falhas, qual componente você deve usar com Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Web PubSub"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Grid Domains"
+                        },
+                        "alternativa3": {
+                            "descricao": "EventProcessorClient"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Cache for Redis"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "EventProcessorClient gerencia leitura paralela, checkpoint e tolerância a falhas no consumo."
+                },
+                "pergunta34": {
+                    "descricao": "Qual evento pode ser emitido por um tópico de sistema do Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "UserLoggedIn"
+                        },
+                        "alternativa2": {
+                            "descricao": "BlobDeleted"
+                        },
+                        "alternativa3": {
+                            "descricao": "CPUUsageExceeded"
+                        },
+                        "alternativa4": {
+                            "descricao": "ScheduleCompleted"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Eventos como BlobDeleted são emitidos por tópicos de sistema nativos do Event Grid."
+                },
+                "pergunta35": {
+                    "descricao": "Qual estratégia permite escalar horizontalmente a leitura de eventos no Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Configurar filtros por payload"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar múltiplas queues por app"
+                        },
+                        "alternativa3": {
+                            "descricao": "Aumentar o número de partições e consumer groups"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar batching nos endpoints"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Mais partições e consumer groups aumentam paralelismo e escalabilidade na leitura."
+                },
+                "pergunta36": {
+                    "descricao": "Você está criando um sistema de auditoria e quer persistir eventos do Event Grid para análises futuras. O que você pode usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Table Storage"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Monitor"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Event Hubs + Azure Data Lake"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Bastion"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Azure Table Storage pode ser usado para persistir eventos via Function para auditoria simples."
+                },
+                "pergunta37": {
+                    "descricao": "Qual das opções abaixo é um recurso que pode ser usado para validar que um handler HTTP está pronto para receber eventos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Event Replay"
+                        },
+                        "alternativa2": {
+                            "descricao": "Validation Code via Subscription Event"
+                        },
+                        "alternativa3": {
+                            "descricao": "Manual Resend"
+                        },
+                        "alternativa4": {
+                            "descricao": "Health Probes"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid envia evento de validação com código para o endpoint confirmar sua disponibilidade."
+                },
+                "pergunta38": {
+                    "descricao": "Event Hubs suporta ingestão de dados em qual formato?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Apenas JSON"
+                        },
+                        "alternativa2": {
+                            "descricao": "Apenas CSV"
+                        },
+                        "alternativa3": {
+                            "descricao": "Qualquer payload binário"
+                        },
+                        "alternativa4": {
+                            "descricao": "XML e YAML apenas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Hubs aceita qualquer payload binário, não se limitando a formatos específicos."
+                },
+                "pergunta39": {
+                    "descricao": "Uma das principais diferenças entre Event Grid e Service Bus é:",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Event Grid possui enfileiramento nativo"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Grid entrega eventos push, Service Bus é pull"
+                        },
+                        "alternativa3": {
+                            "descricao": "Event Grid suporta ordenação, Service Bus não"
+                        },
+                        "alternativa4": {
+                            "descricao": "Service Bus permite eventos de Blob Storage diretamente"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid entrega eventos no modo push; Service Bus tradicionalmente funciona no modo pull."
+                },
+                "pergunta40": {
+                    "descricao": "Qual tipo de evento o Event Grid NÃO manipula por padrão?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criação de recursos em Azure"
+                        },
+                        "alternativa2": {
+                            "descricao": "Alteração de arquivos no Blob Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Notificação de envio de e-mails via SendGrid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclusão de mensagens em Azure Queue Storage"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "SendGrid é um serviço externo e não emite eventos nativos para Event Grid."
+                },
+                "pergunta41": {
+                    "descricao": "No Azure Event Grid, qual é o propósito do Advanced Filtering?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Permitir filtragem avançada por múltiplos atributos e operadores"
+                        },
+                        "alternativa2": {
+                            "descricao": "Habilitar enfileiramento dos eventos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar a autenticação via OAuth"
+                        },
+                        "alternativa4": {
+                            "descricao": "Monitorar a latência de entrega dos eventos"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Advanced Filtering permite filtros complexos por atributos de eventos com diversos operadores lógicos."
+                },
+                "pergunta42": {
+                    "descricao": "Ao configurar um Event Grid Topic personalizado, o que você deve fornecer para publicar eventos de forma segura?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Managed Identity"
+                        },
+                        "alternativa2": {
+                            "descricao": "Chave de acesso (Access Key)"
+                        },
+                        "alternativa3": {
+                            "descricao": "Token JWT"
+                        },
+                        "alternativa4": {
+                            "descricao": "Certificado SSL"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A publicação em tópicos personalizados requer uma chave de acesso para autenticação."
+                },
+                "pergunta43": {
+                    "descricao": "Qual é a função do Azure Event Grid Domains?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Agrupar múltiplos tópicos para organizar eventos em grande escala"
+                        },
+                        "alternativa2": {
+                            "descricao": "Hospedar endpoints para WebSockets"
+                        },
+                        "alternativa3": {
+                            "descricao": "Substituir o Event Hub em ambientes IoT"
+                        },
+                        "alternativa4": {
+                            "descricao": "Gerenciar identidade para aplicações serverless"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Event Grid Domains facilitam o gerenciamento de múltiplos tópicos e assinaturas em cenários complexos."
+                },
+                "pergunta44": {
+                    "descricao": "Qual é a abordagem recomendada para garantir a entrega única (exactly-once) em eventos do Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar Dead-lettering com reprocessamento manual"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurar múltiplos endpoints idênticos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Implementar lógica idempotente no handler dos eventos"
+                        },
+                        "alternativa4": {
+                            "descricao": "Aumentar a retenção dos eventos no Event Grid"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Grid não garante entrega única; handlers devem ser idempotentes para evitar efeitos duplicados."
+                },
+                "pergunta45": {
+                    "descricao": "No Azure Event Hubs, o que acontece se um consumidor não fizer checkpoint?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Os eventos consumidos podem ser lidos novamente após reinício"
+                        },
+                        "alternativa2": {
+                            "descricao": "Os eventos são descartados imediatamente"
+                        },
+                        "alternativa3": {
+                            "descricao": "O Event Hub bloqueia o consumidor"
+                        },
+                        "alternativa4": {
+                            "descricao": "O Event Hub reenfileira os eventos"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Sem checkpoint, o consumidor pode reprocessar eventos já lidos após falha ou reinício."
+                },
+                "pergunta46": {
+                    "descricao": "Qual dos seguintes serviços pode ser tanto publisher quanto subscriber em soluções baseadas em eventos no Azure?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure App Service"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Blob Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Kubernetes Service"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Logic Apps"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Azure Logic Apps pode atuar como publisher e subscriber de eventos, possibilitando integração flexível."
+                },
+                "pergunta47": {
+                    "descricao": "Você quer processar grandes volumes de eventos em streaming e aplicar análises em tempo real. Qual serviço Azure é mais indicado?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Service Bus"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Event Hubs"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Queue Storage"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Logic Apps"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Hubs é especializado para ingestão e análise de streaming em tempo real de grandes volumes."
+                },
+                "pergunta48": {
+                    "descricao": "Qual é a maneira recomendada de escalar consumidores em uma solução baseada em Azure Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Multiplicar instâncias de consumidores dentro do mesmo consumer group"
+                        },
+                        "alternativa2": {
+                            "descricao": "Criar múltiplos consumer groups para diferentes aplicativos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usar apenas uma partição para garantir ordenação"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar partition key hashing"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Consumer groups isolam consumidores e permitem escalabilidade para diferentes apps ou serviços."
+                },
+                "pergunta49": {
+                    "descricao": "Ao criar uma subscription no Event Grid, qual é o tempo máximo que o serviço tenta reenviar um evento em caso de falha?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "1 hora"
+                        },
+                        "alternativa2": {
+                            "descricao": "24 horas"
+                        },
+                        "alternativa3": {
+                            "descricao": "7 dias"
+                        },
+                        "alternativa4": {
+                            "descricao": "30 dias"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Grid tenta reenviar eventos por até 7 dias antes de mover para dead-letter."
+                },
+                "pergunta50": {
+                    "descricao": "Qual serviço Azure é usado para capturar eventos do Event Hubs diretamente para armazenamento durável sem código adicional?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Stream Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Hubs Capture"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Data Factory"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Functions"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Hubs Capture grava eventos automaticamente em blobs ou Data Lake para arquivamento."
+                },
+                "pergunta51": {
+                    "descricao": "O que é um dead-letter destination no Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Um endpoint alternativo para entrega imediata"
+                        },
+                        "alternativa2": {
+                            "descricao": "Uma fila onde eventos que falharam são armazenados para análise"
+                        },
+                        "alternativa3": {
+                            "descricao": "Um serviço para monitorar latência"
+                        },
+                        "alternativa4": {
+                            "descricao": "Um tipo de trigger em Azure Functions"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Dead-letter destination armazena eventos que não foram entregues após várias tentativas."
+                },
+                "pergunta52": {
+                    "descricao": "Qual protocolo o Azure Event Hubs usa para ingestão eficiente de eventos de produtores?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "HTTP/REST"
+                        },
+                        "alternativa2": {
+                            "descricao": "AMQP 1.0"
+                        },
+                        "alternativa3": {
+                            "descricao": "MQTT"
+                        },
+                        "alternativa4": {
+                            "descricao": "WebSockets"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "AMQP 1.0 é o protocolo padrão usado pelo Event Hubs para alta performance e confiabilidade."
+                },
+                "pergunta53": {
+                    "descricao": "Como você pode garantir que apenas eventos válidos cheguem ao seu endpoint HTTP no Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Habilitando SSL/TLS no endpoint"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usando assinatura JWT nos eventos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Implementando validação do código de evento enviado pelo Event Grid"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurando firewall do Azure para o Event Grid"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Event Grid envia evento de validação inicial para o endpoint confirmar propriedade."
+                },
+                "pergunta54": {
+                    "descricao": "O que significa que o Azure Event Grid é um serviço serverless?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ele escala automaticamente e cobra por evento processado"
+                        },
+                        "alternativa2": {
+                            "descricao": "É gratuito e não requer configuração"
+                        },
+                        "alternativa3": {
+                            "descricao": "É hospedado em containers Docker"
+                        },
+                        "alternativa4": {
+                            "descricao": "Depende de uma VM dedicada"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Serverless significa escalabilidade automática e modelo de cobrança baseado no uso real."
+                },
+                "pergunta55": {
+                    "descricao": "Qual componente do Azure é usado para processamento em lote de eventos armazenados do Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Stream Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Functions"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Logic Apps"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Data Factory"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Stream Analytics processa dados em lote ou streaming para análise avançada."
+                },
+                "pergunta56": {
+                    "descricao": "É possível enviar eventos diretamente do Event Grid para o Event Hubs?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Sim, nativamente via subscription"
+                        },
+                        "alternativa2": {
+                            "descricao": "Não, mas pode ser feito via ponte com Azure Functions ou Logic Apps"
+                        },
+                        "alternativa3": {
+                            "descricao": "Sim, usando WebSocket"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não, Event Hubs não aceita eventos externos"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid não envia eventos direto para Event Hubs, mas é possível usar Azure Functions ou Logic Apps como ponte."
+                },
+                "pergunta57": {
+                    "descricao": "Qual serviço Azure pode ser usado para monitorar métricas e logs de um Event Hub?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Monitor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Security Center"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Sentinel"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Advisor"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Azure Monitor coleta métricas e logs para análise operacional."
+                },
+                "pergunta58": {
+                    "descricao": "Para garantir a segurança no consumo de eventos do Event Hubs, qual a melhor prática recomendada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar Managed Identity para autenticação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Compartilhar chave de acesso em múltiplos consumidores"
+                        },
+                        "alternativa3": {
+                            "descricao": "Desabilitar criptografia para performance"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usar somente conexão HTTP simples"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Managed Identity oferece autenticação segura e sem gerenciamento de chaves manuais."
+                },
+                "pergunta59": {
+                    "descricao": "Qual ferramenta pode ser usada para visualizar o fluxo de eventos entre serviços no Azure Event Grid?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Application Insights"
+                        },
+                        "alternativa2": {
+                            "descricao": "Event Grid Explorer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Data Explorer"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Portal"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Event Grid Explorer é uma ferramenta para visualizar e depurar eventos do Event Grid."
+                },
+                "pergunta60": {
+                    "descricao": "Como o Azure Event Grid garante alta disponibilidade e resiliência no envio de eventos?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando múltiplas regiões e políticas de retry com backoff exponencial"
+                        },
+                        "alternativa2": {
+                            "descricao": "Armazenando eventos em filas por até 30 dias"
+                        },
+                        "alternativa3": {
+                            "descricao": "Enviando eventos em lote a cada minuto"
+                        },
+                        "alternativa4": {
+                            "descricao": "Replicando eventos em bancos SQL"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Event Grid usa replicação regional e retries exponenciais para garantir entrega confiável e alta disponibilidade."
+                }
+            }
+        },
+        "modulo10": {
+            "nome": "📨 Soluções baseadas em mensagens",
+            "descricao": "",
+            "perguntas": {}
+        },
+        "modulo11": {
+            "nome": "📊 Application Insights",
+            "descricao": "",
+            "perguntas": {}
         }
     }
 }

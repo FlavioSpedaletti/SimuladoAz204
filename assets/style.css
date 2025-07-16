@@ -1368,4 +1368,78 @@ input[type="number"]:focus {
         transform: scale(1.02);
         box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4);
     }
+}
+
+/* Indicador de Status Offline */
+.offline-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--border-radius-lg);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--shadow-lg);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: var(--transition-all);
+    max-width: 300px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.offline-indicator.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.offline-indicator::before {
+    content: "🔌";
+    margin-right: 8px;
+}
+
+.online-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--success-500), #059669);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--border-radius-lg);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--shadow-lg);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: var(--transition-all);
+    max-width: 300px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.online-indicator.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.online-indicator::before {
+    content: "✅";
+    margin-right: 8px;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .offline-indicator,
+    .online-indicator {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        padding: 10px 16px;
+        font-size: 13px;
+        max-width: none;
+    }
 } 
