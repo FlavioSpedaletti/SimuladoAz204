@@ -12602,8 +12602,1149 @@
         },
         "modulo11": {
             "nome": "📊 Application Insights",
-            "descricao": "",
-            "perguntas": {}
+            "descricao": "Monitoramento, rastreamento de desempenho, telemetria e diagnóstico de aplicações usando o Azure Application Insights.",
+            "perguntas": {
+                "pergunta1": {
+                    "descricao": "Qual recurso do Application Insights permite visualizar a arquitetura e identificar gargalos de desempenho em uma aplicação distribuída?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Log Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Metrics Explorer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Application Map"
+                        },
+                        "alternativa4": {
+                            "descricao": "Availability Tests"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "O Application Map mostra a arquitetura dos componentes da aplicação e suas dependências, ajudando a identificar falhas e gargalos."
+                },
+                "pergunta2": {
+                    "descricao": "Qual tipo de teste de disponibilidade pode incluir autenticação e lógica personalizada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "URL ping test"
+                        },
+                        "alternativa2": {
+                            "descricao": "Multi-step web test"
+                        },
+                        "alternativa3": {
+                            "descricao": "Standard test"
+                        },
+                        "alternativa4": {
+                            "descricao": "Custom TrackAvailability test"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O tipo Custom permite que você envie resultados personalizados para o Application Insights usando o método TrackAvailability."
+                },
+                "pergunta3": {
+                    "descricao": "Qual biblioteca é usada para coletar dados de telemetria em um aplicativo ASP.NET Core?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Microsoft.Diagnostics.Telemetry"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure.Monitor.AppInsights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Microsoft.ApplicationInsights.AspNetCore"
+                        },
+                        "alternativa4": {
+                            "descricao": "Microsoft.Azure.Insights"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A biblioteca Microsoft.ApplicationInsights.AspNetCore integra-se ao pipeline do ASP.NET Core para coletar dados de telemetria automaticamente."
+                },
+                "pergunta4": {
+                    "descricao": "Qual ferramenta do Application Insights permite consultar logs com Kusto Query Language (KQL)?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Metrics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Workbooks"
+                        },
+                        "alternativa3": {
+                            "descricao": "Dashboards"
+                        },
+                        "alternativa4": {
+                            "descricao": "Logs (Analytics)"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "O recurso Logs do Application Insights usa KQL (Kusto Query Language) para consultas detalhadas de telemetria."
+                },
+                "pergunta5": {
+                    "descricao": "Qual é o método usado para registrar eventos personalizados no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "LogEvent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackEvent()"
+                        },
+                        "alternativa3": {
+                            "descricao": "RecordCustom()"
+                        },
+                        "alternativa4": {
+                            "descricao": "SendTelemetry()"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "TrackEvent é usado para registrar eventos personalizados em Application Insights, como cliques ou ações do usuário."
+                },
+                "pergunta6": {
+                    "descricao": "Qual dos seguintes dados NÃO é coletado automaticamente pelo Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Exceções não tratadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Requisições HTTP"
+                        },
+                        "alternativa3": {
+                            "descricao": "Eventos de interface do usuário (UI)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Dependências externas"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Eventos de interface (UI) como cliques ou interações não são coletados automaticamente e exigem instrumentação manual."
+                },
+                "pergunta7": {
+                    "descricao": "Qual o período padrão de retenção dos dados no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "7 dias"
+                        },
+                        "alternativa2": {
+                            "descricao": "30 dias"
+                        },
+                        "alternativa3": {
+                            "descricao": "90 dias"
+                        },
+                        "alternativa4": {
+                            "descricao": "365 dias"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O padrão de retenção é de 30 dias. Pode ser estendido para até 730 dias em planos pagos."
+                },
+                "pergunta8": {
+                    "descricao": "Qual é a função da chave 'instrumentationKey' no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Autenticar usuários da aplicação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Associar os dados de telemetria ao recurso do Application Insights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Criptografar os dados coletados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Definir a região de armazenamento dos dados"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A instrumentationKey é usada para direcionar os dados de telemetria ao recurso correto no Azure."
+                },
+                "pergunta9": {
+                    "descricao": "Qual ferramenta permite visualizar métricas em tempo real no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Live Dashboard"
+                        },
+                        "alternativa2": {
+                            "descricao": "Live Metrics Stream"
+                        },
+                        "alternativa3": {
+                            "descricao": "Performance Charts"
+                        },
+                        "alternativa4": {
+                            "descricao": "KQL Query Viewer"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O Live Metrics Stream exibe dados em tempo real como requisições, falhas, dependências e uso de CPU/memória."
+                },
+                "pergunta10": {
+                    "descricao": "O que representa a propriedade 'operation_Id' nas entradas de telemetria?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ID da sessão do usuário"
+                        },
+                        "alternativa2": {
+                            "descricao": "ID da chamada de API externa"
+                        },
+                        "alternativa3": {
+                            "descricao": "ID da operação que correlaciona várias entradas de telemetria"
+                        },
+                        "alternativa4": {
+                            "descricao": "ID da instância do Azure App Service"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "operation_Id é usado para agrupar logs e métricas que fazem parte da mesma operação ou chamada, como uma requisição HTTP e suas dependências."
+                },
+                "pergunta11": {
+                    "descricao": "Você deseja rastrear a duração de uma operação personalizada. Qual método você deve usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "TrackMetric()"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackTrace()"
+                        },
+                        "alternativa3": {
+                            "descricao": "TrackDependency()"
+                        },
+                        "alternativa4": {
+                            "descricao": "TrackEvent()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "TrackDependency permite monitorar a duração e o sucesso de chamadas externas ou operações personalizadas."
+                },
+                "pergunta12": {
+                    "descricao": "Qual recurso permite agrupar visualmente múltiplas métricas e consultas em um painel?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Analytics"
+                        },
+                        "alternativa2": {
+                            "descricao": "Metrics"
+                        },
+                        "alternativa3": {
+                            "descricao": "Workbooks"
+                        },
+                        "alternativa4": {
+                            "descricao": "Dashboards"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Workbooks permitem criar visualizações interativas combinando métricas, logs e parâmetros personalizados."
+                },
+                "pergunta13": {
+                    "descricao": "Qual é a função do TrackTrace() no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Registrar logs de texto personalizados"
+                        },
+                        "alternativa2": {
+                            "descricao": "Registrar exceções não tratadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Registrar dependências HTTP"
+                        },
+                        "alternativa4": {
+                            "descricao": "Monitorar chamadas de banco de dados"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackTrace é usado para enviar mensagens de log personalizadas para o Application Insights."
+                },
+                "pergunta14": {
+                    "descricao": "Você quer acompanhar quantas vezes uma função específica foi executada. Qual método usar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "TrackEvent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackMetric()"
+                        },
+                        "alternativa3": {
+                            "descricao": "TrackTrace()"
+                        },
+                        "alternativa4": {
+                            "descricao": "TrackPageView()"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackEvent é apropriado para contar ocorrências de ações específicas dentro da aplicação."
+                },
+                "pergunta15": {
+                    "descricao": "Qual das seguintes opções pode ser usada para criar alertas baseados em consultas KQL?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Application Map"
+                        },
+                        "alternativa2": {
+                            "descricao": "Metrics Explorer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Log Alerts"
+                        },
+                        "alternativa4": {
+                            "descricao": "Availability Tests"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Log Alerts permitem acionar alertas com base nos resultados de consultas KQL em logs do Application Insights."
+                },
+                "pergunta16": {
+                    "descricao": "Para correlacionar logs de diferentes serviços, qual propriedade deve ser compartilhada entre eles?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "user_Id"
+                        },
+                        "alternativa2": {
+                            "descricao": "session_Id"
+                        },
+                        "alternativa3": {
+                            "descricao": "operation_Id"
+                        },
+                        "alternativa4": {
+                            "descricao": "cloud_RoleName"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "operation_Id permite correlacionar logs de diferentes componentes de uma mesma operação."
+                },
+                "pergunta17": {
+                    "descricao": "Qual método deve ser usado para registrar exceções no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "TrackTrace()"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackError()"
+                        },
+                        "alternativa3": {
+                            "descricao": "TrackException()"
+                        },
+                        "alternativa4": {
+                            "descricao": "TrackLog()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "TrackException permite registrar exceções capturadas no código, incluindo stack trace."
+                },
+                "pergunta18": {
+                    "descricao": "Você deseja associar um nome lógico ao seu serviço nos logs. Qual propriedade configurar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "operation_Name"
+                        },
+                        "alternativa2": {
+                            "descricao": "cloud_RoleName"
+                        },
+                        "alternativa3": {
+                            "descricao": "customDimensions"
+                        },
+                        "alternativa4": {
+                            "descricao": "component_Name"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "cloud_RoleName permite diferenciar componentes como front-end e back-end dentro de uma solução distribuída."
+                },
+                "pergunta19": {
+                    "descricao": "Em qual cenário você deve usar 'customDimensions'?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Definir nome de operação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Incluir dados adicionais personalizados em eventos de telemetria"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar tempo de retenção de dados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Identificar instância de aplicação"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "customDimensions são usadas para anexar propriedades personalizadas à telemetria, como identificadores de negócio ou parâmetros extras."
+                },
+                "pergunta20": {
+                    "descricao": "Como você pode separar dados de ambientes diferentes como 'dev' e 'prod' dentro do mesmo recurso?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Criar várias instâncias de Application Insights"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usar diferentes instrumentationKeys"
+                        },
+                        "alternativa3": {
+                            "descricao": "Definir valores distintos em cloud_RoleInstance ou customDimensions"
+                        },
+                        "alternativa4": {
+                            "descricao": "Criar diferentes Workbooks"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "customDimensions e cloud_RoleInstance ajudam a separar dados dentro do mesmo recurso de Application Insights, permitindo filtrar por ambiente."
+                },
+                "pergunta21": {
+                    "descricao": "Qual método do SDK do Application Insights pode ser usado para rastrear chamadas HTTP feitas pela aplicação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "TrackEvent()"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackRequest()"
+                        },
+                        "alternativa3": {
+                            "descricao": "TrackDependency()"
+                        },
+                        "alternativa4": {
+                            "descricao": "TrackTrace()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "TrackDependency é usado para monitorar chamadas de dependências externas, incluindo chamadas HTTP."
+                },
+                "pergunta22": {
+                    "descricao": "O que é amostragem (sampling) no contexto do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Enviar todos os dados para a análise"
+                        },
+                        "alternativa2": {
+                            "descricao": "Coletar dados apenas em horários específicos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Enviar apenas uma fração dos dados para reduzir custos"
+                        },
+                        "alternativa4": {
+                            "descricao": "Armazenar dados localmente antes de enviar"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A amostragem reduz a quantidade de dados enviados, ajudando a controlar custos sem perder a visibilidade geral."
+                },
+                "pergunta23": {
+                    "descricao": "Qual ferramenta do Azure permite configurar alertas com base em métricas e logs do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure Monitor Alerts"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Security Center"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Advisor"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Policy"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Azure Monitor Alerts permite criar alertas baseados em métricas e logs para ações proativas."
+                },
+                "pergunta24": {
+                    "descricao": "Qual dos seguintes tipos de telemetria o Application Insights NÃO coleta automaticamente em um aplicativo ASP.NET Core padrão?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Requisições HTTP"
+                        },
+                        "alternativa2": {
+                            "descricao": "Dependências externas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Eventos de página (Page Views)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Eventos personalizados de UI (User Interaction)"
+                        }
+                    },
+                    "correta": "alternativa4",
+                    "explicacao": "Eventos personalizados de UI exigem instrumentação manual para serem coletados."
+                },
+                "pergunta25": {
+                    "descricao": "Qual recurso do Application Insights pode capturar um snapshot do estado da aplicação durante uma exceção?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Snapshot Debugger"
+                        },
+                        "alternativa2": {
+                            "descricao": "Smart Detection"
+                        },
+                        "alternativa3": {
+                            "descricao": "Live Metrics"
+                        },
+                        "alternativa4": {
+                            "descricao": "Log Analytics"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Snapshot Debugger captura o estado da aplicação no momento da exceção para facilitar a análise."
+                },
+                "pergunta26": {
+                    "descricao": "O que o recurso \"Live Metrics Stream\" do Application Insights permite monitorar?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Métricas em tempo real da aplicação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Relatórios históricos"
+                        },
+                        "alternativa3": {
+                            "descricao": "Logs armazenados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Dados de configuração"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Live Metrics Stream exibe métricas como taxa de requisições e uso de CPU em tempo real."
+                },
+                "pergunta27": {
+                    "descricao": "Qual dos seguintes é um benefício do uso de amostragem (sampling) no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Garantir que nenhum dado seja perdido"
+                        },
+                        "alternativa2": {
+                            "descricao": "Reduzir a latência da aplicação"
+                        },
+                        "alternativa3": {
+                            "descricao": "Diminuir custos de ingestão de dados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Melhorar a precisão dos dados"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "A amostragem reduz a quantidade de dados enviados, ajudando a controlar custos."
+                },
+                "pergunta28": {
+                    "descricao": "Qual é a função do \"operation_Name\" nas entradas de telemetria do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Nome da operação ou requisição para agrupamento"
+                        },
+                        "alternativa2": {
+                            "descricao": "Identificador único da instância da aplicação"
+                        },
+                        "alternativa3": {
+                            "descricao": "Nome do recurso do Azure"
+                        },
+                        "alternativa4": {
+                            "descricao": "Tipo de exceção lançada"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "operation_Name identifica a operação, como o nome da requisição HTTP ou função chamada."
+                },
+                "pergunta29": {
+                    "descricao": "Como é possível enviar dados personalizados para o Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando TrackEvent com propriedades customizadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Somente via SDK do Azure Monitor"
+                        },
+                        "alternativa3": {
+                            "descricao": "Apenas com arquivos de log"
+                        },
+                        "alternativa4": {
+                            "descricao": "Via Azure CLI"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackEvent permite enviar eventos com propriedades personalizadas para análise."
+                },
+                "pergunta30": {
+                    "descricao": "Qual dos seguintes não é um componente padrão do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Application Map"
+                        },
+                        "alternativa2": {
+                            "descricao": "Metrics Explorer"
+                        },
+                        "alternativa3": {
+                            "descricao": "Service Bus Explorer"
+                        },
+                        "alternativa4": {
+                            "descricao": "Live Metrics Stream"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Service Bus Explorer é uma ferramenta independente para Azure Service Bus, não faz parte do Application Insights."
+                },
+                "pergunta31": {
+                    "descricao": "Qual é o objetivo do recurso \"Smart Detection\" do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Detectar automaticamente anomalias e problemas na aplicação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Gerenciar usuários da aplicação"
+                        },
+                        "alternativa3": {
+                            "descricao": "Monitorar custo do Azure"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurar balanceamento de carga"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Smart Detection usa aprendizado de máquina para identificar problemas automaticamente."
+                },
+                "pergunta32": {
+                    "descricao": "Quando a amostragem está habilitada, qual é a lógica para escolher quais dados enviar ao Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Envia todas as telemetrias exceto as duplicadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "Envia uma fração representativa dos dados, ajustando a taxa conforme o volume"
+                        },
+                        "alternativa3": {
+                            "descricao": "Envia somente telemetrias de erros"
+                        },
+                        "alternativa4": {
+                            "descricao": "Envia dados apenas durante o horário comercial"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O sampling ajusta dinamicamente a taxa para manter uma amostra representativa sem sobrecarregar a ingestão."
+                },
+                "pergunta33": {
+                    "descricao": "Qual a diferença entre TrackEvent() e TrackMetric() no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "TrackEvent é para eventos com propriedades, TrackMetric para valores numéricos"
+                        },
+                        "alternativa2": {
+                            "descricao": "TrackEvent registra exceções, TrackMetric registra logs"
+                        },
+                        "alternativa3": {
+                            "descricao": "TrackEvent coleta dados de dependência, TrackMetric coleta requisições"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não há diferença"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackEvent registra eventos customizados; TrackMetric registra valores numéricos para análise estatística."
+                },
+                "pergunta34": {
+                    "descricao": "Qual dos seguintes dados pode ser usado para filtrar telemetria por usuário no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "session_Id"
+                        },
+                        "alternativa2": {
+                            "descricao": "operation_Id"
+                        },
+                        "alternativa3": {
+                            "descricao": "user_Id"
+                        },
+                        "alternativa4": {
+                            "descricao": "cloud_RoleInstance"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "user_Id identifica o usuário final para agrupar telemetria relacionada."
+                },
+                "pergunta35": {
+                    "descricao": "Para que serve a propriedade customDimensions em eventos de telemetria?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Para definir o nome da operação"
+                        },
+                        "alternativa2": {
+                            "descricao": "Para armazenar informações adicionais personalizadas"
+                        },
+                        "alternativa3": {
+                            "descricao": "Para definir a região de dados"
+                        },
+                        "alternativa4": {
+                            "descricao": "Para configurar alertas"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "customDimensions permite anexar propriedades extras aos eventos, como IDs de negócio."
+                },
+                "pergunta36": {
+                    "descricao": "O que é retry automático no contexto do Application Insights SDK?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Reenvio automático de telemetria que falhou ao enviar"
+                        },
+                        "alternativa2": {
+                            "descricao": "Duplicação de telemetria para garantir consistência"
+                        },
+                        "alternativa3": {
+                            "descricao": "Envio de dados em lotes para melhorar performance"
+                        },
+                        "alternativa4": {
+                            "descricao": "Ignorar dados antigos após falha"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "O SDK tenta reenviar dados que não foram enviados devido a falhas temporárias, garantindo maior confiabilidade."
+                },
+                "pergunta37": {
+                    "descricao": "A propriedade session_Id existe no Application Insights para rastreamento de sessões de usuário?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Sim, é usada para agrupar eventos da mesma sessão"
+                        },
+                        "alternativa2": {
+                            "descricao": "Não, session_Id não existe"
+                        },
+                        "alternativa3": {
+                            "descricao": "Sim, mas é usada para identificar instâncias da aplicação"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não, usa-se operation_Id para sessões"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "session_Id agrupa telemetria gerada durante uma mesma sessão do usuário."
+                },
+                "pergunta38": {
+                    "descricao": "Como funciona a amostragem (sampling) no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Envia todos os dados sem alterações"
+                        },
+                        "alternativa2": {
+                            "descricao": "Envia dados aleatórios sem lógica"
+                        },
+                        "alternativa3": {
+                            "descricao": "Envia uma amostra representativa dos dados, mantendo a proporcionalidade"
+                        },
+                        "alternativa4": {
+                            "descricao": "Filtra apenas dados de falha"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Sampling seleciona dados de forma proporcional para manter a representatividade e reduzir custos."
+                },
+                "pergunta39": {
+                    "descricao": "Qual a finalidade do recurso Availability Tests no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Testar desempenho interno do servidor"
+                        },
+                        "alternativa2": {
+                            "descricao": "Monitorar a disponibilidade externa da aplicação"
+                        },
+                        "alternativa3": {
+                            "descricao": "Registrar métricas personalizadas"
+                        },
+                        "alternativa4": {
+                            "descricao": "Enviar logs para o Azure Monitor"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Availability Tests validam se a aplicação está acessível e respondendo corretamente a partir de locais externos."
+                },
+                "pergunta40": {
+                    "descricao": "O que é a propriedade operation_ParentId nas telemetrias do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ID da operação pai para correlacionar chamadas"
+                        },
+                        "alternativa2": {
+                            "descricao": "ID da instância do servidor"
+                        },
+                        "alternativa3": {
+                            "descricao": "ID do usuário"
+                        },
+                        "alternativa4": {
+                            "descricao": "ID do recurso Azure"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "operation_ParentId relaciona uma telemetria com a operação que a originou, facilitando a correlação."
+                },
+                "pergunta41": {
+                    "descricao": "Qual das seguintes propriedades de telemetria do Application Insights identifica o nome do computador ou serviço onde a telemetria foi gerada?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "cloud_RoleInstance"
+                        },
+                        "alternativa2": {
+                            "descricao": "cloud_RoleName"
+                        },
+                        "alternativa3": {
+                            "descricao": "user_Id"
+                        },
+                        "alternativa4": {
+                            "descricao": "operation_Id"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "cloud_RoleInstance identifica a instância específica (ex: nome do computador ou pod) que gerou a telemetria."
+                },
+                "pergunta42": {
+                    "descricao": "Como você pode customizar a telemetria enviada para o Application Insights em um aplicativo ASP.NET Core?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Editando o arquivo applicationinsights.json"
+                        },
+                        "alternativa2": {
+                            "descricao": "Implementando Telemetry Initializers"
+                        },
+                        "alternativa3": {
+                            "descricao": "Modificando os dados diretamente no portal do Azure"
+                        },
+                        "alternativa4": {
+                            "descricao": "Configurando regras no Azure Policy"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Telemetry Initializers permitem adicionar ou modificar propriedades nas telemetrias antes de serem enviadas."
+                },
+                "pergunta43": {
+                    "descricao": "Qual tipo de telemetria é usado para capturar logs detalhados da aplicação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "EventTelemetry"
+                        },
+                        "alternativa2": {
+                            "descricao": "ExceptionTelemetry"
+                        },
+                        "alternativa3": {
+                            "descricao": "TraceTelemetry"
+                        },
+                        "alternativa4": {
+                            "descricao": "RequestTelemetry"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "TraceTelemetry captura logs e mensagens de depuração enviadas pela aplicação."
+                },
+                "pergunta44": {
+                    "descricao": "O que você deve configurar para monitorar aplicativos Java com Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usar o SDK para .NET"
+                        },
+                        "alternativa2": {
+                            "descricao": "Instalar o agente Java Application Insights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Habilitar monitoramento no portal sem código"
+                        },
+                        "alternativa4": {
+                            "descricao": "Utilizar o Log Analytics Agent"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "O agente Java Application Insights coleta telemetria para aplicações Java."
+                },
+                "pergunta45": {
+                    "descricao": "Qual é a finalidade do recurso 'Snapshots' no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Armazenar cópias dos dashboards"
+                        },
+                        "alternativa2": {
+                            "descricao": "Capturar estado da aplicação durante exceções"
+                        },
+                        "alternativa3": {
+                            "descricao": "Salvar consultas KQL"
+                        },
+                        "alternativa4": {
+                            "descricao": "Registrar métricas personalizadas"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Snapshots capturam o estado do código e variáveis no momento de exceções para ajudar no diagnóstico."
+                },
+                "pergunta46": {
+                    "descricao": "Qual recurso do Application Insights é utilizado para analisar métricas ao longo do tempo com agregações e filtros?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Metrics Explorer"
+                        },
+                        "alternativa2": {
+                            "descricao": "Application Map"
+                        },
+                        "alternativa3": {
+                            "descricao": "Log Analytics"
+                        },
+                        "alternativa4": {
+                            "descricao": "Smart Detection"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "Metrics Explorer permite visualizar e analisar métricas agregadas ao longo do tempo."
+                },
+                "pergunta47": {
+                    "descricao": "Qual recurso permite criar painéis interativos com visualizações personalizadas no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Dashboards do Azure"
+                        },
+                        "alternativa2": {
+                            "descricao": "Log Analytics"
+                        },
+                        "alternativa3": {
+                            "descricao": "Workbooks"
+                        },
+                        "alternativa4": {
+                            "descricao": "Live Metrics"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Workbooks permitem criar painéis interativos combinando múltiplas fontes e tipos de dados."
+                },
+                "pergunta48": {
+                    "descricao": "Como você pode enviar métricas personalizadas para o Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando TrackMetric()"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurando no portal Azure"
+                        },
+                        "alternativa3": {
+                            "descricao": "Apenas por Telemetry Initializers"
+                        },
+                        "alternativa4": {
+                            "descricao": "Via Azure CLI"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackMetric é o método para enviar métricas numéricas personalizadas."
+                },
+                "pergunta49": {
+                    "descricao": "O que acontece com dados coletados que não passam pela amostragem configurada no Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "São enviados integralmente"
+                        },
+                        "alternativa2": {
+                            "descricao": "São descartados"
+                        },
+                        "alternativa3": {
+                            "descricao": "São armazenados localmente para envio posterior"
+                        },
+                        "alternativa4": {
+                            "descricao": "São duplicados para redundância"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Dados que não são selecionados pela amostragem são descartados para reduzir custo e volume."
+                },
+                "pergunta50": {
+                    "descricao": "Qual dos seguintes é uma prática recomendada para usar o Application Insights em aplicações de alta escala?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Desativar amostragem para garantir dados completos"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurar amostragem para controlar volume de dados"
+                        },
+                        "alternativa3": {
+                            "descricao": "Enviar dados em lote manualmente"
+                        },
+                        "alternativa4": {
+                            "descricao": "Não usar métricas personalizadas"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "A amostragem ajuda a controlar custos e evitar sobrecarga sem perder visibilidade importante."
+                },
+                "pergunta51": {
+                    "descricao": "Qual a função do 'Telemetry Processor' no Application Insights SDK?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Enviar telemetria para o Azure"
+                        },
+                        "alternativa2": {
+                            "descricao": "Filtrar ou modificar telemetria antes do envio"
+                        },
+                        "alternativa3": {
+                            "descricao": "Gerar telemetria automática"
+                        },
+                        "alternativa4": {
+                            "descricao": "Visualizar telemetria no portal"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Telemetry Processors permitem filtrar ou modificar telemetria antes que ela seja enviada."
+                },
+                "pergunta52": {
+                    "descricao": "Como você pode monitorar a performance de dependências externas (ex: banco de dados) com Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando TrackDependency()"
+                        },
+                        "alternativa2": {
+                            "descricao": "Configurando Workbooks"
+                        },
+                        "alternativa3": {
+                            "descricao": "Utilizando Smart Detection"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usando Application Map"
+                        }
+                    },
+                    "correta": "alternativa1",
+                    "explicacao": "TrackDependency registra chamadas para recursos externos, incluindo duração e sucesso."
+                },
+                "pergunta53": {
+                    "descricao": "Qual dos seguintes tipos de telemetria armazena informações sobre requisições HTTP recebidas?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "ExceptionTelemetry"
+                        },
+                        "alternativa2": {
+                            "descricao": "RequestTelemetry"
+                        },
+                        "alternativa3": {
+                            "descricao": "TraceTelemetry"
+                        },
+                        "alternativa4": {
+                            "descricao": "DependencyTelemetry"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "RequestTelemetry representa as requisições HTTP feitas à aplicação."
+                },
+                "pergunta54": {
+                    "descricao": "Qual é a principal linguagem de consulta usada no Application Insights para analisar logs e telemetria?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "SQL"
+                        },
+                        "alternativa2": {
+                            "descricao": "LINQ"
+                        },
+                        "alternativa3": {
+                            "descricao": "Kusto Query Language (KQL)"
+                        },
+                        "alternativa4": {
+                            "descricao": "PowerShell"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "KQL é a linguagem padrão para consultas no Azure Monitor e Application Insights."
+                },
+                "pergunta55": {
+                    "descricao": "O que o Application Insights faz quando detecta uma falha repetida em uma operação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Ignora a falha"
+                        },
+                        "alternativa2": {
+                            "descricao": "Envia alertas via Smart Detection"
+                        },
+                        "alternativa3": {
+                            "descricao": "Reinicia o serviço"
+                        },
+                        "alternativa4": {
+                            "descricao": "Exclui os dados antigos"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "Smart Detection pode enviar alertas automáticos ao identificar falhas recorrentes."
+                },
+                "pergunta56": {
+                    "descricao": "Como você pode monitorar o desempenho de uma função específica em sua aplicação com Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Usando TrackDependency()"
+                        },
+                        "alternativa2": {
+                            "descricao": "Usando TrackEvent()"
+                        },
+                        "alternativa3": {
+                            "descricao": "Usando TrackRequest()"
+                        },
+                        "alternativa4": {
+                            "descricao": "Usando TrackTrace()"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "TrackRequest registra a duração e sucesso de requisições HTTP e outras operações que representam solicitações."
+                },
+                "pergunta57": {
+                    "descricao": "Qual serviço do Azure é usado para consultas avançadas e armazenamento de dados do Application Insights?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Azure SQL Database"
+                        },
+                        "alternativa2": {
+                            "descricao": "Azure Blob Storage"
+                        },
+                        "alternativa3": {
+                            "descricao": "Azure Data Explorer (Log Analytics)"
+                        },
+                        "alternativa4": {
+                            "descricao": "Azure Cosmos DB"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "Application Insights usa Azure Data Explorer (Log Analytics) para consultas e armazenamento escalável."
+                },
+                "pergunta58": {
+                    "descricao": "Qual propriedade pode ser usada para filtrar telemetria por tipo de componente, como front-end ou back-end?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "cloud_RoleInstance"
+                        },
+                        "alternativa2": {
+                            "descricao": "operation_Id"
+                        },
+                        "alternativa3": {
+                            "descricao": "cloud_RoleName"
+                        },
+                        "alternativa4": {
+                            "descricao": "user_Id"
+                        }
+                    },
+                    "correta": "alternativa3",
+                    "explicacao": "cloud_RoleName distingue diferentes componentes lógicos da aplicação."
+                },
+                "pergunta59": {
+                    "descricao": "O que é necessário para que o Application Insights colete telemetria de uma aplicação em contêiner no Kubernetes?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "Instalar o agente Application Insights no nó do Kubernetes"
+                        },
+                        "alternativa2": {
+                            "descricao": "Instrumentar a aplicação com o SDK do Application Insights"
+                        },
+                        "alternativa3": {
+                            "descricao": "Configurar Azure Monitor para contêineres"
+                        },
+                        "alternativa4": {
+                            "descricao": "Habilitar diagnósticos do Azure Blob Storage"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "É necessário instrumentar a aplicação com o SDK para coletar telemetria diretamente."
+                },
+                "pergunta60": {
+                    "descricao": "Qual tipo de dado no Application Insights é usado para registrar informações sobre exceções lançadas na aplicação?",
+                    "alternativas": {
+                        "alternativa1": {
+                            "descricao": "EventTelemetry"
+                        },
+                        "alternativa2": {
+                            "descricao": "ExceptionTelemetry"
+                        },
+                        "alternativa3": {
+                            "descricao": "TraceTelemetry"
+                        },
+                        "alternativa4": {
+                            "descricao": "RequestTelemetry"
+                        }
+                    },
+                    "correta": "alternativa2",
+                    "explicacao": "ExceptionTelemetry armazena detalhes de exceções, incluindo stack trace e mensagem de erro."
+                }
+            }
         }
     }
 }
