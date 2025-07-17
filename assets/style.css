@@ -331,6 +331,14 @@ input[type="number"]:focus {
     background: var(--neutral-600);
 }
 
+.btn-danger {
+    background: var(--error-500);
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
 .timer {
     position: fixed;
     top: 24px;

@@ -14,6 +14,7 @@ class SimuladoApp {
         this.timerInterval = null;
         this.currentState = 'config';
         this.chartViewMode = 'cards'; // Modo padrão de visualização
+        this.isInterrupted = false;
         
         // Dados para análise com IA
         this.performanceData = {
@@ -119,6 +120,8 @@ class SimuladoApp {
         document.getElementById('start-btn').addEventListener('click', () => this.startExam());
         document.getElementById('next-btn').addEventListener('click', () => this.nextQuestion());
         document.getElementById('skip-btn').addEventListener('click', () => this.skipQuestion());
+        
+        // Botão de interrupção será configurado quando a tela do exame for mostrada
 
         document.getElementById('question-quantity').addEventListener('input', (e) => {
             const value = parseInt(e.target.value);
@@ -158,6 +161,14 @@ class SimuladoApp {
         const hasModules = this.selectedModules.length > 0;
         const hasValidQuantity = this.totalQuestions > 0;
         document.getElementById('start-btn').disabled = !hasModules || !hasValidQuantity;
+    }
+
+    setupInterruptButton() {
+        const interruptBtn = document.getElementById('interrupt-btn');
+        if (interruptBtn && !interruptBtn.hasAttribute('data-listener-added')) {
+            interruptBtn.addEventListener('click', () => this.interruptExam());
+            interruptBtn.setAttribute('data-listener-added', 'true');
+        }
     }
 
     handleModuleSelection(e) {
@@ -215,6 +226,10 @@ class SimuladoApp {
         this.timeLeft = this.examQuestions.length * 60;
         this.currentState = 'exam';
         this.showScreen('exam-screen');
+        
+        // Configurar event listener do botão de interrupção agora que a tela está visível
+        this.setupInterruptButton();
+        
         this.startTimer();
         this.renderCurrentQuestion();
     }
@@ -386,6 +401,27 @@ class SimuladoApp {
         this.renderCurrentQuestion();
     }
 
+    interruptExam() {
+        const answeredCount = this.userAnswers.filter(answer => answer !== null).length;
+        
+        if (answeredCount === 0) {
+            alert('Você ainda não respondeu nenhuma questão. Continue o simulado ou volte à configuração.');
+            return;
+        }
+
+        const confirmMessage = `Tem certeza que deseja interromper o simulado?
+
+Você respondeu ${answeredCount} de ${this.examQuestions.length} questões.
+O resultado será calculado apenas com base nas questões respondidas.
+
+Esta ação não pode ser desfeita.`;
+
+        if (confirm(confirmMessage)) {
+            this.isInterrupted = true;
+            this.finishExam(true);
+        }
+    }
+
     startSkippedReview() {
         if (this.skippedQuestions.length === 0) {
             this.finishExam();
@@ -482,9 +518,14 @@ class SimuladoApp {
             `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    finishExam() {
+    finishExam(interrupted = false) {
         if (this.timerInterval) {
             clearInterval(this.timerInterval);
+        }
+        
+        // Se foi interrompido, marcar a propriedade
+        if (interrupted) {
+            this.isInterrupted = true;
         }
         
         // Calcular tempo total do exame
@@ -495,12 +536,13 @@ class SimuladoApp {
         
         // Google Analytics: Rastrear conclusão do simulado
         if (typeof gtag !== 'undefined') {
-            gtag('event', 'simulado_finalizado', {
+            gtag('event', this.isInterrupted ? 'simulado_interrompido' : 'simulado_finalizado', {
                 'event_category': 'Simulado',
                 'pontuacao': this.results.percentage,
                 'aprovado': this.results.passed,
                 'total_questoes': this.results.total,
-                'acertos': this.results.correct
+                'acertos': this.results.correct,
+                'interrompido': this.isInterrupted
             });
         }
         
@@ -513,10 +555,18 @@ class SimuladoApp {
 
     calculateResults() {
         let correct = 0;
+        let totalAnswered = 0;
         const moduleStats = {};
 
         this.examQuestions.forEach((examQuestion, index) => {
             const userAnswer = this.userAnswers[index];
+            
+            // Se foi interrompido, considerar apenas questões respondidas
+            if (this.isInterrupted && userAnswer === null) {
+                return; // Pular questões não respondidas
+            }
+            
+            totalAnswered++;
             const correctAnswer = examQuestion.question.correta;
             const isCorrect = userAnswer === correctAnswer;
             
@@ -533,11 +583,15 @@ class SimuladoApp {
             if (isCorrect) moduleStats[examQuestion.moduleKey].correct++;
         });
 
+        // Usar totalAnswered em vez de examQuestions.length quando interrompido
+        const totalForCalculation = this.isInterrupted ? totalAnswered : this.examQuestions.length;
+
         this.results = {
             correct,
-            total: this.examQuestions.length,
-            percentage: Math.round((correct / this.examQuestions.length) * 100),
-            passed: (correct / this.examQuestions.length) >= 0.7,
+            total: totalForCalculation,
+            totalAnswered,
+            percentage: totalForCalculation > 0 ? Math.round((correct / totalForCalculation) * 100) : 0,
+            passed: totalForCalculation > 0 ? (correct / totalForCalculation) >= 0.7 : false,
             moduleStats
         };
     }
@@ -553,6 +607,21 @@ class SimuladoApp {
             this.results.passed ? 'APROVADO!' : 'REPROVADO';
         document.getElementById('pass-status').style.color = 
             this.results.passed ? '#38a169' : '#e53e3e';
+
+        // Adicionar observação se foi interrompido
+        if (this.isInterrupted) {
+            const summaryElement = document.querySelector('.results-summary');
+            const interruptedNotice = document.createElement('div');
+            interruptedNotice.className = 'interrupted-notice';
+            interruptedNotice.innerHTML = `
+                <div style="background: #fef5e7; border: 1px solid #f6ad55; padding: 16px; border-radius: 8px; margin: 16px 0; color: #c05621;">
+                    <strong>⚠️ Simulado Interrompido</strong><br>
+                    Você interrompeu o simulado antes de responder todas as questões.<br>
+                    Resultado baseado em ${this.results.totalAnswered} de ${this.examQuestions.length} questões respondidas.
+                </div>
+            `;
+            summaryElement.appendChild(interruptedNotice);
+        }
 
         // Carregar preferência de visualização
         this.loadChartViewPreference();
@@ -678,6 +747,12 @@ class SimuladoApp {
 
         this.examQuestions.forEach((examQuestion, index) => {
             const userAnswer = this.userAnswers[index];
+            
+            // Se foi interrompido, pular questões não respondidas
+            if (this.isInterrupted && userAnswer === null) {
+                return;
+            }
+            
             const correctAnswer = examQuestion.question.correta;
             const isCorrect = userAnswer === correctAnswer;
             const question = examQuestion.question;

@@ -1,11 +1,8 @@
-const CACHE_NAME = 'simulado-az204-v9';
-const STATIC_CACHE_NAME = 'simulado-az204-static-v9';
-const DATA_CACHE_NAME = 'simulado-az204-data-v9';
+const CACHE_NAME = 'simulado-az204-v1';
+const STATIC_CACHE_NAME = 'simulado-az204-static-v1';
+const DATA_CACHE_NAME = 'simulado-az204-data-v1';
 
 const STATIC_FILES = [
-  '/',
-  '/index.html',
-  '/validador.html',
   '/manifest.json',
   '/assets/ico/favicon-16x16.png',
   '/assets/ico/favicon-32x32.png',
@@ -42,7 +39,7 @@ async function cacheFilesIndividually(cache, files, cacheName) {
 }
 
 self.addEventListener('install', event => {
-  console.log('[SW] Instalando Service Worker v9...');
+  console.log('[SW] Instalando Service Worker...');
   
   event.waitUntil(
     Promise.all([
@@ -54,7 +51,7 @@ self.addEventListener('install', event => {
       )
     ]).then(() => {
       console.log('[SW] ✅ Instalação concluída');
-      self.skipWaiting();
+      return self.skipWaiting();
     })
   );
 });
@@ -66,7 +63,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (!cacheName.includes('v9')) {
+          if (!cacheName.includes('v1')) {
             console.log(`[SW] Removendo cache antigo: ${cacheName}`);
             return caches.delete(cacheName);
           }
@@ -74,7 +71,7 @@ self.addEventListener('activate', event => {
       );
     }).then(() => {
       console.log('[SW] ✅ Ativação concluída');
-      self.clients.claim();
+      return self.clients.claim();
     })
   );
 });
@@ -82,9 +79,14 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = request.url;
+  const normalizedPath = normalizeUrl(url);
   
+  // Rotas Flask - Network First para garantir HTML sempre atualizado
+  if (normalizedPath === '/' || normalizedPath === '/validador') {
+    event.respondWith(networkFirstForHTML(request));
+  }
   // Dados JSON - Network First
-  if (url.includes('/data/')) {
+  else if (url.includes('/data/')) {
     event.respondWith(networkFirstForData(request));
   }
   // Arquivos JS/CSS - Network First (garantir atualizações)
@@ -103,6 +105,38 @@ self.addEventListener('fetch', event => {
   }
 });
 
+// Network First para HTML (rotas Flask)
+async function networkFirstForHTML(request) {
+  try {
+    const response = await fetch(request, {
+      headers: {
+        'Cache-Control': 'no-cache'
+      }
+    });
+    
+    if (response.ok) {
+      return response;
+    }
+  } catch (error) {
+    console.log(`[SW] Erro na rede para HTML: ${request.url}`);
+  }
+  
+  // Fallback offline
+  return new Response(`
+    <!DOCTYPE html>
+    <html>
+      <head><title>Aplicação Offline</title></head>
+      <body>
+        <h1>🔌 Aplicação Offline</h1>
+        <p>Não foi possível conectar ao servidor.</p>
+        <button onclick="location.reload()">🔄 Tentar Novamente</button>
+      </body>
+    </html>
+  `, {
+    headers: { 'Content-Type': 'text/html' }
+  });
+}
+
 // Network First para dados JSON
 async function networkFirstForData(request) {
   try {
@@ -110,38 +144,27 @@ async function networkFirstForData(request) {
     if (response.ok) {
       const cache = await caches.open(DATA_CACHE_NAME);
       cache.put(request, response.clone());
-      console.log(`[SW] 🌐 Dados atualizados: ${request.url}`);
     }
     return response;
   } catch (error) {
-    console.log(`[SW] 🔌 Dados offline: ${request.url}`);
-    return caches.match(request);
+    console.log(`[SW] Rede falhou, usando cache: ${request.url}`);
   }
+  
+  const cached = await caches.match(request);
+  return cached || new Response('{}', { 
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
 
-// Network First para JS/CSS (garante atualizações quando online)
+// Network First para código (JS/CSS)
 async function networkFirstForCode(request) {
   try {
-    console.log(`[SW] 🌐 Buscando atualização de código: ${request.url}`);
     const response = await fetch(request);
-    
     if (response.ok) {
-      console.log(`[SW] ✅ Código atualizado da rede: ${request.url}`);
-      const cache = await caches.open(STATIC_CACHE_NAME);
-      
-      // Cache com URL original
-      cache.put(request, response.clone());
-      
-      // Cache também versão normalizada (sem query params)
-      const normalizedUrl = normalizeUrl(request.url);
-      if (normalizedUrl !== request.url) {
-        cache.put(normalizedUrl, response.clone());
-      }
-      
       return response;
     }
   } catch (error) {
-    console.log(`[SW] 🔌 Rede falhou, usando cache: ${request.url}`);
+    console.log(`[SW] Rede falhou, usando cache: ${request.url}`);
   }
   
   // Fallback para cache
@@ -161,7 +184,6 @@ async function cacheFirstForAssets(request) {
   let cached = await caches.match(request);
   
   if (cached) {
-    console.log(`[SW] ✅ Asset do cache: ${request.url}`);
     return cached;
   }
   
@@ -170,17 +192,9 @@ async function cacheFirstForAssets(request) {
     if (response.ok) {
       const cache = await caches.open(STATIC_CACHE_NAME);
       cache.put(request, response.clone());
-      console.log(`[SW] 💾 Novo asset cacheado: ${request.url}`);
     }
     return response;
   } catch (error) {
-    console.log(`[SW] ❌ Asset não encontrado: ${request.url}`);
     return new Response('', { status: 404 });
   }
-}
-
-self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-}); 
+} 

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Prevenir cache do navegador para HTML -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <!-- SEO Meta Tags -->
     <title>Simulado AZ-204 - Certificação Microsoft Azure Developer Associate | Preparação Gratuita</title>
     <meta name="description" content="Simulador gratuito para certificação Microsoft AZ-204 Azure Developer Associate. Pratique com questões reais, teste seus conhecimentos e prepare-se para o exame oficial da Microsoft Azure.">
@@ -131,6 +136,7 @@
 
             <div class="navigation">
                 <button id="skip-btn" class="btn btn-secondary">Pular Pergunta</button>
+                <button id="interrupt-btn" class="btn btn-danger">Interromper Simulado</button>
                 <button id="next-btn" class="btn" disabled>Próxima</button>
             </div>
         </div>
@@ -222,21 +228,19 @@
         Conectado - Dados atualizados
     </div>
 
+
+
     <script>
         document.write(`<script src="assets/script.js?v=${timestamp}"><\/script>`);
     </script>
+
+
 
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', async () => {
                 try {
-                    // Limpar service workers antigos se houver problema
-                    const existingRegistration = await navigator.serviceWorker.getRegistration();
-                    if (existingRegistration) {
-                        console.log('Service Worker existente encontrado, atualizando...');
-                    }
-
                     const registration = await navigator.serviceWorker.register('/sw.js');
                     console.log('✅ Service Worker registrado com sucesso:', registration.scope);
                     
@@ -260,7 +264,6 @@
                     
                 } catch (error) {
                     console.error('❌ Falha ao registrar Service Worker:', error);
-                    console.error('Detalhes do erro:', error.message);
                 }
             });
 

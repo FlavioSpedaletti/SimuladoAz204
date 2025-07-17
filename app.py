@@ -5,11 +5,25 @@ app = Flask(__name__, static_folder='assets', template_folder='.')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    response = render_template('index.html')
+    # Garantir que HTML nunca seja cacheado
+    response = app.make_response(response)
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @app.route('/validador')
 def validador():
-    return render_template('validador.html')
+    response = render_template('validador.html')
+    # Garantir que HTML nunca seja cacheado
+    response = app.make_response(response)
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
+
 
 @app.route('/assets/<path:filename>')
 def assets(filename):
