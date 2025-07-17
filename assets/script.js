@@ -674,7 +674,7 @@ class SimuladoApp {
 
     renderDetailedResults() {
         const container = document.getElementById('questions-review');
-        let html = '';
+        container.innerHTML = ''; // Limpar primeiro
 
         this.examQuestions.forEach((examQuestion, index) => {
             const userAnswer = this.userAnswers[index];
@@ -685,32 +685,69 @@ class SimuladoApp {
             const userAnswerText = userAnswer ? question.alternativas[userAnswer]?.descricao || 'Não respondida' : 'Não respondida';
             const correctAnswerText = question.alternativas[correctAnswer]?.descricao;
 
-            html += `
-                <div class="question-result ${isCorrect ? 'correct' : 'incorrect'}">
-                    <div class="question-result-header" onclick="this.parentElement.querySelector('.question-result-body').classList.toggle('show')">
-                        <div>
-                            <strong>Questão ${index + 1}</strong> - ${examQuestion.moduleName}
-                            <div style="font-size: 14px; margin-top: 5px;">${question.descricao}</div>
-                        </div>
-                        <div style="font-weight: bold; color: ${isCorrect ? '#38a169' : '#e53e3e'};">
-                            ${isCorrect ? '✓' : '✗'}
-                        </div>
-                    </div>
-                    <div class="question-result-body">
-                        ${isCorrect ? 
-                            `<p><strong>Resposta:</strong> ${correctAnswerText}</p>` :
-                            `<p><strong>Sua resposta:</strong> ${userAnswerText}</p>
-                             <p><strong>Resposta correta:</strong> ${correctAnswerText}</p>`
-                        }
-                        <div class="explanation">
-                            <strong>Explicação:</strong> ${question.explicacao}
-                        </div>
-                    </div>
+            // Criar elementos de forma programática para evitar problemas com template strings
+            const questionDiv = document.createElement('div');
+            questionDiv.className = `question-result ${isCorrect ? 'correct' : 'incorrect'}`;
+            
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'question-result-header';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.style.flex = '1';
+            contentDiv.style.cursor = 'pointer';
+            contentDiv.innerHTML = `
+                <strong>Questão ${index + 1}</strong> - ${examQuestion.moduleName}
+                <div style="font-size: 14px; margin-top: 5px;">${question.descricao}</div>
+            `;
+            contentDiv.onclick = function() {
+                const body = this.closest('.question-result').querySelector('.question-result-body');
+                body.classList.toggle('show');
+            };
+            
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'question-result-actions';
+            
+            // Criar botão de IA
+            const aiButton = document.createElement('button');
+            aiButton.className = 'question-ai-explain-btn';
+            aiButton.innerHTML = '🤖';
+            aiButton.title = 'Explicação detalhada com IA';
+            aiButton.type = 'button';
+            aiButton.onclick = (e) => {
+                e.stopPropagation();
+                this.explainQuestion(index);
+            };
+            
+            // Criar status
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'question-status';
+            statusDiv.style.fontWeight = 'bold';
+            statusDiv.style.color = isCorrect ? '#38a169' : '#e53e3e';
+            statusDiv.innerHTML = isCorrect ? '✓' : '✗';
+            
+            actionsDiv.appendChild(aiButton);
+            actionsDiv.appendChild(statusDiv);
+            
+            headerDiv.appendChild(contentDiv);
+            headerDiv.appendChild(actionsDiv);
+            
+            const bodyDiv = document.createElement('div');
+            bodyDiv.className = 'question-result-body';
+            bodyDiv.innerHTML = `
+                ${isCorrect ? 
+                    `<p><strong>Resposta:</strong> ${correctAnswerText}</p>` :
+                    `<p><strong>Sua resposta:</strong> ${userAnswerText}</p>
+                     <p><strong>Resposta correta:</strong> ${correctAnswerText}</p>`
+                }
+                <div class="explanation">
+                    <strong>Explicação:</strong> ${question.explicacao}
                 </div>
             `;
+            
+            questionDiv.appendChild(headerDiv);
+            questionDiv.appendChild(bodyDiv);
+            container.appendChild(questionDiv);
         });
-
-        container.innerHTML = html;
     }
 
     showAIFloatingButton() {
@@ -740,12 +777,18 @@ class SimuladoApp {
 
         try {
             const analysisData = this.prepareAnalysisData();
-            const apiKey = await this.promptForAPIKey();
             
-            // Se usuário optou por pular a análise IA
+            // Verificar se já temos uma API key salva
+            let apiKey = this.getApiKey();
             if (!apiKey) {
-                this.showAISkipped();
-                return;
+                apiKey = await this.promptForAPIKey();
+                // Se usuário optou por pular a análise IA
+                if (!apiKey) {
+                    this.showAISkipped();
+                    return;
+                }
+                // Salvar para reutilizar em explicações de questões
+                this.setApiKey(apiKey);
             }
             
             const aiResponse = await this.callGeminiAPI(analysisData, apiKey);
@@ -803,10 +846,12 @@ class SimuladoApp {
         };
     }
 
-    async callGeminiAPI(analysisData, apiKey) {
+    async callGeminiAPI(analysisData, apiKey, type = 'analysis') {
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
 
-        const prompt = this.buildAnalysisPrompt(analysisData);
+        const prompt = type === 'question' ? 
+            this.buildQuestionPrompt(analysisData) : 
+            this.buildAnalysisPrompt(analysisData);
 
         const response = await fetch(API_URL, {
             method: 'POST',
@@ -907,7 +952,12 @@ class SimuladoApp {
                     </div>
                     <div style="background: #e6fffa; border: 1px solid #38d9a9; padding: 12px; border-radius: 8px; margin-top: 15px;">
                         <p style="color: #0d9488; font-size: 13px; margin: 0; font-weight: 600;">
-                            🔒 Segurança: Sua chave não será salva e será usada apenas para esta análise
+                            🔒 Segurança: Sua chave não será salva permanentemente
+                        </p>
+                    </div>
+                    <div style="background: #fef5e7; border: 1px solid #f6ad55; padding: 12px; border-radius: 8px; margin-top: 10px;">
+                        <p style="color: #c05621; font-size: 12px; margin: 0; font-weight: 600;">
+                            ⚠️ Aviso: Não compartilhe sua tela enquanto usar esta funcionalidade
                         </p>
                     </div>
                 </div>
@@ -990,6 +1040,51 @@ FORMATO DE RESPOSTA (use exatamente este formato):
 Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
     }
 
+    buildQuestionPrompt(questionData) {
+        return `Você é um especialista em certificações Microsoft Azure, especificamente AZ-204 (Azure Developer Associate). Forneça uma explicação detalhada e didática para a questão abaixo em português brasileiro.
+
+DADOS DA QUESTÃO:
+Módulo: ${questionData.module}
+Questão: ${questionData.question}
+
+ALTERNATIVAS:
+${questionData.alternatives}
+
+RESPOSTA DO CANDIDATO: ${questionData.userAnswer}
+RESPOSTA CORRETA: ${questionData.correctAnswer}
+STATUS: ${questionData.isCorrect ? 'ACERTOU' : 'ERROU'}
+
+EXPLICAÇÃO ORIGINAL:
+${questionData.originalExplanation}
+
+INSTRUÇÕES:
+1. Forneça uma explicação detalhada e didática
+2. Explique por que a resposta correta está certa
+3. Se o candidato errou, explique por que a resposta dele estava incorreta
+4. Adicione contexto prático e exemplos de implementação
+5. Mencione conceitos relacionados importantes para a certificação AZ-204
+6. Use linguagem clara e técnica apropriada
+7. Organize a explicação de forma estruturada
+
+FORMATO DE RESPOSTA:
+**CONCEITO PRINCIPAL:**
+[Explicação do conceito central da questão]
+
+**POR QUE A RESPOSTA CORRETA (${questionData.correctAnswer}) ESTÁ CERTA:**
+[Explicação detalhada da resposta correta]
+
+${!questionData.isCorrect ? `**POR QUE SUA RESPOSTA (${questionData.userAnswer}) ESTAVA INCORRETA:**
+[Explicação do erro cometido]
+
+` : ''}**CONTEXTO PRÁTICO:**
+[Exemplos práticos e cenários de uso no Azure]
+
+**DICAS PARA A CERTIFICAÇÃO:**
+[Pontos importantes para lembrar no exame AZ-204]
+
+Seja didático e completo na explicação, ajudando o candidato a compreender profundamente o conceito.`;
+    }
+
     displayAIResults(aiResponse) {
         document.getElementById('ai-loading').classList.add('hidden');
         
@@ -1044,6 +1139,72 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
         }
     }
 
+    parseMarkdown(text) {
+        if (!text) return '';
+        
+        // Converter texto para HTML tratando marcadores Markdown
+        let html = text;
+        
+        // Blocos de código (``` código ```) - processar primeiro para não interferir com outros marcadores
+        html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+        
+        // Código inline (`código`)
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+        
+        // Negrito (**texto**)
+        html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        
+        // Itálico (*texto*)
+        html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        
+        // Títulos (### título)
+        html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+        html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+        html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+        
+        // Links [texto](url)
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        
+        // Citações (> texto)
+        html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+        
+        // Separador horizontal (---)
+        html = html.replace(/^---$/gm, '<hr>');
+        
+        // Listas (- item ou * item)
+        const lines = html.split('\n');
+        let inList = false;
+        let processedLines = [];
+        
+        for (let line of lines) {
+            const listMatch = line.match(/^[*-]\s+(.+)$/);
+            if (listMatch) {
+                if (!inList) {
+                    processedLines.push('<ul>');
+                    inList = true;
+                }
+                processedLines.push(`<li>${listMatch[1]}</li>`);
+            } else {
+                if (inList) {
+                    processedLines.push('</ul>');
+                    inList = false;
+                }
+                processedLines.push(line);
+            }
+        }
+        
+        if (inList) {
+            processedLines.push('</ul>');
+        }
+        
+        html = processedLines.join('\n');
+        
+        // Quebras de linha
+        html = html.replace(/\n/g, '<br>');
+        
+        return html;
+    }
+
     parseAIResponse(response) {
         const sections = {
             strengths: [],
@@ -1061,21 +1222,21 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
                 sections.strengths = strengthsMatch[1]
                     .split('•')
                     .filter(item => item.trim())
-                    .map(item => item.trim());
+                    .map(item => this.parseMarkdown(item.trim()));
             }
 
             if (weaknessesMatch) {
                 sections.weaknesses = weaknessesMatch[1]
                     .split('•')
                     .filter(item => item.trim())
-                    .map(item => item.trim());
+                    .map(item => this.parseMarkdown(item.trim()));
             }
 
             if (recommendationsMatch) {
                 sections.recommendations = recommendationsMatch[1]
                     .split(/\d+\./)
                     .filter(item => item.trim())
-                    .map(item => item.trim());
+                    .map(item => this.parseMarkdown(item.trim()));
             }
         } catch (error) {
             console.error('Erro ao processar resposta da IA:', error);
@@ -1132,6 +1293,160 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
         }
     }
 
+    async explainQuestion(questionIndex) {
+        const examQuestion = this.examQuestions[questionIndex];
+        const question = examQuestion.question;
+        const userAnswer = this.userAnswers[questionIndex];
+        const correctAnswer = question.correta;
+        const isCorrect = userAnswer === correctAnswer;
+
+        // Criar modal de explicação
+        const modal = this.createExplanationModal(questionIndex + 1);
+        document.body.appendChild(modal);
+
+        try {
+            // Mostrar loading
+            this.showQuestionExplanationLoading(modal);
+
+            // Verificar se já temos uma API key salva temporariamente
+            let apiKey = this.getApiKey();
+            if (!apiKey) {
+                apiKey = await this.promptForAPIKey();
+                if (!apiKey) {
+                    document.body.removeChild(modal);
+                    return;
+                }
+                // Salvar temporariamente para outras explicações na mesma sessão
+                this.setApiKey(apiKey);
+            }
+
+            // Preparar dados da questão
+            const questionData = this.prepareQuestionData(examQuestion, question, userAnswer, isCorrect);
+            
+            // Chamar Gemini API
+            const aiResponse = await this.callGeminiAPI(questionData, apiKey, 'question');
+            
+            // Mostrar resultado
+            this.displayQuestionExplanation(modal, aiResponse, questionIndex + 1);
+
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'explicacao_questao_ia', {
+                    'event_category': 'IA',
+                    'questao_numero': questionIndex + 1,
+                    'acertou': isCorrect
+                });
+            }
+
+        } catch (error) {
+            console.error('Erro na explicação da questão:', error);
+            this.showQuestionExplanationError(modal, questionIndex + 1);
+        }
+    }
+
+    createExplanationModal(questionNumber) {
+        const modal = document.createElement('div');
+        modal.className = 'question-explanation-modal';
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        };
+        
+        modal.innerHTML = `
+            <div class="question-explanation-content">
+                <div class="question-explanation-header">
+                    <h3>🤖 Explicação Detalhada - Questão ${questionNumber}</h3>
+                    <button class="close-modal-btn" onclick="document.body.removeChild(this.closest('.question-explanation-modal'))">✕</button>
+                </div>
+                <div class="question-explanation-body">
+                    <div class="question-explanation-loading">
+                        <div class="ai-spinner"></div>
+                        <p>Gerando explicação detalhada com IA...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        return modal;
+    }
+
+    showQuestionExplanationLoading(modal) {
+        const body = modal.querySelector('.question-explanation-body');
+        body.innerHTML = `
+            <div class="question-explanation-loading">
+                <div class="ai-spinner"></div>
+                <p>Gerando explicação detalhada com IA...</p>
+            </div>
+        `;
+    }
+
+    displayQuestionExplanation(modal, aiResponse, questionNumber) {
+        const body = modal.querySelector('.question-explanation-body');
+        body.innerHTML = `
+            <div class="question-explanation-result">
+                <div class="ai-explanation-content">
+                    ${this.parseMarkdown(aiResponse)}
+                </div>
+            </div>
+        `;
+    }
+
+    showQuestionExplanationError(modal, questionNumber) {
+        const body = modal.querySelector('.question-explanation-body');
+        body.innerHTML = `
+            <div class="question-explanation-error">
+                <div class="ai-error-icon">⚠️</div>
+                <h4>Erro na Explicação</h4>
+                <p>Não foi possível gerar a explicação para esta questão. Tente novamente.</p>
+                <button id="retry-question-btn" class="btn btn-secondary">Tentar Novamente</button>
+            </div>
+        `;
+        
+        // Adicionar event listener programaticamente (mais seguro)
+        const retryBtn = body.querySelector('#retry-question-btn');
+        retryBtn.onclick = () => this.explainQuestion(questionNumber - 1);
+    }
+
+    prepareQuestionData(examQuestion, question, userAnswer, isCorrect) {
+        // Montar texto com enunciado e alternativas
+        const alternativesText = Object.keys(question.alternativas)
+            .map(key => `${key.replace('alternativa', '').toUpperCase()}) ${question.alternativas[key].descricao}`)
+            .join('\n');
+
+        const userAnswerLetter = userAnswer ? userAnswer.replace('alternativa', '').toUpperCase() : 'Não respondida';
+        const correctAnswerLetter = question.correta.replace('alternativa', '').toUpperCase();
+
+        return {
+            module: examQuestion.moduleName,
+            question: question.descricao,
+            alternatives: alternativesText,
+            userAnswer: userAnswerLetter,
+            correctAnswer: correctAnswerLetter,
+            isCorrect,
+            originalExplanation: question.explicacao
+        };
+    }
+
+    // Métodos de proteção da chave API
+    setApiKey(key) {
+        // Ofuscação básica - não é criptografia real, apenas dificulta acesso casual
+        this._k = btoa(key).split('').reverse().join('');
+    }
+    
+    getApiKey() {
+        if (!this._k) return null;
+        try {
+            return atob(this._k.split('').reverse().join(''));
+        } catch {
+            return null;
+        }
+    }
+    
+    clearApiKey() {
+        delete this._k;
+    }
+
     setupOfflineDetection() {
         const offlineIndicator = document.getElementById('offline-indicator');
         const onlineIndicator = document.getElementById('online-indicator');
@@ -1177,8 +1492,14 @@ Mantenha cada item conciso (máximo 2 linhas) e específico para AZ-204.`;
     }
 }
 
-let app;
-
-document.addEventListener('DOMContentLoaded', () => {
-    app = new SimuladoApp();
-});
+// Encapsular para evitar acesso global direto
+(function() {
+    let app;
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        app = new SimuladoApp();
+        
+        // Não precisamos expor nada globalmente agora!
+        // Todos os event listeners são adicionados programaticamente
+    });
+})();

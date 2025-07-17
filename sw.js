@@ -1,13 +1,11 @@
-const CACHE_NAME = 'simulado-az204-v3';
-const STATIC_CACHE_NAME = 'simulado-az204-static-v3';
-const DATA_CACHE_NAME = 'simulado-az204-data-v3';
+const CACHE_NAME = 'simulado-az204-v9';
+const STATIC_CACHE_NAME = 'simulado-az204-static-v9';
+const DATA_CACHE_NAME = 'simulado-az204-data-v9';
 
 const STATIC_FILES = [
   '/',
   '/index.html',
   '/validador.html',
-  '/assets/style.css',
-  '/assets/script.js',
   '/manifest.json',
   '/assets/ico/favicon-16x16.png',
   '/assets/ico/favicon-32x32.png',
@@ -23,209 +21,163 @@ const DATA_FILES = [
 // Função para normalizar URLs removendo query parameters
 function normalizeUrl(url) {
   const urlObj = new URL(url, self.location.origin);
-  // Remove query parameters mas mantém o pathname
   return urlObj.pathname;
 }
 
-// Função para fazer cache individual com debugging
+// Cache individual com debugging
 async function cacheFilesIndividually(cache, files, cacheName) {
-  console.log(`[SW] Tentando fazer cache de ${files.length} arquivos para ${cacheName}`);
+  console.log(`[SW] Fazendo cache de ${files.length} arquivos para ${cacheName}`);
   
   for (const file of files) {
     try {
-      console.log(`[SW] Fazendo cache de: ${file}`);
-      
       const response = await fetch(file);
-      if (!response.ok) {
-        console.error(`[SW] Erro ao buscar ${file}: ${response.status} ${response.statusText}`);
-        continue; // Pula este arquivo e continua com os outros
+      if (response.ok) {
+        await cache.put(file, response.clone());
+        console.log(`[SW] ✅ Cache: ${file}`);
       }
-      
-      // Fazer cache tanto com a URL original quanto com a normalizada
-      await cache.put(file, response.clone());
-      
-      // Se o arquivo tem query parameters, também cache sem eles
-      const normalizedUrl = normalizeUrl(file);
-      if (normalizedUrl !== file) {
-        await cache.put(normalizedUrl, response.clone());
-        console.log(`[SW] ✅ Cache feito (normalizado): ${normalizedUrl}`);
-      }
-      
-      console.log(`[SW] ✅ Cache feito com sucesso: ${file}`);
-      
     } catch (error) {
-      console.error(`[SW] ❌ Erro ao fazer cache de ${file}:`, error);
-      // Continue tentando outros arquivos mesmo se um falhar
+      console.error(`[SW] ❌ Erro no cache de ${file}:`, error);
     }
   }
 }
 
 self.addEventListener('install', event => {
-  console.log('[SW] Service Worker instalando...');
+  console.log('[SW] Instalando Service Worker v9...');
   
   event.waitUntil(
     Promise.all([
-      caches.open(STATIC_CACHE_NAME).then(cache => {
-        return cacheFilesIndividually(cache, STATIC_FILES, 'static');
-      }),
-      caches.open(DATA_CACHE_NAME).then(cache => {
-        return cacheFilesIndividually(cache, DATA_FILES, 'data');
-      })
+      caches.open(STATIC_CACHE_NAME).then(cache => 
+        cacheFilesIndividually(cache, STATIC_FILES, 'static')
+      ),
+      caches.open(DATA_CACHE_NAME).then(cache => 
+        cacheFilesIndividually(cache, DATA_FILES, 'data')
+      )
     ]).then(() => {
-      console.log('[SW] ✅ Instalação concluída com sucesso');
-      self.skipWaiting();
-    }).catch(error => {
-      console.error('[SW] ❌ Erro durante instalação:', error);
-      // Mesmo com erro, vamos tentar continuar
+      console.log('[SW] ✅ Instalação concluída');
       self.skipWaiting();
     })
   );
 });
 
 self.addEventListener('activate', event => {
-  console.log('[SW] Service Worker ativando...');
+  console.log('[SW] Ativando Service Worker...');
   
   event.waitUntil(
     caches.keys().then(cacheNames => {
-      console.log('[SW] Caches encontrados:', cacheNames);
-      
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName !== STATIC_CACHE_NAME && 
-              cacheName !== DATA_CACHE_NAME &&
-              cacheName !== CACHE_NAME) {
+          if (!cacheName.includes('v9')) {
             console.log(`[SW] Removendo cache antigo: ${cacheName}`);
             return caches.delete(cacheName);
           }
         })
       );
     }).then(() => {
-      console.log('[SW] ✅ Ativação concluída, assumindo controle das páginas');
+      console.log('[SW] ✅ Ativação concluída');
       self.clients.claim();
-    }).catch(error => {
-      console.error('[SW] ❌ Erro durante ativação:', error);
     })
   );
 });
 
 self.addEventListener('fetch', event => {
   const { request } = event;
+  const url = request.url;
   
-  // Dados (data.json) - Network First com fallback para cache
-  if (request.url.includes('/data/')) {
-    console.log(`[SW] Requisição de dados: ${request.url}`);
+  // Dados JSON - Network First
+  if (url.includes('/data/')) {
+    event.respondWith(networkFirstForData(request));
+  }
+  // Arquivos JS/CSS - Network First (garantir atualizações)
+  else if (url.includes('.js') || url.includes('.css')) {
+    event.respondWith(networkFirstForCode(request));
+  }
+  // Google Analytics - Graceful degradation
+  else if (url.includes('gtag') || url.includes('google')) {
     event.respondWith(
-      caches.open(DATA_CACHE_NAME).then(cache => {
-        return fetch(request).then(response => {
-          if (response.status === 200) {
-            console.log(`[SW] ✅ Dados carregados da rede: ${request.url}`);
-            cache.put(request, response.clone());
-          }
-          return response;
-        }).catch(() => {
-          console.log(`[SW] 🔌 Usando dados do cache (offline): ${request.url}`);
-          return cache.match(request);
-        });
-      })
+      fetch(request).catch(() => new Response('', { status: 200 }))
     );
   }
-  
-  // Google Analytics - Graceful handling
-  else if (request.url.includes('gtag') || 
-           request.url.includes('googletagmanager') ||
-           request.url.includes('google-analytics')) {
-    console.log(`[SW] Requisição Analytics: ${request.url}`);
-    event.respondWith(
-      fetch(request).catch(() => {
-        console.log(`[SW] 🔌 Analytics offline - retornando resposta vazia`);
-        return new Response('', { status: 200 });
-      })
-    );
+  // Outros recursos - Cache First
+  else if (url.startsWith(self.location.origin)) {
+    event.respondWith(cacheFirstForAssets(request));
   }
-  
-  // Recursos estáticos - Cache First com suporte a query parameters
-  else {
-    event.respondWith(
-      caches.match(request).then(response => {
-        if (response) {
-          console.log(`[SW] ✅ Servindo do cache: ${request.url}`);
-          return response;
-        }
-        
-        // Se não encontrou, tenta buscar pela URL normalizada (sem query params)
-        const normalizedUrl = normalizeUrl(request.url);
-        if (normalizedUrl !== request.url) {
-          return caches.match(normalizedUrl).then(normalizedResponse => {
-            if (normalizedResponse) {
-              console.log(`[SW] ✅ Servindo do cache (normalizado): ${normalizedUrl}`);
-              return normalizedResponse;
-            }
-            
-            return fetchAndCache(request);
-          });
-        }
-        
-        return fetchAndCache(request);
-      })
-    );
+});
+
+// Network First para dados JSON
+async function networkFirstForData(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(DATA_CACHE_NAME);
+      cache.put(request, response.clone());
+      console.log(`[SW] 🌐 Dados atualizados: ${request.url}`);
+    }
+    return response;
+  } catch (error) {
+    console.log(`[SW] 🔌 Dados offline: ${request.url}`);
+    return caches.match(request);
   }
-  
-  // Função auxiliar para fetch e cache
-  async function fetchAndCache(request) {
-    try {
-      console.log(`[SW] 🌐 Buscando na rede: ${request.url}`);
-      const response = await fetch(request);
+}
+
+// Network First para JS/CSS (garante atualizações quando online)
+async function networkFirstForCode(request) {
+  try {
+    console.log(`[SW] 🌐 Buscando atualização de código: ${request.url}`);
+    const response = await fetch(request);
+    
+    if (response.ok) {
+      console.log(`[SW] ✅ Código atualizado da rede: ${request.url}`);
+      const cache = await caches.open(STATIC_CACHE_NAME);
       
-      if (!response || response.status !== 200) {
-        return response;
-      }
+      // Cache com URL original
+      cache.put(request, response.clone());
       
-      // Cachear apenas recursos da nossa aplicação
-      if (request.url.startsWith(self.location.origin)) {
-        const cache = await caches.open(STATIC_CACHE_NAME);
-        const responseToCache = response.clone();
-        
-        // Cache com a URL original
-        cache.put(request, responseToCache.clone());
-        console.log(`[SW] 💾 Adicionando ao cache: ${request.url}`);
-        
-        // Se tem query parameters, também cache sem eles
-        const normalizedUrl = normalizeUrl(request.url);
-        if (normalizedUrl !== request.url) {
-          cache.put(normalizedUrl, responseToCache.clone());
-          console.log(`[SW] 💾 Adicionando ao cache (normalizado): ${normalizedUrl}`);
-        }
+      // Cache também versão normalizada (sem query params)
+      const normalizedUrl = normalizeUrl(request.url);
+      if (normalizedUrl !== request.url) {
+        cache.put(normalizedUrl, response.clone());
       }
       
       return response;
-      
-    } catch (error) {
-      console.log(`[SW] ❌ Falha na rede para: ${request.url}`);
-      
-      // Tentar fallback para página principal em caso de navegação
-      if (request.mode === 'navigate') {
-        console.log(`[SW] 🏠 Retornando página principal como fallback`);
-        const indexResponse = await caches.match('/index.html');
-        if (indexResponse) {
-          return indexResponse;
-        }
-      }
-      
-      // Para arquivos CSS/JS, tentar versão sem query params
-      const normalizedUrl = normalizeUrl(request.url);
-      if (normalizedUrl !== request.url && 
-          (normalizedUrl.endsWith('.css') || normalizedUrl.endsWith('.js'))) {
-        console.log(`[SW] 🔄 Tentando fallback para: ${normalizedUrl}`);
-        const fallbackResponse = await caches.match(normalizedUrl);
-        if (fallbackResponse) {
-          return fallbackResponse;
-        }
-      }
-      
-      throw error;
     }
+  } catch (error) {
+    console.log(`[SW] 🔌 Rede falhou, usando cache: ${request.url}`);
   }
-});
+  
+  // Fallback para cache
+  let cached = await caches.match(request);
+  if (!cached) {
+    const normalizedUrl = normalizeUrl(request.url);
+    cached = await caches.match(normalizedUrl);
+  }
+  
+  return cached || new Response('// Fallback code', { 
+    headers: { 'Content-Type': 'application/javascript' }
+  });
+}
+
+// Cache First para assets (imagens, ícones, etc.)
+async function cacheFirstForAssets(request) {
+  let cached = await caches.match(request);
+  
+  if (cached) {
+    console.log(`[SW] ✅ Asset do cache: ${request.url}`);
+    return cached;
+  }
+  
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(STATIC_CACHE_NAME);
+      cache.put(request, response.clone());
+      console.log(`[SW] 💾 Novo asset cacheado: ${request.url}`);
+    }
+    return response;
+  } catch (error) {
+    console.log(`[SW] ❌ Asset não encontrado: ${request.url}`);
+    return new Response('', { status: 404 });
+  }
+}
 
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
